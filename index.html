@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cercle Horloger — Onboarding Closers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root{--gold:#C9A84C;--gold-light:#E8D5A3;--gold-dark:#8B6914;--black:#0A0A0A;--surface:#111111;--surface-2:#1A1A1A;--surface-3:#222222;--text:#F0EDE8;--text-muted:#888880;--border:rgba(201,168,76,0.12);--border-h:rgba(201,168,76,0.4);--sw:240px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--text);font-family:'Montserrat',sans-serif;font-weight:300;font-size:15px;line-height:1.7;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--gold-dark)}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+
+/* SIDEBAR */
+.sb{position:fixed;left:0;top:0;bottom:0;width:var(--sw);background:rgba(10,10,10,.97);border-right:1px solid var(--border);z-index:200;display:flex;flex-direction:column;backdrop-filter:blur(20px);overflow-y:auto;transition:transform .3s}
+.sb-logo{padding:28px 28px 22px;border-bottom:1px solid var(--border)}
+.sb-logo-t{font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:4px}
+.sb-logo-s{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted)}
+.sb-nav{flex:1;padding:16px 0}
+.sb-cat{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-dark);padding:14px 28px 6px;display:block}
+.sb-a{display:flex;align-items:center;gap:12px;padding:9px 28px;text-decoration:none;color:var(--text-muted);font-size:11px;letter-spacing:.04em;transition:all .2s;border-left:2px solid transparent}
+.sb-a:hover{color:var(--text);background:rgba(201,168,76,.04)}
+.sb-a.on{color:var(--gold);border-left-color:var(--gold);background:rgba(201,168,76,.06)}
+.sb-a .n{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--gold-dark);min-width:20px;transition:color .2s}
+.sb-a.on .n{color:var(--gold)}
+.sb-bot{padding:18px 28px;border-top:1px solid var(--border);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);display:flex;align-items:center;gap:8px}
+.sb-bot::before{content:'●';color:var(--gold);font-size:6px}
+
+/* MAIN */
+.main{margin-left:var(--sw);position:relative;z-index:1}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 60%,rgba(201,168,76,.06) 0%,transparent 70%),radial-gradient(ellipse 40% 30% at 80% 20%,rgba(201,168,76,.03) 0%,transparent 60%)}
+.h-line{width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);margin:0 auto 36px;animation:fd 1.2s ease forwards}
+.h-ey{font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;opacity:0;animation:fu .8s ease .3s forwards}
+.h-t{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,84px);font-weight:300;line-height:1;margin-bottom:14px;opacity:0;animation:fu .8s ease .5s forwards}
+.h-t em{font-style:italic;color:var(--gold)}
+.h-s{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.8vw,21px);color:var(--text-muted);letter-spacing:.08em;margin-bottom:44px;opacity:0;animation:fu .8s ease .7s forwards}
+.h-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fu .8s ease .9s forwards}
+.h-chip{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);border:1px solid var(--border);padding:7px 14px;background:rgba(201,168,76,.03)}
+
+/* SECTIONS */
+.ps{border-top:1px solid var(--border);padding:80px 72px;position:relative;z-index:1}
+.ps.dk{background:var(--surface)}
+.ph{margin-bottom:56px}
+.pn{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:14px}
+.pn::after{content:'';flex:0 0 36px;height:1px;background:var(--gold-dark)}
+.pt{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,50px);font-weight:300;line-height:1.1;margin-bottom:14px}
+.pt em{font-style:italic;color:var(--gold)}
+.pd{font-size:13px;color:var(--text-muted);line-height:2;max-width:560px}
+.sh{margin:56px 0 28px}
+.sl{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.st{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;margin-bottom:10px}
+.st em{font-style:italic;color:var(--gold)}
+.sd{font-size:12px;color:var(--text-muted);line-height:1.9;max-width:540px}
+
+/* MODULES GRID */
+.mg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:60px}
+.mc{background:var(--black);padding:40px 32px;position:relative;overflow:hidden;transition:background .3s}
+.mc::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--gold);transition:height .4s}
+.mc:hover{background:var(--surface-2)}
+.mc:hover::before{height:100%}
+.mn{font-family:'Cormorant Garamond',serif;font-size:52px;color:rgba(201,168,76,.07);line-height:1;margin-bottom:18px;font-weight:300}
+.ml{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.mt2{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;margin-bottom:8px;line-height:1.3}
+.md{font-size:12px;color:var(--text-muted);line-height:1.85;margin-bottom:22px}
+.bw{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--border-h);padding:8px 16px;transition:all .3s}
+.bw:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
+
+/* CONCEPTS */
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.ci{background:var(--black);padding:32px 28px;transition:background .3s}
+.ci:hover{background:var(--surface-2)}
+.ci-ic{font-size:20px;margin-bottom:12px}
+.ci-n{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.ci-d{font-size:12px;color:var(--text-muted);line-height:1.8}
+
+/* MAISONS */
+.mng{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:40px}
+.mnc{background:var(--surface);padding:44px 40px;transition:background .3s}
+.mnc:hover{background:var(--surface-2)}
+.mnh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.mna{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;line-height:1}
+.mny{font-size:10px;letter-spacing:.1em;color:var(--text-muted);margin-top:3px}
+.mnb{font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--border-h);color:var(--gold);white-space:nowrap;align-self:flex-start}
+.mnbd{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.mnl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.mnt{font-size:12px;color:var(--text-muted);line-height:1.85}
+.mntags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.mtag{font-size:10px;padding:3px 9px;border:1px solid var(--border);color:var(--text-muted)}
+.mnm{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);margin-top:8px}
+.mnml{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px}
+
+/* AMINE */
+.al{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:40px}
+.a-l,.a-r{padding:52px 48px}
+.a-l{background:var(--surface)}
+.a-r{background:var(--black)}
+.at{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.an{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;line-height:1;margin-bottom:18px}
+.an span{font-style:italic;color:var(--gold)}
+.ab{font-size:13px;color:var(--text-muted);line-height:2;margin-bottom:36px}
+.as{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.sv{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--gold);line-height:1;margin-bottom:3px}
+.svl{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
+.cl{list-style:none}
+.cl li{display:flex;gap:12px;padding:15px 0;border-bottom:1px solid var(--border);font-size:12px;color:var(--text-muted);line-height:1.7}
+.cl li:last-child{border-bottom:none}
+.cl li::before{content:'—';color:var(--gold);flex-shrink:0}
+
+/* AVATAR */
+.avg{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:36px}
+.avb{background:var(--black);padding:36px 32px;transition:background .3s}
+.avb.ft{background:var(--surface)}
+.avb:hover{background:var(--surface-2)}
+.avbt{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.avbt::after{content:'';flex:1;height:1px;background:var(--border)}
+.avl{list-style:none}
+.avl li{padding:8px 0;font-size:12px;color:var(--text-muted);border-bottom:1px solid rgba(201,168,76,.05);display:flex;gap:10px;line-height:1.6}
+.avl li:last-child{border-bottom:none}
+.avl li span:first-child{color:var(--gold);flex-shrink:0}
+
+/* OFFRES */
+.og{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:44px}
+.oc{background:var(--black);padding:44px 32px;transition:background .3s}
+.oc.ft{background:var(--surface)}
+.oc:hover{background:var(--surface-2)}
+.ot{font-size:9px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:9px}
+.ot.sv{color:#B8B8B8}.ot.gd{color:var(--gold)}.ot.pl{color:#D4C9BB}
+.on2{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;line-height:1;margin-bottom:5px}
+.on2.sv{color:#B8B8B8}.on2.gd{color:var(--gold)}.on2.pl{color:#D4C9BB}
+.op{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--text);margin-bottom:3px}
+.od{font-size:10px;letter-spacing:.07em;color:var(--text-muted);margin-bottom:24px}
+.opr{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--text);padding:12px 14px;border-left:2px solid var(--gold);background:rgba(201,168,76,.04);margin-bottom:24px;line-height:1.7}
+.of{list-style:none;margin-bottom:24px}
+.of li{font-size:11.5px;color:var(--text-muted);padding:7px 0;border-bottom:1px solid rgba(201,168,76,.05);display:flex;align-items:flex-start;gap:9px;line-height:1.6}
+.of li::before{content:'✦';color:var(--gold);font-size:7px;margin-top:4px;flex-shrink:0}
+.of li:last-child{border-bottom:none}
+.og2{font-size:11px;color:var(--gold);padding:13px 15px;border:1px solid var(--border-h);background:rgba(201,168,76,.03);line-height:1.7}
+.og2 strong{display:block;font-size:9px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:3px}
+
+/* COMPARATIF */
+.ctw{border:1px solid var(--border);overflow-x:auto;margin-bottom:36px}
+.ct{width:100%;border-collapse:collapse;min-width:680px}
+.ct thead tr{border-bottom:1px solid var(--border)}
+.ct th{padding:14px 18px;text-align:left;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;background:var(--surface)}
+.ct th:nth-child(2){color:#B8B8B8}.ct th:nth-child(3){color:var(--gold)}.ct th:nth-child(4){color:#D4C9BB}
+.ct td{padding:13px 18px;font-size:12px;border-bottom:1px solid var(--border);color:var(--text-muted);vertical-align:top;line-height:1.6}
+.ct tr:last-child td{border-bottom:none}
+.ct tr:hover td{background:rgba(201,168,76,.02)}
+.ct td:first-child{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);font-weight:500;background:var(--surface-2);white-space:nowrap}
+.cy{color:var(--gold);font-size:13px}.cn{color:rgba(255,255,255,.18);font-size:13px}
+
+/* CLOSING TABLE */
+.cltw{border:1px solid var(--border)}
+.clt{width:100%;border-collapse:collapse}
+.clt th{padding:13px 18px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:var(--surface);border-bottom:1px solid var(--border);font-weight:500;text-align:left}
+.clt td{padding:15px 18px;font-size:12px;color:var(--text-muted);border-bottom:1px solid var(--border);line-height:1.6}
+.clt tr:last-child td{border-bottom:none}
+.clt tr:hover td{background:rgba(201,168,76,.02)}
+.clt td:first-child{color:var(--text)}
+.pill{display:inline-block;font-family:'Cormorant Garamond',serif;font-size:15px;padding:2px 9px;border:1px solid currentColor}
+.ps2{color:#B8B8B8;border-color:rgba(184,184,184,.3)}
+.pg{color:var(--gold);border-color:rgba(201,168,76,.3)}
+.pp{color:#D4C9BB;border-color:rgba(212,201,187,.3)}
+
+/* CALLS */
+.callg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.callc{background:var(--black);padding:36px 28px;transition:background .3s}
+.callc:hover{background:var(--surface-2)}
+.callnum{font-family:'Cormorant Garamond',serif;font-size:40px;color:rgba(201,168,76,.1);line-height:1;margin-bottom:16px;font-weight:300}
+.calley{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.callt{font-family:'Cormorant Garamond',serif;font-size:18px;margin-bottom:20px;line-height:1.3}
+.bl{display:inline-flex;align-items:center;gap:9px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;border:1px solid var(--border);padding:8px 16px;transition:all .3s}
+.bl:hover{color:var(--gold);border-color:var(--border-h)}
+.cnote{margin-top:24px;border:1px solid var(--border);padding:26px 30px;background:rgba(201,168,76,.03);display:flex;gap:18px;align-items:flex-start}
+.cni{color:var(--gold);font-size:17px;flex-shrink:0;margin-top:2px}
+.cnt{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.cntxt{font-size:12px;color:var(--text-muted);line-height:1.9}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify-content:space-between;align-items:center}
+.fl{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase}
+.ft2{font-size:10px;letter-spacing:.07em;color:var(--text-muted);text-align:center;line-height:1.8}
+
+
+
+/* OFFRES TABS */
+.of-tabs{display:flex;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1px}
+.of-tab{flex:1;background:var(--surface-2);border:none;padding:22px 28px;cursor:pointer;text-align:left;transition:background .25s;display:flex;flex-direction:column;gap:5px}
+.of-tab:hover{background:var(--surface-3)}
+.of-tab.on{background:var(--black)}
+.of-tab-price{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--text-muted);line-height:1;transition:color .25s}
+.of-tab.on .of-tab-price{color:var(--text)}
+.of-tab-name{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;transition:color .25s}
+.of-tab.on .of-sv{color:#B8B8B8}
+.of-tab.on .of-gd{color:var(--gold)}
+.of-tab.on .of-pl{color:#D4C9BB}
+.of-sv{color:rgba(184,184,184,.35)}
+.of-gd{color:rgba(201,168,76,.35)}
+.of-pl{color:rgba(212,201,187,.35)}
+.of-tab-sub{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)}
+.of-panel{display:none;border:1px solid var(--border)}
+.of-panel.on{display:block}
+.of-header{padding:40px 44px;display:flex;align-items:flex-start;justify-content:space-between;gap:40px;border-bottom:1px solid var(--border)}
+.of-header.sv{border-top:2px solid #B8B8B8}
+.of-header.gd{border-top:2px solid var(--gold)}
+.of-header.pl{border-top:2px solid #D4C9BB}
+.of-header-left{flex-shrink:0}
+.of-eyebrow{font-size:9px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:10px}
+.of-eyebrow.sv{color:#B8B8B8}.of-eyebrow.gd{color:var(--gold)}.of-eyebrow.pl{color:#D4C9BB}
+.of-title{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;line-height:1;margin-bottom:6px}
+.of-title.sv{color:#B8B8B8}.of-title.gd{color:var(--gold)}.of-title.pl{color:#D4C9BB}
+.of-duration{font-size:11px;letter-spacing:.07em;color:var(--text-muted)}
+.of-promise{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--text);max-width:380px;line-height:1.6;padding:20px 24px;border-left:2px solid var(--gold);background:rgba(201,168,76,.04);align-self:center}
+.of-body{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.of-col{background:var(--black);padding:36px 44px}
+.of-col-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.of-list{list-style:none}
+.of-list li{font-size:12px;color:var(--text-muted);padding:8px 0;border-bottom:1px solid rgba(201,168,76,.05);display:flex;gap:10px;line-height:1.6}
+.of-list li::before{content:'✦';color:var(--gold);font-size:7px;margin-top:4px;flex-shrink:0}
+.of-list li:last-child{border-bottom:none}
+.of-forwho{font-size:13px;color:var(--text-muted);line-height:1.9;margin-bottom:4px}
+.of-forwho strong{color:var(--text)}
+.of-garantie{font-size:11px;color:var(--gold);padding:14px 16px;border:1px solid var(--border-h);background:rgba(201,168,76,.03);line-height:1.7}
+.of-garantie strong{display:block;font-size:9px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:4px}
+.of-closing-arg{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--text-muted);line-height:1.7;margin-top:8px}
+@media(max-width:900px){.of-header{flex-direction:column;gap:20px}.of-body{grid-template-columns:1fr}}
+
+/* AVATAR TABS */
+.av-tabs{display:flex;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1px}
+.av-tab{flex:1;background:var(--surface-2);border:none;padding:20px 24px;cursor:pointer;text-align:left;transition:background .25s;display:flex;flex-direction:column;gap:4px}
+.av-tab:hover{background:var(--surface-3)}
+.av-tab.on{background:var(--black)}
+.av-tab-pct{font-family:'Cormorant Garamond',serif;font-size:28px;color:rgba(201,168,76,.25);line-height:1;transition:color .25s}
+.av-tab.on .av-tab-pct{color:var(--gold)}
+.av-tab-name{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);transition:color .25s}
+.av-tab.on .av-tab-name{color:var(--text)}
+.av-panel{display:none;border:1px solid var(--border);border-top:2px solid var(--gold)}
+.av-panel.on{display:block}
+.av-intro{padding:40px 40px 32px;border-bottom:1px solid var(--border);background:var(--surface)}
+.av-tag{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.av-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;line-height:1;margin-bottom:12px}
+.av-title em{font-style:italic;color:var(--gold)}
+.av-desc{font-size:13px;color:var(--text-muted);line-height:1.9;max-width:680px}
+.av-desc strong{color:var(--gold);font-weight:500}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.rv.vis{opacity:1;transform:translateY(0)}
+
+/* TOGGLE */
+.tog{display:none;position:fixed;top:14px;left:14px;z-index:300;background:var(--surface);border:1px solid var(--border);width:38px;height:38px;align-items:center;justify-content:center;cursor:pointer;flex-direction:column;gap:5px;padding:10px}
+.tog span{display:block;width:18px;height:1px;background:var(--gold);transition:all .3s}
+
+/* ANIMATIONS */
+@keyframes fu{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fd{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .sb{transform:translateX(-100%)}
+  .sb.open{transform:translateX(0)}
+  .tog{display:flex}
+  .main{margin-left:0}
+  .ps{padding:56px 24px}
+  .hero{padding:80px 24px}
+  .og{grid-template-columns:1fr}
+  .al{grid-template-columns:1fr}
+  .avg{grid-template-columns:1fr}
+  .callg{grid-template-columns:1fr}
+  .mng{grid-template-columns:1fr}
+  .mnbd{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 24px}
+}
+
+
+/* MULTI-PAGE SYSTEM */
+.page { display: none; min-height: 100vh; overflow-y: auto; }
+.page.active { display: block; }
+
+/* Remove border-top from sections since they're now standalone pages */
+.page > section { border-top: none !important; }
+
+/* WELCOME PAGE */
+.welcome-page {
+  display: none;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px;
+  position: relative;
+  overflow: hidden;
+}
+.welcome-page.active { display: flex; }
+.welcome-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 60%, rgba(201,168,76,.06) 0%, transparent 70%),
+              radial-gradient(ellipse 40% 30% at 80% 20%, rgba(201,168,76,.03) 0%, transparent 60%);
+}
+.w-line { width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);margin:0 auto 36px;animation:fd 1.2s ease forwards }
+.w-ey { font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:18px }
+.w-t { font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,84px);font-weight:300;line-height:1;margin-bottom:14px }
+.w-t em { font-style:italic;color:var(--gold) }
+.w-s { font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.8vw,21px);color:var(--text-muted);letter-spacing:.08em;margin-bottom:48px }
+.w-chips { display:flex;gap:10px;justify-content:center;flex-wrap:wrap }
+.w-chip { font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);border:1px solid var(--border);padding:7px 14px;background:rgba(201,168,76,.03);cursor:pointer;transition:all .25s }
+.w-chip:hover { color:var(--gold);border-color:var(--border-h) }
+
+/* PAGE FOOTER */
+.page-footer { padding:28px 72px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center }
+.pf-logo { font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--gold);letter-spacing:.18em;text-transform:uppercase }
+.pf-text { font-size:10px;letter-spacing:.06em;color:var(--text-muted) }
+
+/* SIDEBAR active state update */
+.sb-a.on { color:var(--gold);border-left-color:var(--gold);background:rgba(201,168,76,.06) }
+
+/* Ensure sections fill page */
+.page > section { min-height: calc(100vh - 60px) }
+
+
+/* TIMELINE */
+.tl { position: relative; padding-left: 32px; border-left: 1px solid var(--border); margin-bottom: 64px; }
+.tl-item { position: relative; padding: 0 0 48px 36px; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot { position: absolute; left: -37px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--surface-3); border: 1px solid var(--border-h); transition: background .3s; }
+.tl-item.current .tl-dot { background: var(--gold); box-shadow: 0 0 0 4px rgba(201,168,76,.15); }
+.tl-item:hover .tl-dot { background: var(--gold-dark); }
+.tl-date { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.tl-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.tl-badge { font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; padding: 3px 9px; border-radius: 2px; }
+.tl-badge.live { background: rgba(201,168,76,.15); color: var(--gold); border: 1px solid var(--border-h); }
+.tl-badge.deadline { background: rgba(220,80,60,.12); color: #E07060; border: 1px solid rgba(220,80,60,.25); }
+.tl-desc { font-size: 13px; color: var(--text-muted); line-height: 1.9; margin-bottom: 16px; max-width: 600px; }
+.tl-tasks { border: 1px solid var(--border); padding: 20px 24px; background: rgba(201,168,76,.03); margin-top: 8px; max-width: 600px; }
+.tl-task-label { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.tl-task-list { list-style: none; }
+.tl-task-list li { font-size: 12px; color: var(--text-muted); padding: 7px 0; border-bottom: 1px solid rgba(201,168,76,.06); display: flex; gap: 10px; line-height: 1.6; }
+.tl-task-list li:last-child { border-bottom: none; }
+.tl-task-list li::before { content: '□'; color: var(--gold); flex-shrink: 0; font-size: 10px; margin-top: 2px; }
+.tl-code { font-family: monospace; font-size: 11px; color: var(--gold); background: rgba(201,168,76,.08); padding: 1px 6px; border-radius: 2px; letter-spacing: 0; }
+.tl-body {}
+
+/* OBLIGATIONS + RP BLOCKS */
+.tl-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.tl-block { padding: 40px 36px; background: var(--surface); }
+.tl-block.rp { background: var(--black); }
+.tl-block-title { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+.tl-block-icon { font-size: 13px; }
+.tl-block-list { list-style: none; }
+.tl-block-list li { font-size: 12px; color: var(--text-muted); padding: 10px 0; border-bottom: 1px solid rgba(201,168,76,.06); display: flex; gap: 12px; line-height: 1.6; }
+.tl-block-list li:last-child { border-bottom: none; }
+.tl-block-list li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+.tl-block-list li strong { color: var(--text); font-weight: 500; }
+
+/* RP GRID */
+.rp-grid { display: flex; flex-direction: column; gap: 20px; }
+.rp-item { padding: 16px 0; border-bottom: 1px solid var(--border); }
+.rp-item:last-child { border-bottom: none; padding-bottom: 0; }
+.rp-dates { font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.rp-theme { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; margin-bottom: 6px; }
+.rp-desc { font-size: 12px; color: var(--text-muted); line-height: 1.8; }
+
+@media(max-width:900px) { .tl-blocks { grid-template-columns: 1fr; } }
+
+</style>
+</head>
+<body>
+
+<button class="tog" id="tog" aria-label="Menu"><span></span><span></span><span></span></button>
+
+
+<aside class="sb" id="sb">
+  <div class="sb-logo">
+    <span class="sb-logo-t">Cercle Horloger™</span>
+    <span class="sb-logo-s">Onboarding Closers</span>
+  </div>
+  <nav class="sb-nav">
+    <span class="sb-cat">Introduction</span>
+    <a href="#" class="sb-a on" data-page="welcome" onclick="navigate('welcome');return false;"><span class="n">00</span>Accueil</a>
+    <a href="#" class="sb-a" data-page="onboarding" onclick="navigate('onboarding');return false;"><span class="n">01</span>Déroulé &amp; Deadlines</a>
+
+    <span class="sb-cat">Culture</span>
+    <a href="#" class="sb-a" data-page="formation" onclick="navigate('formation');return false;"><span class="n">02</span>Formation Horlogère</a>
+    <a href="#" class="sb-a" data-page="maisons" onclick="navigate('maisons');return false;"><span class="n">02.1</span>Les 4 Maisons</a>
+
+    <span class="sb-cat">Le Programme</span>
+    <a href="#" class="sb-a" data-page="amine" onclick="navigate('amine');return false;"><span class="n">03</span>Amine — Fondateur</a>
+    <a href="#" class="sb-a" data-page="avatar" onclick="navigate('avatar');return false;"><span class="n">04</span>Avatar Client</a>
+
+    <span class="sb-cat">Vente</span>
+    <a href="#" class="sb-a" data-page="offres" onclick="navigate('offres');return false;"><span class="n">05</span>Les 3 Offres</a>
+    <a href="#" class="sb-a" data-page="comparatif" onclick="navigate('comparatif');return false;"><span class="n">05.1</span>Comparatif</a>
+
+    <span class="sb-cat">Référence</span>
+    <a href="#" class="sb-a" data-page="calls" onclick="navigate('calls');return false;"><span class="n">06</span>Banque de Calls</a>
+
+  </nav>
+  <div class="sb-bot">Accès Closer — Privé</div>
+</aside>
+
+
+<main class="main">
+
+<div id="page-welcome" class="welcome-page active" role="main">
+  <div class="welcome-bg"></div>
+  <div class="w-line"></div>
+  <p class="w-ey">Onboarding — Accès Restreint</p>
+  <h1 class="w-t">Bienvenue dans le<br><em>Cercle</em></h1>
+  <p class="w-s">Tout ce qu'il faut savoir avant de vendre</p>
+  <div class="w-chips">
+    <div class="w-chip" onclick="navigate('formation')">01 — Culture Horlogère</div>
+    <div class="w-chip" onclick="navigate('maisons')">01.1 — Les 4 Maisons</div>
+    <div class="w-chip" onclick="navigate('amine')">02 — Amine</div>
+    <div class="w-chip" onclick="navigate('avatar')">03 — Avatar</div>
+    <div class="w-chip" onclick="navigate('offres')">04 — Les Offres</div>
+    <div class="w-chip" onclick="navigate('comparatif')">04.1 — Comparatif</div>
+    <div class="w-chip" onclick="navigate('calls')">05 — Calls</div>
+  </div>
+</div>
+
+<div id="page-formation" class="page" role="main">
+<section id="formation" class="ps dk">
+  <div class="ph rv">
+    <div class="pn">01 — Culture Horlogère</div>
+    <h2 class="pt">Comprendre le marché<br>pour <em>mieux vendre</em></h2>
+    <p class="pd">Avant de closer, tu dois maîtriser les fondamentaux. Ces vidéos montrent de vrais élèves accompagnés par Amine — premiers achats, premières livraisons, premiers deals. Ce sont les preuves concrètes de ce que tu vas vendre.</p>
+  </div>
+
+  <div class="mg rv">
+    <div class="mc">
+      <div class="mn">01</div>
+      <div class="ml">Cas Élève · Audemars Piguet</div>
+      <h3 class="mt2">Safouene encaisse 8 000 € dès son premier deal — avec 0 € de capital</h3>
+      <p class="md">Safouene sort une Audemars Piguet et réalise 8 000€ de marge sur son tout premier deal. La preuve concrète que le capital n'est pas un frein avec la bonne méthode.</p>
+      <a href="https://youtu.be/OwRyuSZJU2g?si=i3LiwO_dM0YiGBES" target="_blank" class="bw">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg>Regarder
+      </a>
+    </div>
+    <div class="mc">
+      <div class="mn">02</div>
+      <div class="ml">Cas Élève · Audemars Piguet</div>
+      <h3 class="mt2">Il sort de boutique avec sa première AP à prix catalogue</h3>
+      <p class="md">Un élève accompagné obtient une Audemars Piguet au prix retail en boutique officielle — ce que la majorité des particuliers ne peut pas faire seul, même avec le budget.</p>
+      <a href="https://youtu.be/WtHexE3usng?si=oLD5goU11uZ6WCMI" target="_blank" class="bw">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg>Regarder
+      </a>
+    </div>
+    <div class="mc">
+      <div class="mn">03</div>
+      <div class="ml">Cas Élève · Audemars Piguet</div>
+      <h3 class="mt2">De 0 € à une AP à 55 000 € en boutique — son 1er deal</h3>
+      <p class="md">Parti de zéro, cet élève sort une Audemars Piguet à 55 000€ en boutique sur son premier deal. Le parcours complet, de la décision à l'allocation.</p>
+      <a href="https://youtu.be/W4IL8xUaUzQ?si=PKvUGfDMl0DOmNC1" target="_blank" class="bw">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg>Regarder
+      </a>
+    </div>
+    <div class="mc">
+      <div class="mn">04</div>
+      <div class="ml">Cas Élève · Audemars Piguet · Dubaï</div>
+      <h3 class="mt2">Livraison d'une AP à 55 000 € — à Dubaï</h3>
+      <p class="md">La montre est livrée à Dubaï. Un deal international, une pièce à 55 000€, un élève qui opère à l'échelle mondiale. C'est ce que le réseau du Cercle rend possible.</p>
+      <a href="https://youtu.be/U5jzznRJ2wY?si=ytchTyQO83hPSP86" target="_blank" class="bw">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg>Regarder
+      </a>
+    </div>
+  </div>
+
+  <div class="sh rv">
+    <div class="sl">Vocabulaire Essentiel</div>
+    <h3 class="st">Les termes <em>à maîtriser</em></h3>
+    <p class="sd">Ce que tout closer doit savoir avant le premier appel. Les concepts qui reviennent dans chaque conversation avec le prospect.</p>
+  </div>
+
+  <div class="cg rv">
+    <div class="ci"><div class="ci-ic">📦</div><div class="ci-n">Full Set</div><p class="ci-d">Montre + boîte + papiers d'origine. Un full set vaut 10 à 30% de plus à la revente. Toujours viser le full set.</p></div>
+    <div class="ci"><div class="ci-ic">📊</div><div class="ci-n">Cotation</div><p class="ci-d">Valeur temps réel sur le marché secondaire. Source : Chrono24. "La montre se revend X€ aujourd'hui" — ton argument de valeur concret.</p></div>
+    <div class="ci"><div class="ci-ic">🎫</div><div class="ci-n">Allocation / AD</div><p class="ci-d">AD = Authorized Dealer (revendeur officiel). Allocation = décision de la maison d'attribuer une pièce rare. Ça ne s'achète pas — ça se mérite avec le bon profil.</p></div>
+    <div class="ci"><div class="ci-ic">🛑</div><div class="ci-n">Blacklist</div><p class="ci-d">Refus définitif d'une boutique. Arrive si tu revends trop vite ou adoptes le mauvais comportement. Le Process Anti-Blacklist du Cercle protège chaque membre.</p></div>
+    <div class="ci"><div class="ci-ic">🔒</div><div class="ci-n">Off-Market</div><p class="ci-d">Pièces disponibles hors réseau boutique officiel — collectionneurs, revendeurs privés. Accès exclusif réservé aux membres du Cercle.</p></div>
+    <div class="ci"><div class="ci-ic">📈</div><div class="ci-n">Retail vs Secondaire</div><p class="ci-d">Retail = prix boutique officielle. Secondaire = marché de revente. Certaines montres valent + en secondaire qu'en retail → c'est là que se crée la marge.</p></div>
+  </div>
+</section>
+
+  <div class="page-footer">
+    <div class="pf-logo">Cercle Horloger™</div>
+    <div class="pf-text">Document confidentiel — Réservé aux Closers</div>
+    <div class="pf-text">Onboarding v2 · Avril 2025</div>
+  </div>
+
+</div>
+
+<div id="page-maisons" class="page" role="main">
+<section id="maisons" class="ps">
+  <div class="ph rv">
+    <div class="pn">01.1 — Les 4 Maisons</div>
+    <h2 class="pt">Rolex, AP, Patek,<br><em>Richard Mille</em></h2>
+    <p class="pd">Ces quatre maisons concentrent 95% des opportunités de marge. Pas de dispersion — tu te concentres là où ça paye. Voici tout ce qu'il faut savoir pour parler en expert face au prospect.</p>
+  </div>
+
+  <div class="mng rv">
+    <!-- ROLEX -->
+    <div class="mnc">
+      <div class="mnh">
+        <div><div class="mna">Rolex</div><div class="mny">Fondée en 1905 · Genève, Suisse</div></div>
+        <div class="mnb">Référence n°1</div>
+      </div>
+      <div class="mnbd">
+        <div>
+          <div class="mnl">Positionnement & Cible</div>
+          <p class="mnt">La marque la plus désirée au monde. Elle vise les investisseurs, entrepreneurs et particuliers cherchant une valeur refuge. Image : succès, fiabilité, patrimoine. C'est la porte d'entrée du game — la plus accessible, la plus liquide sur le marché secondaire.</p>
+        </div>
+        <div>
+          <div class="mnl">Ce qui la rend unique</div>
+          <p class="mnt">Production volontairement limitée face à une demande mondiale en hausse constante. Les modèles iconiques sont introuvables au prix retail pour un particulier lambda. Ce décalage crée la marge. Valeur stable, même en période de crise économique.</p>
+        </div>
+      </div>
+      <div class="mnl">Modèles stratégiques</div>
+      <div class="mntags">
+        <span class="mtag">Submariner Date</span><span class="mtag">Daytona</span><span class="mtag">GMT-Master II Pepsi</span><span class="mtag">GMT-Master II Batman</span><span class="mtag">Datejust 41</span><span class="mtag">Day-Date</span>
+      </div>
+      <div class="mnml" style="margin-top:18px;">Marge possible à la revente</div>
+      <div class="mnm">+4 000 → +14 000 €</div>
+    </div>
+
+    <!-- AP -->
+    <div class="mnc">
+      <div class="mnh">
+        <div><div class="mna">Audemars Piguet</div><div class="mny">Fondée en 1875 · Le Brassus, Vallée de Joux</div></div>
+        <div class="mnb">Prestige & Statut</div>
+      </div>
+      <div class="mnbd">
+        <div>
+          <div class="mnl">Positionnement & Cible</div>
+          <p class="mnt">L'horlogerie de statut par excellence. Cible : élites, sportifs, artistes, influenceurs. La Royal Oak est devenue un symbole culturel mondial. AP joue dans un segment plus restreint que Rolex — accès encore plus filtré, marges plus importantes.</p>
+        </div>
+        <div>
+          <div class="mnl">Ce qui la rend unique</div>
+          <p class="mnt">AP ne vend qu'en boutiques propres (AP Houses) — aucun revendeur agréé externe. Chaque client est connu personnellement. Design iconique signé Gerald Genta (Royal Oak, 1972). La difficulté d'accès est une stratégie assumée par la maison.</p>
+        </div>
+      </div>
+      <div class="mnl">Modèles stratégiques</div>
+      <div class="mntags">
+        <span class="mtag">Royal Oak Jumbo 15202</span><span class="mtag">Royal Oak Selfwinding 41</span><span class="mtag">Royal Oak Chronograph</span><span class="mtag">Royal Oak Offshore</span>
+      </div>
+      <div class="mnml" style="margin-top:18px;">Marge possible à la revente</div>
+      <div class="mnm">+6 900 → +30 500 €</div>
+    </div>
+
+    <!-- PATEK -->
+    <div class="mnc">
+      <div class="mnh">
+        <div><div class="mna">Patek Philippe</div><div class="mny">Fondée en 1839 · Genève, Suisse</div></div>
+        <div class="mnb">Héritage Ultime</div>
+      </div>
+      <div class="mnbd">
+        <div>
+          <div class="mnl">Positionnement & Cible</div>
+          <p class="mnt">Le Saint Graal de l'horlogerie. Cible : ultra-riches, collectionneurs, familles patrimoniales. Slogan : "On ne possède jamais une Patek, on la garde pour la génération suivante." La marque aux marges les plus élevées, toutes catégories confondues.</p>
+        </div>
+        <div>
+          <div class="mnl">Ce qui la rend unique</div>
+          <p class="mnt">Production d'environ 62 000 pièces par an pour une demande mondiale explosive. Indépendante familiale depuis 184 ans. Complications horlogères d'exception. Certaines pièces atteignent plusieurs millions aux enchères mondiales.</p>
+        </div>
+      </div>
+      <div class="mnl">Modèles stratégiques</div>
+      <div class="mntags">
+        <span class="mtag">Nautilus 5711</span><span class="mtag">Nautilus 5980</span><span class="mtag">Aquanaut 5167</span><span class="mtag">Calatrava</span><span class="mtag">Perpetual Calendar</span>
+      </div>
+      <div class="mnml" style="margin-top:18px;">Marge possible à la revente</div>
+      <div class="mnm">+2 000 → +395 000 €</div>
+    </div>
+
+    <!-- RM -->
+    <div class="mnc">
+      <div class="mnh">
+        <div><div class="mna">Richard Mille</div><div class="mny">Fondée en 2001 · Les Breuleux, Suisse</div></div>
+        <div class="mnb">Ultra-Rareté</div>
+      </div>
+      <div class="mnbd">
+        <div>
+          <div class="mnl">Positionnement & Cible</div>
+          <p class="mnt">La marque la plus jeune et la plus extrême du luxe horloger. Cible : milliardaires, sportifs de haut niveau (Nadal, Verstappen, Federer), stars internationales. Prix de départ : 80 000€. Chaque montre est une sculpture technique en édition ultra-limitée.</p>
+        </div>
+        <div>
+          <div class="mnl">Ce qui la rend unique</div>
+          <p class="mnt">Matériaux aéronautiques (titane, carbone, céramique). Esthétique futuriste radicalement atypique. Éditions limitées à quelques dizaines de pièces mondiales. Marque la plus récente, mais déjà parmi les premières à la revente en termes de multiplicateur.</p>
+        </div>
+      </div>
+      <div class="mnl">Modèles stratégiques</div>
+      <div class="mntags">
+        <span class="mtag">RM 11-03 McLaren</span><span class="mtag">RM 35-03 Nadal</span><span class="mtag">RM 27-04</span><span class="mtag">RM 055 Bubba Watson</span>
+      </div>
+      <div class="mnml" style="margin-top:18px;">Marge possible à la revente</div>
+      <div class="mnm">+5 000 → +2 100 000 €</div>
+    </div>
+  </div>
+
+  <div class="cnote rv">
+    <div class="cni">◈</div>
+    <div>
+      <div class="cnt">L'argument central que tu dois avoir en tête</div>
+      <p class="cntxt">Ces montres ne sont pas disponibles à l'achat pour un particulier lambda. Sans réseau, sans profil crédible, sans dossier — les boutiques refusent ou mettent en liste d'attente pour des années. C'est précisément ce problème que le Cercle résout. C'est ton levier de conviction numéro un.</p>
+    </div>
+  </div>
+</section>
+
+  <div class="page-footer">
+    <div class="pf-logo">Cercle Horloger™</div>
+    <div class="pf-text">Document confidentiel — Réservé aux Closers</div>
+    <div class="pf-text">Onboarding v2 · Avril 2025</div>
+  </div>
+
+</div>
+
+<div id="page-amine" class="page" role="main">
+<section id="amine" class="ps dk">
+  <div class="ph rv">
+    <div class="pn">02 — Le Fondateur</div>
+    <h2 class="pt">Qui est <em>Amine</em> ?</h2>
+    <p class="pd">Tu vas vendre son programme. Tu dois comprendre qui il est, ce qu'il a accompli, et pourquoi les clients lui font confiance. Parler d'Amine avec autorité, c'est vendre avec autorité.</p>
+  </div>
+
+  <div class="al rv">
+    <div class="a-l">
+      <div class="at">Fondateur — Cercle Horloger™</div>
+      <h2 class="an">Amine<br><span>L'Expert</span></h2>
+      <p class="ab">Amine a construit le Cercle pour démocratiser un accès que seule une élite possédait. Son expertise couvre l'accès boutique officiel, la constitution de profil acheteur VIP, la négociation, la revente et l'accumulation patrimoniale via les montres de luxe. Son protocole est issu de centaines de transactions réelles — pas une théorie. Il accompagne personnellement ses membres et met sa réputation en jeu sur chaque deal.</p>
+      <div class="as">
+        <div><div class="sv">+10M€</div><div class="svl">de transactions réalisées</div></div>
+        <div><div class="sv">30 j</div><div class="svl">premier deal garanti Gold</div></div>
+        <div><div class="sv">6 mois</div><div class="svl">accompagnement Platinum</div></div>
+        <div><div class="sv">Genève</div><div class="svl">quartier général</div></div>
+      </div>
+    </div>
+    <div class="a-r">
+      <p class="sl" style="margin-bottom:22px;">Ce qui le différencie vraiment</p>
+      <ul class="cl">
+        <li>Protocole +10M€ validé sur des transactions réelles — pas une théorie, un process prouvé</li>
+        <li>Accès direct à des pièces off-market introuvables pour un particulier (Rolex, AP, Patek, RM)</li>
+        <li>Suivi WhatsApp personnalisé — chaque deal est validé avant exécution</li>
+        <li>Skin in the Game réel : si l'objectif n'est pas atteint, il s'associe personnellement sur un deal</li>
+        <li>Réseau de revendeurs certifiés et collectionneurs — construit sur des années, non reproductible</li>
+        <li>Ligne de financement jusqu'à 1M€ sur deals validés — aucun capital personnel requis pour démarrer</li>
+        <li>Événement physique à Genève pour les Platinum — réseau live, accès boutiques exclusives</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+  <div class="page-footer">
+    <div class="pf-logo">Cercle Horloger™</div>
+    <div class="pf-text">Document confidentiel — Réservé aux Closers</div>
+    <div class="pf-text">Onboarding v2 · Avril 2025</div>
+  </div>
+
+</div>
+
+<div id="page-avatar" class="page" role="main">
+<section id="avatar" class="ps">
+  <div class="ph rv">
+    <div class="pn">03 — Client Cible</div>
+    <h2 class="pt">3 avatars,<br><em>3 approches</em></h2>
+    <p class="pd">Tu ne vends pas à un seul profil. Identifier l’avatar en début d’appel change tout à ton angle de closing. Voici les 3 profils du Cercle et comment les approcher.</p>
+  </div>
+
+  <div class="av-tabs rv">
+    <button class="av-tab on" data-av="1"><span class="av-tab-pct">80%</span><span class="av-tab-name">Le Débutant</span></button>
+    <button class="av-tab" data-av="2"><span class="av-tab-pct">15%</span><span class="av-tab-name">Le Passionné</span></button>
+    <button class="av-tab" data-av="3"><span class="av-tab-pct">5%</span><span class="av-tab-name">Le Collectionneur</span></button>
+  </div>
+
+  <div class="av-panel on" id="av1">
+    <div class="av-intro">
+      <div class="av-tag">Avatar majoritaire · 80% des prospects</div>
+      <h3 class="av-title">Le <em>Débutant</em></h3>
+      <p class="av-desc">Il ne connaît pas forcément les montres. Il a vu un résultat — Safouene, 8K€ sur un premier deal — et il veut reproduire. Son moteur c’est le cash et la liberté financière, pas la passion. Il cherche la méthode, la garantie, le raccourci. <strong>Offre naturelle : Gold™</strong></p>
+    </div>
+    <div class="avg">
+      <div class="avb ft"><div class="avbt">Profil &amp; Situation</div><ul class="avl">
+        <li><span>→</span>25–42 ans, salarié ou entrepreneur débutant</li>
+        <li><span>→</span>Cherche un revenu complémentaire rapide et concret</li>
+        <li><span>→</span>Peu ou pas de connaissance des montres de prestige</li>
+        <li><span>→</span>A vu un témoignage ou un résultat — et veut reproduire</li>
+        <li><span>→</span>Prêt à investir si la méthode est prouvée et le risque cadré</li>
+      </ul></div>
+      <div class="avb"><div class="avbt">Désirs Profonds</div><ul class="avl">
+        <li><span>✦</span>Liberté financière — un revenu qui ne dépend pas d’un employeur</li>
+        <li><span>✦</span>Preuve que ça marche pour quelqu’un comme lui, sans réseau</li>
+        <li><span>✦</span>Un process clair, pas de flou — être guidé pas à pas</li>
+        <li><span>✦</span>Un premier résultat rapide pour se prouver que c’est réel</li>
+        <li><span>✦</span>Appartenir à quelque chose d’élite, de fermé, d’exclusif</li>
+      </ul></div>
+      <div class="avb"><div class="avbt">Peurs &amp; Objections</div><ul class="avl">
+        <li><span>⚠</span>“Je n’ai pas le réseau pour accéder aux boutiques”</li>
+        <li><span>⚠</span>“Je n’ai pas le capital pour commencer”</li>
+        <li><span>⚠</span>“Et si ça ne marche pas pour moi spécifiquement ?”</li>
+        <li><span>⚠</span>“C’est trop beau pour être vrai — quel est le piège ?”</li>
+        <li><span>⚠</span>“Je ne m’y connais pas assez en montres”</li>
+      </ul></div>
+      <div class="avb ft"><div class="avbt">Angle de Closing</div><ul class="avl">
+        <li><span>✦</span>Partir du résultat : “Safouene a fait 8K€ avec 0€ de capital”</li>
+        <li><span>✦</span>Inverser le risque avec la garantie Gold : “Tu ne peux pas perdre”</li>
+        <li><span>✦</span>Il n’a pas besoin de s’y connaître — la méthode remplace le réseau</li>
+        <li><span>✦</span>Le seul vrai risque c’est de ne pas agir</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="av-panel" id="av2">
+    <div class="av-intro">
+      <div class="av-tag">Avatar minoritaire · 15% des prospects</div>
+      <h3 class="av-title">Le <em>Passionné</em></h3>
+      <p class="av-desc">Il connaît les montres. Il traîne sur Chrono24, il peut citer une Nautilus ou une Royal Oak Jumbo. Mais il ne sait pas comment passer du côté business. Il veut transformer sa passion en revenus. <strong>Offre naturelle : Gold™ → upsell Platinum</strong></p>
+    </div>
+    <div class="avg">
+      <div class="avb ft"><div class="avbt">Profil &amp; Situation</div><ul class="avl">
+        <li><span>→</span>Passionné d’horlogerie depuis plusieurs années</li>
+        <li><span>→</span>Connaît les marques, les modèles, les cotations de base</li>
+        <li><span>→</span>A peut-être acheté une ou deux montres à titre personnel</li>
+        <li><span>→</span>Bloqué sur l’accès boutique et la structuration du business</li>
+        <li><span>→</span>Veut passer du statut d’amateur à celui d’acteur du marché</li>
+      </ul></div>
+      <div class="avb"><div class="avbt">Désirs Profonds</div><ul class="avl">
+        <li><span>✦</span>Transformer sa passion en source de revenus concrète</li>
+        <li><span>✦</span>Accéder aux pièces rares qu’il ne peut pas obtenir seul</li>
+        <li><span>✦</span>Être pris au sérieux dans le milieu — légitimité et réseau</li>
+        <li><span>✦</span>Apprendre les ficelles que les insiders ne partagent pas</li>
+        <li><span>✦</span>Construire une activité autour de ce qu’il aime déjà</li>
+      </ul></div>
+      <div class="avb"><div class="avbt">Peurs &amp; Objections</div><ul class="avl">
+        <li><span>⚠</span>“Je connais déjà les montres, c’est quoi l’apport réel ?”</li>
+        <li><span>⚠</span>“J’ai déjà essayé d’accéder en boutique, ça n’a pas marché”</li>
+        <li><span>⚠</span>“Je veux pas me faire blacklister par les maisons”</li>
+        <li><span>⚠</span>“Est-ce que le réseau est vraiment accessible pour moi ?”</li>
+      </ul></div>
+      <div class="avb ft"><div class="avbt">Angle de Closing</div><ul class="avl">
+        <li><span>✦</span>Valoriser ce qu’il sait déjà : “t’as l’avantage de la culture”</li>
+        <li><span>✦</span>Ce qui lui manque c’est l’accès et le process — pas la connaissance</li>
+        <li><span>✦</span>Le Process Anti-Blacklist est un argument fort pour ce profil</li>
+        <li><span>✦</span>Upsell naturel Platinum : il a la passion, il lui faut le réseau élite</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="av-panel" id="av3">
+    <div class="av-intro">
+      <div class="av-tag">Avatar rare · 5% des prospects</div>
+      <h3 class="av-title">Le <em>Collectionneur</em></h3>
+      <p class="av-desc">Il a déjà des montres. Il opère, mais en solo et sans structure. Il veut accéder à des pièces qu’il ne trouve pas seul et scaler. C’est un profil naturellement Platinum. <strong>Offre naturelle : Platinum™ direct</strong></p>
+    </div>
+    <div class="avg">
+      <div class="avb ft"><div class="avbt">Profil &amp; Situation</div><ul class="avl">
+        <li><span>→</span>Possède déjà des montres de prestige (Rolex, AP, Patek…)</li>
+        <li><span>→</span>A déjà réalisé des transactions — achats, reventes, échanges</li>
+        <li><span>→</span>Opère en solitaire, sans réseau structuré ni méthode formalisée</li>
+        <li><span>→</span>Cherche à accéder à des pièces rares hors de sa portée actuelle</li>
+        <li><span>→</span>Vision long terme : portefeuille ou activité structurée</li>
+      </ul></div>
+      <div class="avb"><div class="avbt">Désirs Profonds</div><ul class="avl">
+        <li><span>✦</span>Accéder à des pièces off-market qu’il ne trouve pas seul</li>
+        <li><span>✦</span>Rejoindre un réseau à son niveau — collectionneurs et revendeurs élite</li>
+        <li><span>✦</span>Structurer son activité pour en faire un vrai business scalable</li>
+        <li><span>✦</span>Bénéficier du levier financier pour grossir plus vite</li>
+        <li><span>✦</span>Accès Genève — événements, boutiques, contacts directs</li>
+      </ul></div>
+      <div class="avb"><div class="avbt">Peurs &amp; Objections</div><ul class="avl">
+        <li><span>⚠</span>“Qu’est-ce que vous m’apportez que je n’ai pas déjà ?”</li>
+        <li><span>⚠</span>“J’ai déjà mon propre réseau, pourquoi le vôtre serait mieux ?”</li>
+        <li><span>⚠</span>“6 000€ pour quelqu’un qui opère déjà — quel est le ROI concret ?”</li>
+        <li><span>⚠</span>“Est-ce que j’aurai vraiment accès à des pièces que je ne trouve pas ?”</li>
+      </ul></div>
+      <div class="avb ft"><div class="avbt">Angle de Closing</div><ul class="avl">
+        <li><span>✦</span>Ne pas lui vendre la formation — il n’en a pas besoin, il le sait</li>
+        <li><span>✦</span>Vendre l’accès : off-market, réseau Cercle, Genève, ligne de crédit</li>
+        <li><span>✦</span>La garantie 6 000€ : “c’est un investissement qui se rembourse seul”</li>
+        <li><span>✦</span>Platinum direct — ne jamais lui proposer Gold, ce serait un déclassement</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+  <div class="page-footer">
+    <div class="pf-logo">Cercle Horloger™</div>
+    <div class="pf-text">Document confidentiel — Réservé aux Closers</div>
+    <div class="pf-text">Onboarding v2 · Avril 2025</div>
+  </div>
+
+</div>
+
+<div id="page-offres" class="page" role="main">
+<section id="offres" class="ps dk">
+  <div class="ph rv">
+    <div class="pn">04 — Les Offres</div>
+    <h2 class="pt">3 niveaux.<br><em>1 seule mission.</em></h2>
+    <p class="pd">Chaque offre répond à un profil différent. Ton job : identifier le bon niveau pour chaque prospect et argumenter la valeur — pas le prix.</p>
+  </div>
+
+  <div class="of-tabs rv">
+    <button class="of-tab on" data-of="silver">
+      <span class="of-tab-price">1 497 €</span>
+      <span class="of-tab-name of-sv">Silver™</span>
+      <span class="of-tab-sub">Formation</span>
+    </button>
+    <button class="of-tab" data-of="gold">
+      <span class="of-tab-price">3 000 €</span>
+      <span class="of-tab-name of-gd">Gold™</span>
+      <span class="of-tab-sub">Mentorat</span>
+    </button>
+    <button class="of-tab" data-of="platinum">
+      <span class="of-tab-price">6 000 €</span>
+      <span class="of-tab-name of-pl">Platinum™</span>
+      <span class="of-tab-sub">Business Owner</span>
+    </button>
+  </div>
+
+  <!-- SILVER -->
+  <div class="of-panel on" id="of-silver">
+    <div class="of-header sv">
+      <div class="of-header-left">
+        <div class="of-eyebrow sv">Silver™ — Formation</div>
+        <h3 class="of-title sv">1 497 €</h3>
+        <div class="of-duration">Accès à vie — Autonomie totale</div>
+      </div>
+      <div class="of-promise">“Maîtrise la méthode. Accède aux outils. Avance à ton rythme.”</div>
+    </div>
+    <div class="of-body">
+      <div class="of-col">
+        <div class="of-col-label">Ce qui est inclus</div>
+        <ul class="of-list">
+          <li>Protocole +10M€ complet (10 piliers)</li>
+          <li>Scripts de négociation &amp; revente</li>
+          <li>Plan d’action 180 jours — 3 phases (Fondations / Exécution / Accumulation)</li>
+          <li>Dashboard Horloger™ — cotations temps réel</li>
+          <li>Dossier Profil Acheteur “Investisseur VIP”</li>
+          <li>Lives Q&amp;A hebdomadaires</li>
+          <li>Mises à jour garanties à vie</li>
+        </ul>
+      </div>
+      <div class="of-col">
+        <div class="of-col-label">Pour qui ?</div>
+        <p class="of-forwho">Idéal pour le <strong>Débutant</strong> qui veut tester la méthode avant de s’engager davantage. Accès à vie, risque zéro, avance à son rythme. Pas d’accompagnement humain — il travaille seul avec les outils.</p>
+        <div class="of-col-label" style="margin-top:28px">Garantie</div>
+        <div class="of-garantie sv">
+          <strong>Accès à vie aux mises à jour</strong>
+          Le programme évolue avec le marché. Tu ne paies jamais deux fois.
+        </div>
+        <div class="of-col-label" style="margin-top:28px">Argument closing</div>
+        <p class="of-closing-arg">“C’est la porte d’entrée. Tu accèdes à toute la méthode à vie, pour le prix d’un week-end. Si tu fais un seul deal, c’est remboursé au centuple.”</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOLD -->
+  <div class="of-panel" id="of-gold">
+    <div class="of-header gd">
+      <div class="of-header-left">
+        <div class="of-eyebrow gd">Gold™ — Mentorat</div>
+        <h3 class="of-title gd">3 000 €</h3>
+        <div class="of-duration">3 mois d’accompagnement personnalisé</div>
+      </div>
+      <div class="of-promise">“Sortir ta première montre en 30 jours. Garanti.”</div>
+    </div>
+    <div class="of-body">
+      <div class="of-col">
+        <div class="of-col-label">Ce qui est inclus</div>
+        <ul class="of-list">
+          <li>Tout Silver™ inclus</li>
+          <li>Mentorat personnalisé 3 mois</li>
+          <li>Suivi WhatsApp coach dédié</li>
+          <li>Accès off-market — revendeurs &amp; collectionneurs vérifiés</li>
+          <li>Passeport Horloger — boutiques exclusives</li>
+          <li>Process Anti-Blacklist (Rolex, AP, Patek, RM)</li>
+          <li>Conciergerie 24/7 — validation de chaque deal</li>
+          <li>Fonds de financement jusqu’à 1M€</li>
+        </ul>
+      </div>
+      <div class="of-col">
+        <div class="of-col-label">Pour qui ?</div>
+        <p class="of-forwho">L’offre centrale. Idéale pour le <strong>Débutant motivé</strong> et le <strong>Passionné</strong> qui veulent un résultat rapide avec un filet de sécurité. Un coach les accompagne pas à pas jusqu’au premier deal.</p>
+        <div class="of-col-label" style="margin-top:28px">Garantie</div>
+        <div class="of-garantie gd">
+          <strong>Garantie Succès ou Extension</strong>
+          Première montre non sortie en 30 jours → accompagnement prolongé gratuitement jusqu’au résultat.
+        </div>
+        <div class="of-col-label" style="margin-top:28px">Argument closing</div>
+        <p class="of-closing-arg">“La garantie inverse le risque : si t’as pas ta première montre en 30 jours, t’es accompagné gratuitement jusqu’à ce que ça arrive. Tu peux pas perdre.”</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLATINUM -->
+  <div class="of-panel" id="of-platinum">
+    <div class="of-header pl">
+      <div class="of-header-left">
+        <div class="of-eyebrow pl">Platinum™ — Business Owner</div>
+        <h3 class="of-title pl">6 000 €</h3>
+        <div class="of-duration">6 mois mentorat + accès Cercle privé</div>
+      </div>
+      <div class="of-promise">“Premier deal rapide + devenir Business Owner dans l’horlogerie.”</div>
+    </div>
+    <div class="of-body">
+      <div class="of-col">
+        <div class="of-col-label">Ce qui est inclus</div>
+        <ul class="of-list">
+          <li>Tout Gold™ inclus</li>
+          <li>Accès au Cercle privé — réseau membres élite</li>
+          <li>Stratégie d’accumulation patrimoniale</li>
+          <li>Accès pièces off-market exclusives</li>
+          <li>Événement physique à Genève</li>
+          <li>Accompagnement Business Owner structuré</li>
+          <li>Skin in the Game d’Amine sur tes deals</li>
+        </ul>
+      </div>
+      <div class="of-col">
+        <div class="of-col-label">Pour qui ?</div>
+        <p class="of-forwho">L’offre premium. Pour le <strong>Passionné ambitieux</strong> et le <strong>Collectionneur</strong> qui pensent ROI, long terme et Business Owner. Amine s’engage personnellement sur leur résultat.</p>
+        <div class="of-col-label" style="margin-top:28px">Garantie</div>
+        <div class="of-garantie pl">
+          <strong>Garantie 6 000 € nets — sous 1 an</strong>
+          Objectif non atteint → Amine s’associe sur un deal pour générer le profit. Tu récupères l’équivalent de ton investissement.
+        </div>
+        <div class="of-col-label" style="margin-top:28px">Argument closing</div>
+        <p class="of-closing-arg">“Si c’est pas atteint en 1 an, Amine s’associe sur un deal pour le réaliser lui-même. Il met sa réputation et son temps. C’est pas une promesse marketing — c’est contractuel.”</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+  <div class="page-footer">
+    <div class="pf-logo">Cercle Horloger™</div>
+    <div class="pf-text">Document confidentiel — Réservé aux Closers</div>
+    <div class="pf-text">Onboarding v2 · Avril 2025</div>
+  </div>
+
+</div>
+
+<div id="page-comparatif" class="page" role="main">
+<section id="comparatif" class="ps">
+  <div class="ph rv">
+    <div class="pn">04.1 — Comparatif</div>
+    <h2 class="pt">Quelle offre pour<br><em>quel profil ?</em></h2>
+    <p class="pd">Un coup d'œil suffit pour identifier le bon niveau. Ne vends pas l'offre la plus chère — vends la bonne offre. C'est ça qui convertit sur le long terme.</p>
+  </div>
+
+  <div class="ctw rv">
+    <table class="ct">
+      <thead>
+        <tr>
+          <th style="color:var(--text-muted)">Ce qui est inclus</th>
+          <th>Silver™ — 1 497 €</th>
+          <th>Gold™ — 3 000 €</th>
+          <th>Platinum™ — 6 000 €</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Formation complète + mises à jour vie</td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Dashboard cotations temps réel</td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Lives Q&A hebdomadaires</td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Mentorat personnalisé 3 mois</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Suivi WhatsApp coach dédié</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Accès off-market (revendeurs / collectionneurs)</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Passeport Horloger + Process Anti-Blacklist</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Conciergerie 24/7</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Ligne de financement jusqu'à 1M€</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Accès Cercle privé (réseau élite)</td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Stratégie accumulation patrimoniale</td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Événement physique Genève</td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Skin in the Game Amine (deal garanti)</td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
+        <tr>
+          <td style="color:var(--text);font-weight:600">Garantie</td>
+          <td>Mises à jour vie</td>
+          <td>1ère montre en 30j ou extension gratuite</td>
+          <td>6 000 € nets garantis sous 1 an</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sh rv">
+    <div class="sl">Guide Closing</div>
+    <h3 class="st">Quelle offre <em>selon le profil</em> ?</h3>
+  </div>
+
+  <div class="cltw rv">
+    <table class="clt">
+      <thead>
+        <tr><th>Profil prospect</th><th>Offre</th><th>Argument principal</th><th>Objection fréquente</th><th>Réponse</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Curieux, pas encore convaincu, budget serré ou incertain</td>
+          <td><span class="pill ps2">Silver™</span></td>
+          <td>Accès à vie, risque zéro, apprend à son rythme avant de se lancer concrètement</td>
+          <td>"Je veux d'abord tester"</td>
+          <td>Silver c'est précisément ça : tu rentres dans le game sans engagement fort. La formation seule a déjà transformé des parcours.</td>
+        </tr>
+        <tr>
+          <td>Motivé, veut un résultat concret rapidement, budget disponible</td>
+          <td><span class="pill pg">Gold™</span></td>
+          <td>Garantie 30 jours, coach dédié, filet de sécurité si ça ne sort pas</td>
+          <td>"C'est trop cher pour commencer"</td>
+          <td>La garantie inverse le risque : si t'as pas ta première montre en 30 jours, t'es accompagné gratuitement jusqu'à ce que ça arrive. Tu peux pas perdre.</td>
+        </tr>
+        <tr>
+          <td>Entrepreneur / investisseur, pense ROI et long terme, vision Business Owner</td>
+          <td><span class="pill pp">Platinum™</span></td>
+          <td>6 000€ nets garantis, Amine skin in the game, accès réseau élite</td>
+          <td>"Comment tu garantis 6 000€ ?"</td>
+          <td>Si c'est pas atteint en 1 an, Amine s'associe sur un deal pour le réaliser lui-même. Il met sa réputation et son temps. C'est pas une promesse marketing — c'est contractuel.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+  <div class="page-footer">
+    <div class="pf-logo">Cercle Horloger™</div>
+    <div class="pf-text">Document confidentiel — Réservé aux Closers</div>
+    <div class="pf-text">Onboarding v2 · Avril 2025</div>
+  </div>
+
+</div>
+
+<div id="page-calls" class="page" role="main">
+<section id="calls" class="ps dk">
+  <div class="ph rv">
+    <div class="pn">05 — Banque de Calls</div>
+    <h2 class="pt">Calls à<br><em>écouter</em></h2>
+    <p class="pd">Ces calls ont été réalisés par des closers déjà en place. Écoute-les pour comprendre comment la conversation se déroule, comment les objections surgissent et comment l'offre est amenée naturellement.</p>
+  </div>
+
+  <div class="callg rv">
+    <div class="callc">
+      <div class="callnum">01</div>
+      <div class="calley">Call de Référence</div>
+      <h3 class="callt">Call Closer #1</h3>
+      <a href="https://fathom.video/share/XyTPeMcE6AXFKzBktnVDqqaSbCfd-joa" target="_blank" class="bl">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19V6l12-3v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="15" r="3"/></svg>
+        Écouter sur Fathom
+      </a>
+    </div>
+    <div class="callc">
+      <div class="callnum">02</div>
+      <div class="calley">Call de Référence</div>
+      <h3 class="callt">Call Closer #2</h3>
+      <a href="https://fathom.video/share/2ykCyo-YeV5sS5SnAJvLmvxphAUsdKx3" target="_blank" class="bl">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19V6l12-3v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="15" r="3"/></svg>
+        Écouter sur Fathom
+      </a>
+    </div>
+    <div class="callc">
+      <div class="callnum">03</div>
+      <div class="calley">Call de Référence</div>
+      <h3 class="callt">Call Closer #3</h3>
+      <a href="https://fathom.video/share/HBLzBVV1T3a1CazoU-d89VxmDFmczaXe" target="_blank" class="bl">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19V6l12-3v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="15" r="3"/></svg>
+        Écouter sur Fathom
+      </a>
+    </div>
+  </div>
+
+  <div class="cnote rv">
+    <div class="cni">◈</div>
+    <div>
+      <div class="cnt">Comment écouter ces calls</div>
+      <p class="cntxt">Note les formulations exactes utilisées — comment l'offre est nommée, comment la garantie est présentée, comment les objections "c'est trop cher" ou "je dois réfléchir" sont traitées. Ce sont ces phrases concrètes que tu vas reproduire, pas des paraphrases. Objectif : avoir 3 réponses prêtes pour chaque objection avant ton premier appel.</p>
+    </div>
+  </div>
+</section>
+
+  <div class="page-footer">
+    <div class="pf-logo">Cercle Horloger™</div>
+    <div class="pf-text">Document confidentiel — Réservé aux Closers</div>
+    <div class="pf-text">Onboarding v2 · Avril 2025</div>
+  </div>
+
+</div>
+
+
+<div id="page-onboarding" class="page" role="main">
+  <section class="ps">
+    <div class="ph rv">
+      <div class="pn">01 — Agenda</div>
+      <h2 class="pt">Onboarding &amp;<br><em>Deadlines</em></h2>
+      <p class="pd">Voici le calendrier complet de ton onboarding. Chaque session est obligatoire. Les deadlines sont fixées — pas négociables.</p>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="tl rv">
+
+      <div class="tl-item current">
+        <div class="tl-dot"></div>
+        <div class="tl-date">24 Avril — 11h00</div>
+        <div class="tl-title">Call Offre &amp; Avatar <span class="tl-badge live">Aujourd’hui</span></div>
+        <div class="tl-body">
+          <p class="tl-desc">Premier call collectif. Présentation des offres et des avatars clients.</p>
+          <div class="tl-tasks">
+            <div class="tl-task-label">Obligations avant le prochain call</div>
+            <ul class="tl-task-list">
+              <li>Consulter intégralement cette plateforme d’onboarding</li>
+              <li>Créer ton adresse mail <span class="tl-code">prénom.cerclehorloger@gmail.com</span></li>
+              <li>Remplir le formulaire de contractualisation</li>
+              <li>Accès Slack activé</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">29 Avril — Soir</div>
+        <div class="tl-title">Deadline Pitch <span class="tl-badge deadline">Deadline</span></div>
+        <div class="tl-body">
+          <p class="tl-desc">Ton pitch doit être rédigé, joué en Loom et envoyé via le formulaire PITCH avant minuit.</p>
+          <div class="tl-tasks">
+            <div class="tl-task-label">Ce qu’on attend</div>
+            <ul class="tl-task-list">
+              <li>Pitch écrit et maîtrisé</li>
+              <li>Enregistrement Loom du pitch joué</li>
+              <li>Envoi sur le formulaire PITCH</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Jeudi 30 Avril — 14h00</div>
+        <div class="tl-title">Coaching Pitch</div>
+        <div class="tl-body">
+          <p class="tl-desc">Session collective de coaching sur le pitch. Retours, corrections, améliorations en live.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">4 Mai — 14h00</div>
+        <div class="tl-title">Stratégie FUP &amp; Préqual</div>
+        <div class="tl-body">
+          <p class="tl-desc">Session stratégique sur le follow-up et la préqualification des leads.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">5 Mai — Soir</div>
+        <div class="tl-title">Deadline RP <span class="tl-badge deadline">Deadline</span></div>
+        <div class="tl-body">
+          <p class="tl-desc">Obligation d’envoyer 1 RP complet avant cette date.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">6 Mai — 14h00</div>
+        <div class="tl-title">Process Set-up &amp; Outils</div>
+        <div class="tl-body">
+          <p class="tl-desc">Session technique : mise en place des outils, process et environnement de travail du closer.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">10 Mai — 17h00</div>
+        <div class="tl-title">Briefing avant le live</div>
+        <div class="tl-body">
+          <p class="tl-desc">Dernière session avant le démarrage officiel. Alignement collectif avant les premiers calls réels.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- OBLIGATIONS + SESSIONS RP -->
+    <div class="tl-blocks rv">
+
+      <div class="tl-block obli">
+        <div class="tl-block-title"><span class="tl-block-icon">⚠</span>Obligations</div>
+        <ul class="tl-block-list">
+          <li>Participer à <strong>au moins 1 RP</strong> sur les 2 semaines d’onboarding</li>
+          <li>Envoyer <strong>1 RP complet avant le 5 Mai</strong></li>
+          <li>Pitcher en Loom et soumettre avant le <strong>29 Avril au soir</strong></li>
+          <li>Consulter intégralement cette plateforme avant le <strong>30 Avril</strong></li>
+          <li>Mail <span class="tl-code">prénom.cerclehorloger@gmail.com</span> créé et activé</li>
+        </ul>
+      </div>
+
+      <div class="tl-block rp">
+        <div class="tl-block-title"><span class="tl-block-icon">▶</span>Sessions RP</div>
+        <div class="rp-grid">
+          <div class="rp-item">
+            <div class="rp-dates">27 &amp; 28 Avril</div>
+            <div class="rp-theme">Cadrage &amp; Découverte</div>
+            <p class="rp-desc">Premières simulations — identifier le profil, poser les bonnes questions, créer la relation.</p>
+          </div>
+          <div class="rp-item">
+            <div class="rp-dates">29 Avril &amp; 1er Mai</div>
+            <div class="rp-theme">Pitch</div>
+            <p class="rp-desc">Simulations centrées sur la présentation de l’offre. Fluidité, conviction, structure.</p>
+          </div>
+          <div class="rp-item">
+            <div class="rp-dates">7 &amp; 8 Mai</div>
+            <div class="rp-theme">Objections</div>
+            <p class="rp-desc">Traitement des objections les plus fréquentes. Réponses rôdées, naturelles, convaincantes.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <div class="page-footer">
+    <div class="pf-logo">Cercle Horloger™</div>
+    <div class="pf-text">Document confidentiel — Réservé aux Closers</div>
+    <div class="pf-text">Onboarding v2 · Avril 2025</div>
+  </div>
+</div>
+
+</main>
+
+<script>
+
+function navigate(pageId) {
+  // Hide all pages
+  document.querySelectorAll('.page, .welcome-page').forEach(p => {
+    p.classList.remove('active');
+    if (p.classList.contains('welcome-page')) p.style.display = 'none';
+  });
+
+  // Show target page
+  const target = document.getElementById('page-' + pageId);
+  if (target) {
+    target.classList.add('active');
+    target.scrollTop = 0;
+    if (target.classList.contains('welcome-page')) target.style.display = 'flex';
+  }
+
+  // Update sidebar
+  document.querySelectorAll('.sb-a').forEach(a => a.classList.remove('on'));
+  const activeLink = document.querySelector(`.sb-a[data-page="${pageId}"]`);
+  if (activeLink) activeLink.classList.add('on');
+
+  // Close mobile sidebar
+  if (window.innerWidth < 900) document.getElementById('sb').classList.remove('open');
+}
+
+// Avatar tabs
+document.querySelectorAll('.av-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const av = tab.dataset.av;
+    document.querySelectorAll('.av-tab').forEach(t => t.classList.remove('on'));
+    document.querySelectorAll('.av-panel').forEach(p => p.classList.remove('on'));
+    tab.classList.add('on');
+    document.getElementById('av' + av).classList.add('on');
+  });
+});
+
+// Offres tabs
+document.querySelectorAll('.of-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const of = tab.dataset.of;
+    document.querySelectorAll('.of-tab').forEach(t => t.classList.remove('on'));
+    document.querySelectorAll('.of-panel').forEach(p => p.classList.remove('on'));
+    tab.classList.add('on');
+    document.getElementById('of-' + of).classList.add('on');
+  });
+});
+
+// Sidebar toggle mobile
+document.getElementById('tog').addEventListener('click', () => {
+  document.getElementById('sb').classList.toggle('open');
+});
+
+// Reveal on scroll for active page
+function initReveal(container) {
+  const rvs = container.querySelectorAll('.rv');
+  const rvo = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('vis'); rvo.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  rvs.forEach(el => { el.classList.remove('vis'); rvo.observe(el); });
+}
+
+// Trigger reveals when a page becomes visible
+const pageObserver = new MutationObserver(mutations => {
+  mutations.forEach(m => {
+    if (m.target.classList.contains('active')) {
+      setTimeout(() => initReveal(m.target), 50);
+    }
+  });
+});
+document.querySelectorAll('.page, .welcome-page').forEach(p => {
+  pageObserver.observe(p, { attributes: true, attributeFilter: ['class'] });
+});
+// Init welcome page
+initReveal(document.getElementById('page-welcome'));
+
+</script>
+</body>
+</html>
