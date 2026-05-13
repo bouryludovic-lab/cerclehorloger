@@ -1,0 +1,15 @@
+{
+  "name": "cercle-horloger-plaquettes",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Plaquettes commerciales Cercle Horloger — Silver / Gold / Platinum",
+  "scripts": {
+    "export": "node export-pdf.js all",
+    "export:silver": "node export-pdf.js silver",
+    "export:gold": "node export-pdf.js gold",
+    "export:platinum": "node export-pdf.js platinum"
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}

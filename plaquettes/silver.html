@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Cercle Horloger — Collection Silver</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ============================================================
+   SILVER · 6 pages
+   Inspiration narrative : Mastermind Elite (chapitres I → V)
+   ============================================================ */
+
+body {
+  background: #050403;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 40px 0;
+  gap: 50px;
+}
+.page-shell {
+  box-shadow:
+    0 0 0 1px rgba(196,163,90,0.18),
+    0 60px 120px rgba(0,0,0,0.7),
+    0 30px 60px rgba(0,0,0,0.5);
+}
+
+/* ============================================================
+   COMPOSANTS PARTAGÉS PAGES INTÉRIEURES
+   ============================================================ */
+.chap-mark {
+  font-family: 'Italiana', 'Cormorant Garamond', serif;
+  font-size: 280px;
+  font-weight: 400;
+  line-height: 0.85;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(196,163,90,0.18);
+  letter-spacing: -0.02em;
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+}
+
+.chap-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 18px;
+}
+.chap-tag::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--gold);
+}
+
+.title-display {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 76px;
+  line-height: 0.95;
+  color: var(--paper);
+  letter-spacing: -0.01em;
+}
+.title-display em {
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(180deg, #f4ecd4 0%, #d1b97c 50%, #8a6f3a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ============================================================
+   COVER (P1)
+   ============================================================ */
+.cover-head {
+  position: absolute; top: 86px; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: center; gap: 18px;
+}
+.cover-head .maison {
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 400;
+  letter-spacing: 0.42em; text-transform: uppercase; color: var(--paper-soft);
+}
+.cover-badge-wrap {
+  position: absolute; top: 178px; left: 0; right: 0;
+  display: flex; justify-content: center;
+}
+.cover-title {
+  position: absolute; top: 248px; left: 0; right: 0; text-align: center;
+}
+.cover-title .l1 {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic;
+  font-size: 60px; line-height: 1; color: var(--paper);
+  margin-bottom: 4px; letter-spacing: -0.005em;
+}
+.cover-title .l2 {
+  font-family: 'Italiana', 'Cormorant Garamond', serif; font-weight: 400;
+  font-size: 156px; line-height: 0.95; letter-spacing: -0.025em;
+  background: linear-gradient(180deg, #f4ecd4 0%, #e8d9a8 35%, #c9b078 70%, #8a6f3a 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.cover-title .l3 {
+  font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400;
+  font-size: 92px; line-height: 1; color: var(--gold-pale); letter-spacing: -0.005em;
+}
+.cover-title .l3 .dot { color: var(--gold); }
+.cover-sub {
+  position: absolute; top: 670px; left: 0; right: 0; text-align: center;
+  font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+  font-size: 19px; color: var(--paper-soft); letter-spacing: 0.02em;
+}
+
+/* Sommaire chapitres (inspiré du sommaire visuel Mastermind) */
+.cover-toc {
+  position: absolute; bottom: 116px; left: 0; right: 0;
+  display: flex; justify-content: center; gap: 64px;
+  z-index: 4;
+}
+.cover-toc .item { text-align: center; }
+.cover-toc .roman {
+  font-family: 'Italiana', 'Cormorant Garamond', serif;
+  font-size: 28px; color: var(--gold);
+  letter-spacing: 0.05em;
+}
+.cover-toc .label {
+  font-family: 'Inter', sans-serif; font-size: 8.5px; font-weight: 400;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted);
+  margin-top: 4px;
+}
+.cover-toc .sep {
+  width: 1px; height: 28px;
+  background: linear-gradient(to bottom, transparent, var(--gold-deep), transparent);
+  align-self: center;
+}
+
+.cover-sign {
+  position: absolute; bottom: 60px; left: 0; right: 0; text-align: center;
+}
+.cover-sign .meta {
+  font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 400;
+  letter-spacing: 0.42em; text-transform: uppercase; color: var(--muted);
+}
+
+.cover-glow {
+  position: absolute; top: 350px; left: 50%; transform: translateX(-50%);
+  width: 900px; height: 260px;
+  background: radial-gradient(ellipse at center, rgba(196,163,90,0.16) 0%, rgba(196,163,90,0.04) 50%, transparent 80%);
+  z-index: 2 !important; pointer-events: none;
+}
+.cover-watermark {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 760px; height: 760px;
+  border: 1px solid rgba(196,163,90,0.05); border-radius: 50%;
+  z-index: 2 !important; pointer-events: none;
+}
+.cover-watermark::before {
+  content: ''; position: absolute; inset: 32px;
+  border: 1px solid rgba(196,163,90,0.04); border-radius: 50%;
+}
+.cover-graduations {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 760px; height: 760px;
+  z-index: 2 !important; pointer-events: none;
+}
+.cover-graduations .g {
+  position: absolute; top: 0; left: 50%;
+  width: 1px; height: 14px; background: rgba(196,163,90,0.18);
+  transform-origin: 0 380px;
+}
+.cover-mark {
+  position: absolute;
+  font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 400;
+  letter-spacing: 0.32em; text-transform: uppercase; color: var(--muted-2);
+  z-index: 6;
+}
+.cover-mark.tl { top: 38px; left: 110px; }
+.cover-mark.tr { top: 38px; right: 110px; }
+.cover-mark.bl { bottom: 38px; left: 110px; }
+.cover-mark.br { bottom: 38px; right: 110px; }
+
+/* ============================================================
+   P2 — NOTRE PROMESSE
+   ============================================================ */
+.p2-body { display: grid; grid-template-columns: 1fr 1fr; height: 100%; }
+
+.p2-left {
+  padding: 130px 56px 80px 90px;
+  position: relative;
+}
+.p2-left .chap-mark { top: 90px; left: 40px; font-size: 320px; }
+
+.p2-right {
+  padding: 130px 90px 80px 56px;
+  display: flex; flex-direction: column; justify-content: flex-start;
+  position: relative;
+}
+.p2-right::before {
+  content: ''; position: absolute; left: 0; top: 130px; bottom: 80px;
+  width: 1px; background: linear-gradient(to bottom, transparent, var(--rule), transparent);
+}
+
+.p2-title { margin-top: 30px; margin-bottom: 36px; }
+.p2-lead {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic;
+  font-size: 18px; line-height: 1.55; color: var(--paper-soft); max-width: 480px;
+}
+
+/* Portrait placeholder */
+.portrait-frame {
+  position: absolute; bottom: 100px; left: 90px; width: 320px; height: 200px;
+  border: 1px solid var(--rule-strong);
+  display: flex; align-items: center; justify-content: center;
+  background:
+    linear-gradient(135deg, rgba(196,163,90,0.04), transparent),
+    radial-gradient(ellipse at 30% 30%, rgba(196,163,90,0.06), transparent 60%);
+}
+.portrait-frame::before {
+  content: 'PORTRAIT FONDATEUR';
+  position: absolute; top: 14px; left: 14px;
+  font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 500;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-antique);
+}
+.portrait-frame::after {
+  content: 'À insérer · /assets/amine.jpg';
+  font-family: 'Inter', sans-serif; font-size: 9px;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+}
+
+/* Stats grid */
+.stats-block { margin-bottom: 44px; }
+.stats-label {
+  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500;
+  letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 22px; display: flex; align-items: center; gap: 14px;
+}
+.stats-label::after {
+  content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--gold-deep), transparent);
+}
+.stats-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 0;
+}
+.stat-cell { padding: 0 22px; position: relative; }
+.stat-cell + .stat-cell::before {
+  content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+  width: 1px; background: var(--rule);
+}
+.stat-cell:first-child { padding-left: 0; }
+.stat-value {
+  font-family: 'Italiana', 'Cormorant Garamond', serif;
+  font-size: 54px; line-height: 1; letter-spacing: -0.02em;
+  background: linear-gradient(180deg, #f4ecd4 0%, #d1b97c 60%, #8a6f3a 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  margin-bottom: 12px;
+}
+.stat-meta {
+  font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 400;
+  letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Citation */
+.quote-block { position: relative; padding-top: 36px; margin-top: 36px; }
+.quote-block::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 60px; height: 1px;
+  background: var(--gold);
+}
+.quote-label {
+  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500;
+  letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 18px;
+}
+.quote-mark {
+  font-family: 'Italiana', 'Cormorant Garamond', serif;
+  font-size: 72px; line-height: 0.5; color: var(--gold-deep);
+  position: absolute; top: 22px; right: 0; opacity: 0.6;
+}
+.quote-text {
+  font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400;
+  font-size: 20px; line-height: 1.5; color: var(--paper); margin-bottom: 16px;
+}
+.quote-sig {
+  font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 500;
+  letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold-pale);
+}
+
+/* ============================================================
+   P3 — LA FORMATION (4 piliers)
+   ============================================================ */
+.p3-head { padding: 130px 90px 0; position: relative; }
+.p3-head .chap-mark { top: 90px; right: 80px; font-size: 320px; }
+.p3-title-row {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 56px;
+}
+.p3-promise {
+  border-left: 1px solid var(--gold);
+  padding-left: 26px;
+  max-width: 360px;
+}
+.p3-promise-label {
+  font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 500;
+  letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold-champ);
+  margin-bottom: 12px;
+}
+.p3-promise-text {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.15;
+  font-size: 28px; color: var(--paper);
+}
+.p3-promise-text em {
+  font-style: italic; font-weight: 400; color: var(--gold-pale);
+}
+
+.pillars {
+  padding: 0 90px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 56px 80px;
+}
+.pillar { position: relative; padding-top: 22px; }
+.pillar::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 60%; height: 1px;
+  background: linear-gradient(to right, var(--gold), var(--gold-deep), transparent);
+}
+.pillar-num {
+  position: absolute; top: -6px; right: 0;
+  font-family: 'Italiana', 'Cormorant Garamond', serif;
+  font-size: 64px; line-height: 0.9; color: transparent;
+  -webkit-text-stroke: 0.75px var(--gold-antique);
+  letter-spacing: -0.04em;
+}
+.pillar-head {
+  font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 18px;
+  display: flex; align-items: baseline; gap: 12px;
+}
+.pillar-head .num {
+  font-family: 'Italiana', serif; font-size: 14px; font-weight: 400;
+  color: var(--gold-pale); letter-spacing: 0.05em;
+}
+.pillar-items { display: flex; flex-direction: column; gap: 14px; }
+.pillar-item { display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start; }
+.pillar-item .dot {
+  width: 14px; height: 1px; background: var(--gold); margin-top: 9px;
+}
+.pillar-item .body { }
+.pillar-item .title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 14.5px;
+  color: var(--paper); margin-bottom: 3px;
+}
+.pillar-item .desc {
+  font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 300;
+  color: var(--muted); line-height: 1.6; letter-spacing: 0.01em;
+}
+
+/* Engagement bar bottom */
+.engagement {
+  position: absolute; left: 56px; right: 56px; bottom: 70px;
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(232, 217, 168, 0.10) 0 1px,
+      transparent 1px 7px),
+    linear-gradient(90deg, rgba(196,163,90,0.95), rgba(232,217,168,0.92) 50%, rgba(196,163,90,0.95));
+  color: #1d1610;
+  display: grid; grid-template-columns: 280px 1fr; align-items: center;
+  padding: 22px 32px;
+  position: absolute;
+  clip-path: polygon(18px 0, 100% 0, calc(100% - 18px) 100%, 0 100%);
+}
+.engagement-label {
+  font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 600;
+  letter-spacing: 0.42em; text-transform: uppercase; color: #2a1f0d;
+}
+.engagement-title {
+  font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400;
+  font-size: 26px; color: #1a1208; line-height: 1.1; margin-top: 4px;
+}
+.engagement-body {
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 400;
+  color: #2a1f0d; line-height: 1.55; padding-left: 24px;
+  border-left: 1px solid rgba(42,31,13,0.3);
+}
+
+/* ============================================================
+   P4 — LE PARCOURS 180 JOURS
+   ============================================================ */
+.p4-head { padding: 130px 90px 60px; position: relative; }
+.p4-head .chap-mark { top: 90px; left: 80px; font-size: 320px; }
+.p4-head .chap-tag, .p4-head .title-display { position: relative; }
+
+.timeline {
+  padding: 0 90px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px;
+  position: relative;
+}
+.timeline::before {
+  content: ''; position: absolute;
+  top: 92px; left: 90px; right: 90px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-deep) 12%, var(--gold) 50%, var(--gold-deep) 88%, transparent);
+}
+.tl-phase { text-align: center; position: relative; padding-top: 0; }
+
+.tl-circle {
+  width: 184px; height: 184px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(232,217,168,0.10) 0%, transparent 50%),
+    radial-gradient(circle at 60% 70%, rgba(196,163,90,0.08) 0%, transparent 60%),
+    #0d0b09;
+  border: 1px solid var(--gold-deep);
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow:
+    inset 0 0 30px rgba(0,0,0,0.6),
+    0 0 0 6px rgba(196,163,90,0.04),
+    0 0 24px rgba(196,163,90,0.10);
+}
+.tl-circle::before {
+  content: '';
+  position: absolute; inset: -3px;
+  border-radius: 50%;
+  border: 1px solid rgba(196,163,90,0.12);
+}
+.tl-circle::after {
+  content: '';
+  position: absolute; top: -7px; left: 50%; transform: translateX(-50%);
+  width: 9px; height: 9px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 14px rgba(196,163,90,0.8);
+}
+.tl-roman {
+  font-family: 'Italiana', 'Cormorant Garamond', serif;
+  font-size: 82px; font-weight: 400; line-height: 1;
+  background: linear-gradient(180deg, #f4ecd4, #c9b078 50%, #8a6f3a);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+.tl-month {
+  font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 500;
+  letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold-champ);
+  margin-bottom: 10px;
+}
+.tl-name {
+  font-family: 'Cormorant Garamond', serif; font-weight: 400; font-style: italic;
+  font-size: 28px; color: var(--paper); margin-bottom: 18px; line-height: 1;
+}
+.tl-desc {
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 300;
+  color: var(--muted); line-height: 1.7; max-width: 280px; margin: 0 auto;
+}
+
+.tl-footer {
+  position: absolute; bottom: 70px; left: 90px; right: 90px;
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
+}
+.tl-footer .left {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 16px; color: var(--paper-soft); max-width: 540px;
+}
+.tl-footer .right {
+  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500;
+  letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold);
+}
+
+/* ============================================================
+   P5 — LE LEVIER 50/50
+   ============================================================ */
+.p5-body { display: grid; grid-template-columns: 1.35fr 1fr; height: 100%; }
+.p5-left { padding: 130px 56px 90px 90px; position: relative; }
+.p5-right {
+  padding: 160px 90px 90px 56px;
+  border-left: 1px solid var(--rule);
+  position: relative;
+}
+
+.fifty {
+  font-family: 'Italiana', 'Cormorant Garamond', serif;
+  font-size: 360px; line-height: 0.85;
+  letter-spacing: -0.04em;
+  margin: 40px 0 30px;
+  display: flex; align-items: center; gap: 10px;
+}
+.fifty .a {
+  background: linear-gradient(180deg, #f4ecd4 0%, #e8d9a8 50%, #c9b078 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.fifty .sl {
+  color: var(--gold-deep);
+  font-style: italic; font-weight: 300;
+  font-size: 280px;
+  align-self: flex-start;
+  margin-top: 12px;
+}
+.fifty .b {
+  background: linear-gradient(180deg, #d1b97c 0%, #b89c5e 50%, #5e4a23 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+.p5-caption {
+  font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400;
+  font-size: 30px; color: var(--paper); margin-bottom: 18px;
+}
+.p5-body-text {
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300;
+  color: var(--paper-soft); line-height: 1.85; max-width: 500px;
+}
+
+.conditions-label {
+  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500;
+  letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 30px;
+}
+.conditions { display: flex; flex-direction: column; gap: 0; }
+.cond {
+  display: grid; grid-template-columns: 48px 1fr; gap: 18px;
+  padding: 22px 0;
+  align-items: center;
+  border-bottom: 1px solid var(--rule);
+}
+.cond:last-child { border-bottom: none; }
+.cond-num {
+  font-family: 'Italiana', 'Cormorant Garamond', serif;
+  font-size: 28px; color: var(--gold-pale); line-height: 1;
+  letter-spacing: 0.05em;
+}
+.cond-text {
+  font-family: 'Cormorant Garamond', serif; font-weight: 400;
+  font-size: 15px; color: var(--paper); line-height: 1.35;
+}
+
+/* ============================================================
+   P6 — RÉSULTATS RÉELS
+   ============================================================ */
+.p6-head { padding: 130px 90px 36px; position: relative; }
+.p6-head .chap-mark { top: 90px; right: 80px; font-size: 320px; }
+
+.p6-table-wrap { padding: 0 90px; position: relative; }
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+}
+.results-table thead th {
+  font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 600;
+  letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold);
+  padding: 14px 14px 18px; text-align: right;
+  border-bottom: 1px solid var(--gold-deep);
+}
+.results-table thead th:first-child { text-align: left; }
+
+.results-table tbody td {
+  padding: 14px 14px;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 12.5px; font-weight: 300;
+  color: var(--paper-soft);
+  text-align: right;
+}
+.results-table tbody td:first-child {
+  text-align: left;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-weight: 400;
+  color: var(--paper);
+}
+.results-table tbody td.margin {
+  font-weight: 600;
+}
+.results-table tbody td.margin .v {
+  background: linear-gradient(90deg, #f4ecd4, #d1b97c 50%, #b89c5e);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-weight: 600;
+}
+.results-table tbody tr:nth-child(odd) td {
+  background: rgba(196,163,90,0.025);
+}
+
+.p6-disclaimer {
+  position: absolute; bottom: 80px; left: 90px; right: 90px;
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 11px; color: var(--muted); letter-spacing: 0.02em;
+  line-height: 1.6;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+
+</style>
+</head>
+<body>
+
+<!-- =================================================================
+     PAGE 1 — COUVERTURE
+     ================================================================= -->
+<div class="page-shell">
+<div class="page cover">
+  <div class="filet-top"></div>
+  <div class="bracket tl"></div><div class="bracket tr"></div>
+  <div class="bracket bl"></div><div class="bracket br"></div>
+  <div class="cover-mark tl">N° I · MMXXVI</div>
+  <div class="cover-mark tr">Édition Limitée</div>
+  <div class="cover-mark bl">Réf. CH—S—01</div>
+  <div class="cover-mark br">Genève · Paris</div>
+
+  <div class="cover-watermark"></div>
+  <div class="cover-graduations" id="grads"></div>
+  <div class="cover-glow"></div>
+
+  <div class="cover-head">
+    <div class="medallion"></div>
+    <div class="maison">Maison Cercle Horloger</div>
+  </div>
+
+  <div class="cover-badge-wrap">
+    <div class="collection-badge">Collection Silver</div>
+  </div>
+
+  <div class="cover-title">
+    <div class="l1">L'art&nbsp;de</div>
+    <div class="l2">l'horlogerie</div>
+    <div class="l3">d'investissement<span class="dot">.</span></div>
+  </div>
+
+  <div class="cover-sub">Le cercle privé d'achat-revente de montres à 7&nbsp;chiffres.</div>
+
+  <!-- Sommaire visuel (Mastermind-like) -->
+  <div class="cover-toc">
+    <div class="item"><div class="roman">I.</div><div class="label">Notre promesse</div></div>
+    <div class="sep"></div>
+    <div class="item"><div class="roman">II.</div><div class="label">La formation</div></div>
+    <div class="sep"></div>
+    <div class="item"><div class="roman">III.</div><div class="label">Le parcours</div></div>
+    <div class="sep"></div>
+    <div class="item"><div class="roman">IV.</div><div class="label">Le levier</div></div>
+    <div class="sep"></div>
+    <div class="item"><div class="roman">V.</div><div class="label">Les résultats</div></div>
+  </div>
+
+  <div class="cover-sign">
+    <div class="meta">Amine · Fondateur — Depuis 2021</div>
+  </div>
+
+  <div class="foot">
+    <span>Cercle Horloger</span>
+    <span class="center">Document Confidentiel</span>
+    <span>01 — V · Silver</span>
+  </div>
+</div>
+</div>
+
+<!-- =================================================================
+     PAGE 2 — CHAPITRE I · NOTRE PROMESSE
+     ================================================================= -->
+<div class="page-shell">
+<div class="page">
+  <div class="filet-top"></div>
+  <div class="head">
+    <span>Maison Cercle Horloger</span>
+    <span class="center">Chapitre I — Notre promesse</span>
+    <span>Collection Silver</span>
+  </div>
+
+  <div class="p2-body">
+    <div class="p2-left">
+      <div class="chap-mark">I</div>
+      <div class="chap-tag">Chapitre I · La promesse</div>
+      <h1 class="title-display p2-title">Notre<br><em>promesse.</em></h1>
+      <p class="p2-lead">
+        Une méthode validée sur plus de dix&nbsp;millions d'euros de transactions
+        réelles depuis 2021. Un protocole en dix piliers, un dashboard exclusif,
+        un accompagnement humain — réservé à celles et ceux qui considèrent
+        l'horlogerie comme un actif, pas comme un accessoire.
+      </p>
+      <div class="portrait-frame"></div>
+    </div>
+
+    <div class="p2-right">
+      <div class="stats-block">
+        <div class="stats-label">En chiffres<span></span></div>
+        <div class="stats-grid">
+          <div class="stat-cell">
+            <div class="stat-value">+10&nbsp;M€</div>
+            <div class="stat-meta">Depuis 2021</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-value">500</div>
+            <div class="stat-meta">Montres<br>revendues</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-value">100&nbsp;%</div>
+            <div class="stat-meta">Deals<br>rentables</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <div class="quote-label">Parole du fondateur</div>
+        <div class="quote-mark">&ldquo;</div>
+        <p class="quote-text">
+          Une montre de luxe n'est pas un objet de mode. C'est un actif tangible,
+          un héritage, une preuve de discernement.
+        </p>
+        <div class="quote-sig">— Amine</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Cercle Horloger</span>
+    <span class="center">Document Confidentiel</span>
+    <span>02 — V · Silver</span>
+  </div>
+</div>
+</div>
+
+<!-- =================================================================
+     PAGE 3 — CHAPITRE II · LA FORMATION
+     ================================================================= -->
+<div class="page-shell">
+<div class="page">
+  <div class="filet-top"></div>
+  <div class="head">
+    <span>Maison Cercle Horloger</span>
+    <span class="center">Chapitre II — La formation</span>
+    <span>Collection Silver</span>
+  </div>
+
+  <div class="p3-head">
+    <div class="chap-mark">II</div>
+    <div class="p3-title-row">
+      <div>
+        <div class="chap-tag">Chapitre II · Le contenu</div>
+        <h1 class="title-display">Le contenu<br><em>de votre accompagnement.</em></h1>
+      </div>
+      <div class="p3-promise">
+        <div class="p3-promise-label">La promesse Silver</div>
+        <div class="p3-promise-text">Maîtrise technique.<br><em>À votre rythme, à vie.</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-num">I</div>
+      <div class="pillar-head"><span class="num">I.</span>Méthode &amp; expertise</div>
+      <div class="pillar-items">
+        <div class="pillar-item"><div class="dot"></div><div class="body">
+          <div class="title">Protocole +10&nbsp;M€ — 10 piliers</div>
+          <div class="desc">La méthodologie exacte utilisée sur des centaines de transactions réelles.</div>
+        </div></div>
+        <div class="pillar-item"><div class="dot"></div><div class="body">
+          <div class="title">Scripts de négociation &amp; revente</div>
+          <div class="desc">Frameworks de discussion pour acheter et revendre avec confiance.</div>
+        </div></div>
+        <div class="pillar-item"><div class="dot"></div><div class="body">
+          <div class="title">Plan d'action 180 jours — 3 phases</div>
+          <div class="desc">Fondations, Exécution, Accumulation.</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">II</div>
+      <div class="pillar-head"><span class="num">II.</span>Outils &amp; data</div>
+      <div class="pillar-items">
+        <div class="pillar-item"><div class="dot"></div><div class="body">
+          <div class="title">Dashboard Horloger™</div>
+          <div class="desc">Cotations en temps réel et analyse des marges.</div>
+        </div></div>
+        <div class="pillar-item"><div class="dot"></div><div class="body">
+          <div class="title">Passeport Horloger</div>
+          <div class="desc">Le sésame pour accéder aux pièces les plus exclusives en boutique.</div>
+        </div></div>
+        <div class="pillar-item"><div class="dot"></div><div class="body">
+          <div class="title">Process Anti-Blacklist</div>
+          <div class="desc">Éviter les erreurs fatales chez Rolex, AP, Patek et Richard Mille.</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">III</div>
+      <div class="pillar-head"><span class="num">III.</span>Réseau &amp; levier</div>
+      <div class="pillar-items">
+        <div class="pillar-item"><div class="dot"></div><div class="body">
+          <div class="title">Fonds de financement 1&nbsp;M€</div>
+          <div class="desc">Accès à une ligne de crédit pour vos deals validés.</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">IV</div>
+      <div class="pillar-head"><span class="num">IV.</span>Accès &amp; privilèges</div>
+      <div class="pillar-items">
+        <div class="pillar-item"><div class="dot"></div><div class="body">
+          <div class="title">Lives Q&amp;A hebdomadaires</div>
+          <div class="desc">Une session de questions-réponses en groupe, chaque semaine.</div>
+        </div></div>
+        <div class="pillar-item"><div class="dot"></div><div class="body">
+          <div class="title">Accès formation à vie</div>
+          <div class="desc">Le programme évolue. Vous ne payez jamais deux fois.</div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engagement">
+    <div>
+      <div class="engagement-label">L'engagement du Cercle</div>
+      <div class="engagement-title">L'accès à vie aux mises à jour.</div>
+    </div>
+    <div class="engagement-body">
+      Vous accédez à la formation et à toutes ses futures évolutions, sans limite
+      de durée. Le programme s'enrichit avec le marché — votre investissement
+      reste valable, à perpétuité.
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Cercle Horloger</span>
+    <span class="center">Document Confidentiel</span>
+    <span>03 — V · Silver</span>
+  </div>
+</div>
+</div>
+
+<!-- =================================================================
+     PAGE 4 — CHAPITRE III · LE PARCOURS 180 JOURS
+     ================================================================= -->
+<div class="page-shell">
+<div class="page">
+  <div class="filet-top"></div>
+  <div class="head">
+    <span>Maison Cercle Horloger</span>
+    <span class="center">Chapitre III — Le parcours</span>
+    <span>Collection Silver</span>
+  </div>
+
+  <div class="p4-head">
+    <div class="chap-mark">III</div>
+    <div class="chap-tag">Chapitre III · Le parcours</div>
+    <h1 class="title-display">Votre parcours<br><em>en cent quatre-vingts jours.</em></h1>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-phase">
+      <div class="tl-circle"><div class="tl-roman">I</div></div>
+      <div class="tl-month">Jour 1 → 60</div>
+      <div class="tl-name">Fondations</div>
+      <div class="tl-desc">
+        Maîtrise du Protocole +10&nbsp;M€ et de ses dix piliers. Cartographie
+        des modèles, des marchés, des marges. Vous posez les bases techniques
+        et financières.
+      </div>
+    </div>
+
+    <div class="tl-phase">
+      <div class="tl-circle"><div class="tl-roman">II</div></div>
+      <div class="tl-month">Jour 61 → 120</div>
+      <div class="tl-name">Exécution</div>
+      <div class="tl-desc">
+        Mise en pratique sur des dossiers réels. Scripts de négociation,
+        Passeport Horloger, Process Anti-Blacklist. Vous identifiez votre
+        première opération exclusive.
+      </div>
+    </div>
+
+    <div class="tl-phase">
+      <div class="tl-circle"><div class="tl-roman">III</div></div>
+      <div class="tl-month">Jour 121 → 180</div>
+      <div class="tl-name">Accumulation</div>
+      <div class="tl-desc">
+        Vous capitalisez : réinvestissement des marges, montée en gamme
+        Rolex&nbsp;→&nbsp;AP&nbsp;→&nbsp;Patek. Construction patrimoniale
+        consolidée par le dashboard.
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-footer">
+    <div class="left">
+      Trois phases. Une trajectoire. <em>Le temps maîtrisé devient un actif.</em>
+    </div>
+    <div class="right">Méthode CH · Protocole +10 M€</div>
+  </div>
+
+  <div class="foot">
+    <span>Cercle Horloger</span>
+    <span class="center">Document Confidentiel</span>
+    <span>04 — V · Silver</span>
+  </div>
+</div>
+</div>
+
+<!-- =================================================================
+     PAGE 5 — CHAPITRE IV · LE LEVIER 50/50
+     ================================================================= -->
+<div class="page-shell">
+<div class="page">
+  <div class="filet-top"></div>
+  <div class="head">
+    <span>Maison Cercle Horloger</span>
+    <span class="center">Chapitre IV — Le levier financier</span>
+    <span>Collection Silver</span>
+  </div>
+
+  <div class="p5-body">
+    <div class="p5-left">
+      <div class="chap-tag">Chapitre IV · Le levier financier</div>
+
+      <div class="fifty">
+        <span class="a">50</span>
+        <span class="sl">/</span>
+        <span class="b">50</span>
+      </div>
+
+      <div class="p5-caption">Le partenariat deal d'Amine.</div>
+      <div class="p5-body-text">
+        Si le deal présente une plus-value supérieure à 25&nbsp;% et porte sur
+        un modèle exclusif, Amine peut financer votre première montre. Le
+        bénéfice est alors partagé : cinquante pour cent pour vous, cinquante
+        pour cent pour le Cercle.
+      </div>
+    </div>
+
+    <div class="p5-right">
+      <div class="conditions-label">Les conditions</div>
+      <div class="conditions">
+        <div class="cond"><div class="cond-num">I.</div><div class="cond-text">Plus-value minimum de 25 à 30&nbsp;%.</div></div>
+        <div class="cond"><div class="cond-num">II.</div><div class="cond-text">Modèle exclusif validé par l'équipe.</div></div>
+        <div class="cond"><div class="cond-num">III.</div><div class="cond-text">Deal soumis et approuvé en amont.</div></div>
+        <div class="cond"><div class="cond-num">IV.</div><div class="cond-text">Bénéfice partagé à la revente effective.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Cercle Horloger</span>
+    <span class="center">Document Confidentiel</span>
+    <span>05 — V · Silver</span>
+  </div>
+</div>
+</div>
+
+<!-- =================================================================
+     PAGE 6 — CHAPITRE V · RÉSULTATS RÉELS
+     ================================================================= -->
+<div class="page-shell">
+<div class="page">
+  <div class="filet-top"></div>
+  <div class="head">
+    <span>Maison Cercle Horloger</span>
+    <span class="center">Chapitre V — Les résultats</span>
+    <span>Collection Silver</span>
+  </div>
+
+  <div class="p6-head">
+    <div class="chap-mark">V</div>
+    <div class="chap-tag">Chapitre V · Résultats réels</div>
+    <h1 class="title-display">Protocole appliqué.<br><em>Marges réalisées.</em></h1>
+  </div>
+
+  <div class="p6-table-wrap">
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Modèle</th>
+          <th>Acquisition</th>
+          <th>Revente</th>
+          <th>Marge</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Patek Philippe Nautilus 5980/60G</td><td>80&nbsp;700 €</td><td>155&nbsp;000 €</td><td class="margin"><span class="v">+74&nbsp;300 €</span></td></tr>
+        <tr><td>Patek Philippe Aquanaut 5968G</td><td>80&nbsp;000 €</td><td>115&nbsp;000 €</td><td class="margin"><span class="v">+35&nbsp;000 €</span></td></tr>
+        <tr><td>Patek Cubitus 5822P Platinum Blue</td><td>87&nbsp;700 €</td><td>135&nbsp;000 €</td><td class="margin"><span class="v">+47&nbsp;300 €</span></td></tr>
+        <tr><td>Patek Cubitus Green 5821/1A</td><td>40&nbsp;900 €</td><td>88&nbsp;000 €</td><td class="margin"><span class="v">+47&nbsp;100 €</span></td></tr>
+        <tr><td>Patek Ladies Nautilus 7118</td><td>68&nbsp;900 €</td><td>108&nbsp;000 €</td><td class="margin"><span class="v">+39&nbsp;100 €</span></td></tr>
+        <tr><td>AP Royal Oak Double Balance Ceramic</td><td>230&nbsp;550 €</td><td>245&nbsp;000 €</td><td class="margin"><span class="v">+14&nbsp;450 €</span></td></tr>
+        <tr><td>Rolex Day-Date 40 Ombre</td><td>45&nbsp;750 €</td><td>54&nbsp;500 €</td><td class="margin"><span class="v">+8&nbsp;750 €</span></td></tr>
+        <tr><td>Rolex Day-Date Olive Green</td><td>47&nbsp;700 €</td><td>53&nbsp;500 €</td><td class="margin"><span class="v">+5&nbsp;800 €</span></td></tr>
+        <tr><td>Rolex Skydweller Jubilee Green</td><td>16&nbsp;800 €</td><td>19&nbsp;000 €</td><td class="margin"><span class="v">+2&nbsp;200 €</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="p6-disclaimer">
+    Performances obtenues par les membres du Cercle Horloger grâce au protocole
+    +10&nbsp;M€. Les performances passées ne préjugent pas des performances futures.
+  </div>
+
+  <div class="foot">
+    <span>Cercle Horloger</span>
+    <span class="center">Performances réelles · Futures non garanties</span>
+    <span>06 — V · Silver</span>
+  </div>
+</div>
+</div>
+
+<script>
+// Graduations horlogères filigrane sur la couverture
+(function(){
+  const c = document.getElementById('grads');
+  if (!c) return;
+  for (let i = 0; i < 60; i++) {
+    const g = document.createElement('div');
+    g.className = 'g';
+    g.style.transform = 'translateX(-50%) rotate(' + (i * 6) + 'deg)';
+    if (i % 5 !== 0) { g.style.height = '6px'; g.style.opacity = '0.5'; }
+    c.appendChild(g);
+  }
+})();
+</script>
+
+</body>
+</html>
