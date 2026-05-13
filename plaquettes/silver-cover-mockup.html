@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Cercle Horloger — Couverture Silver (Mockup V2)</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ============================================================
+   COUVERTURE SILVER
+   ============================================================ */
+body {
+  background:
+    radial-gradient(circle at 50% 50%, #2a2520 0%, #0a0807 70%);
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px;
+}
+
+.cover {
+  /* Spécialisation cover */
+}
+
+/* Logo header */
+.cover-head {
+  position: absolute;
+  top: 86px; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: center;
+  gap: 18px;
+}
+.cover-head .maison {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--paper-soft);
+}
+
+/* Badge */
+.cover-badge-wrap {
+  position: absolute;
+  top: 178px; left: 0; right: 0;
+  display: flex; justify-content: center;
+}
+
+/* Bloc titre */
+.cover-title {
+  position: absolute;
+  top: 264px; left: 0; right: 0;
+  text-align: center;
+}
+.cover-title .l1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--paper);
+  margin-bottom: 6px;
+  letter-spacing: -0.005em;
+}
+.cover-title .l2 {
+  font-family: 'Italiana', 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 162px;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  background: linear-gradient(180deg, #f4ecd4 0%, #e8d9a8 35%, #c9b078 70%, #8a6f3a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 30px rgba(196,163,90,0.15);
+  margin-bottom: 4px;
+}
+.cover-title .l3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 96px;
+  line-height: 1;
+  color: var(--gold-pale);
+  letter-spacing: -0.005em;
+}
+.cover-title .l3 .dot { color: var(--gold); }
+
+/* Subtitle */
+.cover-sub {
+  position: absolute;
+  top: 712px; left: 0; right: 0;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 19px;
+  color: var(--paper-soft);
+  letter-spacing: 0.02em;
+}
+
+/* Signature */
+.cover-sign {
+  position: absolute;
+  top: 770px; left: 0; right: 0;
+  text-align: center;
+}
+.cover-sign .name {
+  font-family: 'Italiana', serif;
+  font-size: 30px;
+  color: var(--gold-pale);
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+.cover-sign .meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* Halo derrière le titre principal */
+.cover-glow {
+  position: absolute;
+  top: 380px; left: 50%;
+  transform: translateX(-50%);
+  width: 900px; height: 260px;
+  background: radial-gradient(ellipse at center, rgba(196,163,90,0.18) 0%, rgba(196,163,90,0.05) 40%, transparent 70%);
+  filter: blur(20px);
+  z-index: 2 !important;
+  pointer-events: none;
+}
+
+/* Filigrane horloger en arrière-plan : double cercle */
+.cover-watermark {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 820px; height: 820px;
+  border: 1px solid rgba(196,163,90,0.05);
+  border-radius: 50%;
+  z-index: 2 !important;
+  pointer-events: none;
+}
+.cover-watermark::before {
+  content: '';
+  position: absolute; inset: 32px;
+  border: 1px solid rgba(196,163,90,0.04);
+  border-radius: 50%;
+}
+.cover-watermark::after {
+  content: '';
+  position: absolute;
+  top: -3px; left: 50%;
+  transform: translateX(-50%);
+  width: 7px; height: 7px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(196,163,90,0.6);
+  opacity: 0.6;
+}
+
+/* Index 12-graduation horloger très discret */
+.cover-graduations {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 820px; height: 820px;
+  z-index: 2 !important;
+  pointer-events: none;
+}
+.cover-graduations .g {
+  position: absolute;
+  top: 0; left: 50%;
+  width: 1px; height: 14px;
+  background: rgba(196,163,90,0.18);
+  transform-origin: 0 410px;
+}
+
+/* Mini infos sous équerres */
+.cover-mark-tl, .cover-mark-tr, .cover-mark-bl, .cover-mark-br {
+  position: absolute;
+  font-family: 'Inter', sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  z-index: 6;
+}
+.cover-mark-tl { top: 38px; left: 110px; }
+.cover-mark-tr { top: 38px; right: 110px; }
+.cover-mark-bl { bottom: 38px; left: 110px; }
+.cover-mark-br { bottom: 38px; right: 110px; }
+
+/* Footer cover : pas de filet, juste mentions micro */
+.cover .foot::before { display: none; }
+.cover .foot { padding: 0 56px 26px; }
+
+/* Preview wrapper */
+.preview-shell {
+  box-shadow:
+    0 0 0 1px rgba(196,163,90,0.18),
+    0 60px 120px rgba(0,0,0,0.7),
+    0 30px 60px rgba(0,0,0,0.5);
+}
+</style>
+</head>
+<body>
+
+<div class="preview-shell">
+<div class="page cover">
+
+  <!-- Filet doré supérieur -->
+  <div class="filet-top"></div>
+
+  <!-- Équerres -->
+  <div class="bracket tl"></div>
+  <div class="bracket tr"></div>
+  <div class="bracket bl"></div>
+  <div class="bracket br"></div>
+
+  <!-- Marqueurs micro-typo -->
+  <div class="cover-mark-tl">N° I · MMXXVI</div>
+  <div class="cover-mark-tr">Édition Limitée</div>
+  <div class="cover-mark-bl">Réf. CH—S—01</div>
+  <div class="cover-mark-br">Genève · Paris</div>
+
+  <!-- Filigrane horloger -->
+  <div class="cover-watermark"></div>
+  <div class="cover-graduations" id="grads"></div>
+
+  <!-- Halo doré derrière le titre -->
+  <div class="cover-glow"></div>
+
+  <!-- Header logo -->
+  <div class="cover-head">
+    <div class="medallion"></div>
+    <div class="maison">Maison Cercle Horloger</div>
+  </div>
+
+  <!-- Badge -->
+  <div class="cover-badge-wrap">
+    <div class="collection-badge">Collection Silver</div>
+  </div>
+
+  <!-- Titre composé -->
+  <div class="cover-title">
+    <div class="l1">L'art&nbsp;de</div>
+    <div class="l2">l'horlogerie</div>
+    <div class="l3">d'investissement<span class="dot">.</span></div>
+  </div>
+
+  <!-- Sous-titre -->
+  <div class="cover-sub">Le cercle privé d'achat-revente de montres à 7&nbsp;chiffres.</div>
+
+  <!-- Signature fondateur -->
+  <div class="cover-sign">
+    <div class="diamond-rule">
+      <span class="l"></span>
+      <span class="d"></span>
+      <span class="r"></span>
+    </div>
+    <div class="name">Amine</div>
+    <div class="meta">Fondateur — Depuis 2021</div>
+  </div>
+
+  <!-- Footer -->
+  <div class="foot">
+    <span>Cercle Horloger</span>
+    <span class="center">Document Confidentiel</span>
+    <span>01 — V · Silver</span>
+  </div>
+
+</div>
+</div>
+
+<script>
+// Génère les 12 graduations horlogères en filigrane
+(function(){
+  const c = document.getElementById('grads');
+  for (let i = 0; i < 60; i++) {
+    const g = document.createElement('div');
+    g.className = 'g';
+    g.style.transform = 'translateX(-50%) rotate(' + (i * 6) + 'deg)';
+    if (i % 5 !== 0) { g.style.height = '6px'; g.style.opacity = '0.5'; }
+    c.appendChild(g);
+  }
+})();
+</script>
+
+</body>
+</html>
