@@ -29,29 +29,12 @@ body {
    COMPOSANTS PARTAGÉS PAGES
    ============================================================ */
 .chapter-tag {
-  display: inline-flex; align-items: center; gap: 14px;
+  display: inline-flex; align-items: center;
   font-family: 'Inter', sans-serif;
   font-size: 10.5px; font-weight: 500;
   letter-spacing: 0.42em; text-transform: uppercase;
   color: var(--gold);
 }
-.chapter-tag::before {
-  content: '';
-  width: 28px; height: 1px; background: var(--gold);
-}
-.chapter-num-large {
-  font-family: 'Italiana', 'Cormorant Garamond', serif;
-  font-size: 320px; font-weight: 400;
-  line-height: 0.85;
-  color: transparent;
-  -webkit-text-stroke: 0.8px rgba(196,163,90,0.18);
-  letter-spacing: -0.02em;
-  position: absolute;
-  pointer-events: none;
-  user-select: none;
-  z-index: 1;
-}
-
 .title-xl {
   font-family: 'DM Sans', 'Inter', sans-serif;
   font-weight: 500;
@@ -62,8 +45,7 @@ body {
 .title-xl em {
   font-style: normal;
   font-weight: 500;
-  background: linear-gradient(180deg, #f4ecd4 0%, #d1b97c 55%, #8a6f3a 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--gold-pale);
 }
 
 /* ============================================================
@@ -97,8 +79,7 @@ body {
   font-family: 'DM Sans', 'Inter', sans-serif;
   font-weight: 400;
   font-size: 22px; line-height: 1.2;
-  background: linear-gradient(90deg, #d1b97c, #f4ecd4, #d1b97c);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--gold-pale);
   letter-spacing: -0.005em;
   margin-bottom: 32px;
   text-align: center;
@@ -169,74 +150,54 @@ body {
 /* ============================================================
    PAGE 2 — I. LA PROMESSE
    ============================================================ */
-.p2 { display: grid; grid-template-columns: 1.05fr 1fr; height: 100%; }
+.p2 {
+  display: grid;
+  grid-template-columns: 0.78fr 1fr;
+  height: 100%;
+  align-items: center;
+  gap: 60px;
+  padding: 110px 90px 90px;
+}
 
 .p2-portrait {
   position: relative;
-  height: 100%;
-  background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.85)),
-              var(--ink-card);
-  display: flex; align-items: center; justify-content: center;
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: var(--ink-card);
   overflow: hidden;
+  border-radius: 4px;
 }
 .p2-portrait img {
-  width: 100%; height: 100%; object-fit: cover; object-position: center 25%;
-}
-.p2-portrait.placeholder::before {
-  content: 'PORTRAIT AMINE — FONDATEUR';
-  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600;
-  letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold-antique);
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-}
-.p2-portrait.placeholder::after {
-  content: 'assets/amine.jpg';
-  font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 400;
-  letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
-  position: absolute; top: calc(50% + 28px); left: 50%; transform: translateX(-50%);
-}
-
-.p2-portrait::after {
-  content: '';
-  position: absolute; right: 0; top: 0; bottom: 0; width: 2px;
-  background: linear-gradient(to bottom, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+  width: 100%; height: 100%; object-fit: cover; object-position: center 30%;
 }
 
 .p2-right {
-  padding: 100px 80px 80px 80px;
   display: flex; flex-direction: column;
-  position: relative;
-  height: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  gap: 0;
 }
-.p2-right .chapter-num-large {
-  top: 80px; right: 60px;
-  font-size: 280px;
-}
-
 .p2-tag { margin-bottom: 18px; }
 .p2-title { margin-bottom: 32px; }
 
 .stats-row {
   display: grid; grid-template-columns: 1fr 1fr 1fr;
-  border: 1px solid var(--rule);
-  background: rgba(20,17,13,0.5);
-  margin-bottom: 38px;
+  margin-bottom: 36px;
+  width: 100%;
+  gap: 24px;
 }
 .stat-cell {
-  padding: 22px 20px;
-  position: relative;
-}
-.stat-cell + .stat-cell::before {
-  content: ''; position: absolute; left: 0; top: 18px; bottom: 18px;
-  width: 1px; background: var(--rule);
+  padding: 0;
+  text-align: center;
 }
 .stat-value {
   font-family: 'DM Sans', 'Inter', sans-serif;
   font-weight: 500;
-  font-size: 38px;
+  font-size: 40px;
   line-height: 1;
-  letter-spacing: -0.02em;
-  background: linear-gradient(180deg, #f4ecd4, #d1b97c 60%, #8a6f3a);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  letter-spacing: -0.025em;
+  color: var(--gold-pale);
   margin-bottom: 10px;
 }
 .stat-label {
@@ -251,14 +212,13 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: 13.5px; font-weight: 300;
   color: var(--paper-soft); line-height: 1.7;
-  max-width: 500px;
-  margin-bottom: 32px;
+  max-width: 520px;
+  margin-bottom: 30px;
 }
 
 .quote-block {
-  border-left: 2px solid var(--gold);
-  padding-left: 26px;
-  margin-top: auto;
+  padding-left: 0;
+  margin-top: 0;
 }
 .quote-label {
   font-family: 'Inter', sans-serif;
@@ -291,11 +251,7 @@ body {
   position: relative;
   height: 100%;
 }
-.p3 .chapter-num-large {
-  top: 90px; right: 80px;
-  font-size: 280px;
-}
-.p3-head {
+.p3 .p3-head {
   display: flex; justify-content: space-between; align-items: flex-end;
   margin-bottom: 48px;
 }
@@ -304,10 +260,10 @@ body {
 .p3-title { margin-top: 0; }
 
 .p3-right-promise {
-  border-left: 1px solid var(--gold);
-  padding-left: 22px;
+  padding-left: 0;
   max-width: 280px;
   margin-bottom: 4px;
+  text-align: right;
 }
 .p3-right-promise .label {
   display: block; margin-bottom: 10px;
@@ -322,8 +278,7 @@ body {
 }
 .p3-right-promise .txt em {
   font-style: normal;
-  background: linear-gradient(180deg, #f4ecd4, #d1b97c, #8a6f3a);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--gold-pale);
   font-weight: 500;
 }
 
@@ -337,11 +292,6 @@ body {
   border: 1px solid var(--rule);
   padding: 22px 26px 20px;
   position: relative;
-}
-.pillar-card::before {
-  content: '';
-  position: absolute; left: 0; top: 0; width: 36px; height: 1px;
-  background: var(--gold);
 }
 .pillar-card .num-tag {
   position: absolute; right: 24px; top: 22px;
@@ -435,11 +385,7 @@ body {
   position: relative;
   height: 100%;
 }
-.p4 .chapter-num-large {
-  top: 80px; right: 80px;
-  font-size: 220px;
-}
-.p4-head { margin-bottom: 28px; }
+.p4 .p4-head { margin-bottom: 28px; }
 .p4-head .chapter-tag { margin-bottom: 14px; }
 
 .testimonials-grid {
@@ -454,13 +400,6 @@ body {
   display: flex; flex-direction: column;
   position: relative;
 }
-.t-card::before {
-  content: '';
-  position: absolute; top: 0; left: 24px; right: 24px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
 .t-head {
   display: flex; justify-content: space-between; align-items: flex-start;
   margin-bottom: 8px;
@@ -593,8 +532,7 @@ body {
 }
 .p4-foot .left em {
   font-style: normal;
-  background: linear-gradient(180deg, #f4ecd4, #d1b97c, #8a6f3a);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--gold-pale);
   font-weight: 500;
 }
 .p4-foot .right {
@@ -611,11 +549,7 @@ body {
   padding: 120px 80px 90px;
   position: relative;
 }
-.p5 .chapter-num-large {
-  top: 90px; right: 80px;
-  font-size: 280px;
-}
-.p5-head { margin-bottom: 36px; }
+.p5 .p5-head { margin-bottom: 36px; }
 .p5-head .chapter-tag { margin-bottom: 18px; }
 
 .p5-body {
@@ -658,17 +592,12 @@ body {
 }
 
 .team-side {
-  border-left: 1px solid var(--rule);
   padding-left: 40px;
 }
 .team-side .section-label {
   font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600;
   letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold);
   margin-bottom: 22px;
-  display: flex; align-items: center; gap: 12px;
-}
-.team-side .section-label::after {
-  content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--gold-deep), transparent);
 }
 
 .coaches-grid {
@@ -715,7 +644,6 @@ body {
 .org-summary {
   padding: 18px 22px;
   background: linear-gradient(180deg, rgba(20,17,13,0.7), rgba(10,8,7,0.5));
-  border-left: 2px solid var(--gold);
   font-family: 'Inter', sans-serif;
   font-size: 11px; font-weight: 300;
   color: var(--paper-soft); line-height: 1.65;
@@ -729,11 +657,7 @@ body {
   padding: 116px 80px 80px;
   position: relative;
 }
-.p6 .chapter-num-large {
-  top: 86px; right: 80px;
-  font-size: 280px;
-}
-.p6-head { margin-bottom: 30px; }
+.p6 .p6-head { margin-bottom: 30px; }
 .p6-head .chapter-tag { margin-bottom: 18px; }
 
 .p6-body {
@@ -770,8 +694,7 @@ body {
   letter-spacing: -0.005em;
 }
 .results-table tbody td.margin span {
-  background: linear-gradient(90deg, #f4ecd4, #d1b97c 50%, #b89c5e);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--gold-pale);
   font-weight: 600;
 }
 .results-table tbody tr:nth-child(odd) td {
@@ -793,11 +716,6 @@ body {
   padding: 26px 28px;
   position: relative;
 }
-.fifty-box::before {
-  content: '';
-  position: absolute; top: -1px; left: 0; width: 80px; height: 1px;
-  background: var(--gold);
-}
 .fifty-tag {
   font-family: 'Inter', sans-serif;
   font-size: 9.5px; font-weight: 600;
@@ -813,16 +731,14 @@ body {
   margin-bottom: 6px;
 }
 .fifty-number .a {
-  background: linear-gradient(180deg, #f4ecd4, #d1b97c 50%, #8a6f3a);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--gold-pale);
 }
 .fifty-number .sl {
   color: var(--gold-deep); font-weight: 300;
   font-size: 72px; padding: 0 4px;
 }
 .fifty-number .b {
-  background: linear-gradient(180deg, #d1b97c, #b89c5e 50%, #5e4a23);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--gold-champ);
 }
 .fifty-caption {
   font-family: 'DM Sans', 'Inter', sans-serif;
@@ -862,13 +778,6 @@ body {
 <div class="page-shell">
 <div class="page">
   <div class="filet-top"></div>
-  <div class="bracket tl"></div><div class="bracket tr"></div>
-  <div class="bracket bl"></div><div class="bracket br"></div>
-
-  <div class="cover-mark tl">N° I · MMXXVI</div>
-  <div class="cover-mark tr">Édition Limitée</div>
-  <div class="cover-mark bl">Réf. CH—S—01</div>
-  <div class="cover-mark br">Genève · Paris</div>
 
   <div class="cover-stack">
     <div class="cover-logo logo-ch xl">
@@ -922,7 +831,6 @@ body {
     </div>
 
     <div class="p2-right">
-      <div class="chapter-num-large">I</div>
       <div class="chapter-tag p2-tag">Chapitre I · La promesse</div>
       <h1 class="title-xl p2-title">Notre <em>méthode</em>.</h1>
 
@@ -980,8 +888,6 @@ body {
   </div>
 
   <div class="p3">
-    <div class="chapter-num-large">II</div>
-
     <div class="p3-head">
       <div class="left">
         <div class="chapter-tag p3-tag">Chapitre II · Le contenu</div>
@@ -1074,8 +980,6 @@ body {
   </div>
 
   <div class="p4">
-    <div class="chapter-num-large">III</div>
-
     <div class="p4-head">
       <div class="chapter-tag">Chapitre III · Membres du Cercle</div>
       <h1 class="title-xl">Le protocole appliqué.<br><em>Trois marges.</em></h1>
@@ -1186,8 +1090,6 @@ body {
   </div>
 
   <div class="p5">
-    <div class="chapter-num-large">IV</div>
-
     <div class="p5-head">
       <div class="chapter-tag">Chapitre IV · L'équipe &amp; l'organisation</div>
       <h1 class="title-xl">Une équipe,<br>pas <em>un seul homme</em>.</h1>
@@ -1291,8 +1193,6 @@ body {
   </div>
 
   <div class="p6">
-    <div class="chapter-num-large">V</div>
-
     <div class="p6-head">
       <div class="chapter-tag">Chapitre V · Résultats &amp; Levier financier</div>
       <h1 class="title-xl">Marges réalisées.<br><em>+ le levier 50/50.</em></h1>
