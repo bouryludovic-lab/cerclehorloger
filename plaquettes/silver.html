@@ -632,22 +632,13 @@ body {
 }
 .founder-photo {
   aspect-ratio: 3/4;
-  background:
-    repeating-linear-gradient(135deg, rgba(196,163,90,0.04) 0 1px, transparent 1px 14px),
-    radial-gradient(circle at 30% 30%, rgba(196,163,90,0.06), transparent 65%),
-    var(--ink-card);
   border: 1px solid var(--rule-strong);
-  display: flex; align-items: center; justify-content: center; flex-direction: column;
   position: relative;
+  overflow: hidden;
+  background: var(--ink-card);
 }
-.founder-photo::before {
-  content: 'AMINE'; font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 600;
-  letter-spacing: 0.42em; color: var(--gold-antique);
-}
-.founder-photo::after {
-  content: 'assets/amine.jpg'; font-family: 'Inter', sans-serif; font-size: 9px;
-  letter-spacing: 0.18em; color: var(--muted);
-  margin-top: 6px;
+.founder-photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block;
 }
 .founder-info { padding-top: 6px; }
 .founder-role {
@@ -881,7 +872,7 @@ body {
 
   <div class="cover-stack">
     <div class="cover-logo logo-ch xl">
-      <object type="image/svg+xml" data="assets/logo-ch.svg" style="width:100%;height:100%;pointer-events:none"></object>
+      <img src="assets/Logo1_Cerclehorloger.webp" alt="Cercle Horloger" style="width:100%;height:100%;object-fit:contain;display:block">
     </div>
     <div class="cover-eyebrow">Le Club Privé</div>
     <div class="cover-name">Cercle Horloger</div>
@@ -926,7 +917,9 @@ body {
   </div>
 
   <div class="p2">
-    <div class="p2-portrait placeholder"></div>
+    <div class="p2-portrait">
+      <img src="assets/10.jpg" alt="Amine, Fondateur">
+    </div>
 
     <div class="p2-right">
       <div class="chapter-num-large">I</div>
@@ -1203,7 +1196,7 @@ body {
     <div class="p5-body">
       <div>
         <div class="founder-block">
-          <div class="founder-photo"></div>
+          <div class="founder-photo"><img src="assets/10.jpg" alt="Amine, Fondateur"></div>
           <div class="founder-info">
             <div class="founder-role">Fondateur · Marchand horloger</div>
             <div class="founder-name">Amine</div>
