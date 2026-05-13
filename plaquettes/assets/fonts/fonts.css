@@ -1,4 +1,6 @@
-/* === from cormorant.css === */
+/* Auto-generated · Cercle Horloger plaquettes */
+
+/* === cormorant.css === */
 @font-face {
   font-family: 'Cormorant Garamond';
   font-style: italic;
@@ -63,8 +65,7 @@
   src: url(ttf/font-09.ttf) format('truetype');
 }
 
-
-/* === from inter.css === */
+/* === inter.css === */
 @font-face {
   font-family: 'Inter';
   font-style: normal;
@@ -101,12 +102,48 @@
   src: url(ttf/font-14.ttf) format('truetype');
 }
 
-
-/* === from italiana.css === */
+/* === italiana.css === */
 @font-face {
   font-family: 'Italiana';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: url(ttf/font-15.ttf) format('truetype');
+}
+
+/* === space.css === */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(ttf/font-16.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(ttf/font-17.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(ttf/font-18.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(ttf/font-19.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(ttf/font-20.ttf) format('truetype');
 }

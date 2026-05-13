@@ -1,0 +1,42 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="discGrad" cx="32%" cy="28%" r="85%">
+      <stop offset="0%" stop-color="#f4e4b0"/>
+      <stop offset="25%" stop-color="#e0c585"/>
+      <stop offset="55%" stop-color="#b8975a"/>
+      <stop offset="85%" stop-color="#6e5728"/>
+      <stop offset="100%" stop-color="#2a1f0d"/>
+    </radialGradient>
+    <linearGradient id="archGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff4c4"/>
+      <stop offset="50%" stop-color="#f0d896"/>
+      <stop offset="100%" stop-color="#8a6f3a"/>
+    </linearGradient>
+    <linearGradient id="archGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffeec0" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#c4a35a" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="1.4"/>
+    </filter>
+  </defs>
+
+  <circle cx="100" cy="100" r="96" fill="url(#discGrad)"/>
+  <circle cx="100" cy="100" r="94" fill="none" stroke="#2a1f0d" stroke-width="0.6" opacity="0.5"/>
+
+  <g stroke="url(#archGrad)" stroke-linecap="round" fill="none">
+    <path d="M 60 138 C 60 78, 72 60, 80 60 C 88 60, 88 90, 88 138" stroke-width="3.2"/>
+    <path d="M 88 138 C 88 60, 100 46, 100 46 C 100 46, 112 60, 112 138" stroke-width="3.6"/>
+    <path d="M 112 138 C 112 90, 112 60, 120 60 C 128 60, 140 78, 140 138" stroke-width="3.2"/>
+  </g>
+
+  <g stroke="url(#archGlow)" stroke-linecap="round" fill="none" filter="url(#softGlow)" opacity="0.9">
+    <path d="M 60 138 C 60 78, 72 60, 80 60 C 88 60, 88 90, 88 138" stroke-width="1.4"/>
+    <path d="M 88 138 C 88 60, 100 46, 100 46 C 100 46, 112 60, 112 138" stroke-width="1.6"/>
+    <path d="M 112 138 C 112 90, 112 60, 120 60 C 128 60, 140 78, 140 138" stroke-width="1.4"/>
+  </g>
+
+  <ellipse cx="100" cy="142" rx="48" ry="6" fill="none" stroke="url(#archGrad)" stroke-width="3"/>
+
+  <ellipse cx="78" cy="78" rx="22" ry="14" fill="#ffeec0" opacity="0.25" filter="url(#softGlow)"/>
+</svg>
