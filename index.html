@@ -491,6 +491,28 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
   .msg-tab{flex:1 1 100%;border-right:none;border-bottom:1px solid var(--border)}
 }
 
+
+/* COMPARATIF — Restructured with pilier rows */
+.ct-block-label{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--gold-dark)}
+.ct-info td:first-child{color:var(--text);font-weight:500}
+.cth-sv,.cth-gd,.cth-pl{color:var(--gold) !important;font-weight:500}
+.ct-pilier-row td{background:var(--surface-2) !important;color:var(--gold) !important;font-size:10px !important;letter-spacing:.22em;text-transform:uppercase;padding:14px 22px !important;border-top:1px solid var(--gold-dark) !important;border-bottom:1px solid var(--gold-dark) !important;font-weight:500}
+.ct-desc{display:block;font-size:11px;color:var(--text-muted);font-style:italic;margin-top:4px;font-weight:300;letter-spacing:0;text-transform:none}
+
+/* REPLAYS */
+.rp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.rp-card{background:var(--black);padding:36px 32px;position:relative;transition:background .25s;display:flex;flex-direction:column}
+.rp-card:hover{background:var(--surface-2)}
+.rp-card::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--gold);transition:width .35s}
+.rp-card:hover::before{width:100%}
+.rp-num{font-family:'Cormorant Garamond',serif;font-size:48px;color:rgba(201,168,76,.10);line-height:1;margin-bottom:18px;font-weight:300}
+.rp-cat{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.rp-title{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:400;margin-bottom:10px;line-height:1.25}
+.rp-title em{font-style:italic;color:var(--gold)}
+.rp-desc{font-size:12px;color:var(--text-muted);line-height:1.85;margin-bottom:24px;flex:1}
+.rp-cta{display:inline-flex;align-items:center;gap:9px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--border-h);padding:10px 16px;transition:all .25s;align-self:flex-start}
+.rp-cta:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
+
 </style>
 </head>
 <body>
@@ -526,7 +548,8 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
 
     <span class="sb-cat">Référence</span>
     <a href="#" class="sb-a" data-page="faq" onclick="navigate('faq');return false;"><span class="n">07</span>FAQ Closers</a>
-    <a href="#" class="sb-a" data-page="calls" onclick="navigate('calls');return false;"><span class="n">08</span>Banque de Calls</a>
+    <a href="#" class="sb-a" data-page="replays" onclick="navigate('replays');return false;"><span class="n">08</span>Replays Préparation</a>
+    <a href="#" class="sb-a" data-page="calls" onclick="navigate('calls');return false;"><span class="n">09</span>Banque de Calls</a>
 
   </nav>
   <div class="sb-bot">Accès Closer — Privé</div>
@@ -551,7 +574,8 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
     <div class="w-chip" onclick="navigate('challenge')">05 — Challenge</div>
     <div class="w-chip" onclick="navigate('prequalif')">05.1 — Préqualif</div>
     <div class="w-chip" onclick="navigate('faq')">06 — FAQ Closers</div>
-    <div class="w-chip" onclick="navigate('calls')">07 — Calls</div>
+    <div class="w-chip" onclick="navigate('replays')">07 — Replays Préparation</div>
+    <div class="w-chip" onclick="navigate('calls')">08 — Calls</div>
   </div>
 </div>
 
@@ -956,32 +980,43 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
       <div class="of-header-left">
         <div class="of-eyebrow sv">Silver™ — Formation</div>
         <h3 class="of-title sv">1 497 €</h3>
-        <div class="of-duration">Accès à vie — Autonomie totale</div>
+        <div class="of-duration">Accès formation à vie</div>
       </div>
-      <div class="of-promise">"Maîtrise technique. Avance à ton rythme. À vie."</div>
+      <div class="of-promise">"Maîtrise technique."</div>
     </div>
     <div class="of-body">
       <div class="of-col">
-        <div class="of-col-label">Ce qui est inclus</div>
+        <div class="of-col-label">Pilier 1 — Méthode &amp; Expertise</div>
         <ul class="of-list">
-          <li>Protocole +10M€ complet (10 piliers)</li>
+          <li>Protocole +10M€ (10 piliers)</li>
           <li>Scripts de négociation &amp; revente</li>
           <li>Plan d'action 180 jours — 3 phases (Fondations / Exécution / Accumulation)</li>
-          <li>Dashboard Horloger™ — cotations temps réel</li>
-          <li>Lives Q&amp;A hebdomadaires — à vie</li>
-          <li>Mises à jour formation garanties à vie</li>
+        </ul>
+        <div class="of-col-label" style="margin-top:24px">Pilier 2 — Outils &amp; Data</div>
+        <ul class="of-list">
+          <li>Dashboard Horloger™ — cotations en direct</li>
+        </ul>
+        <div class="of-col-label" style="margin-top:24px">Pilier 3 — Réseau &amp; Levier</div>
+        <ul class="of-list">
+          <li>Fonds de financement — ligne de crédit 1M€</li>
+          <li>Passeport Horloger — accès boutique</li>
+          <li>Process Anti-Blacklist — Rolex, AP, Patek, RM</li>
+        </ul>
+        <div class="of-col-label" style="margin-top:24px">Accès &amp; Privilèges</div>
+        <ul class="of-list">
+          <li>Lives Q&amp;A hebdomadaires — 1/semaine</li>
         </ul>
       </div>
       <div class="of-col">
         <div class="of-col-label">Pour qui ?</div>
-        <p class="of-forwho">Idéal pour le <strong>Débutant</strong> qui veut tester la méthode avant de s'engager davantage. Accès à vie, risque zéro, avance à son rythme. <strong>Pas d'accompagnement humain</strong> — il travaille seul avec les outils. Pas de coach WhatsApp, pas d'accès off-market, pas de financement, pas de conciergerie.</p>
+        <p class="of-forwho">Idéal pour le <strong>Débutant</strong> qui veut tester la méthode avant de s'engager davantage. Accès à vie, risque zéro, avance à son rythme. <strong>Pas d'accompagnement humain personnalisé</strong> — il a les outils, le réseau et la méthode, mais pas de coach WhatsApp dédié, pas d'accès off-market, pas de conciergerie.</p>
         <div class="of-col-label" style="margin-top:28px">Garantie</div>
         <div class="of-garantie sv">
           <strong>Accès à vie aux mises à jour</strong>
           Le programme évolue avec le marché. Tu ne paies jamais deux fois.
         </div>
         <div class="of-col-label" style="margin-top:28px">Argument closing</div>
-        <p class="of-closing-arg">"C'est la porte d'entrée. Tu accèdes à toute la méthode à vie, pour le prix d'un week-end. Si tu fais un seul deal, c'est remboursé au centuple."</p>
+        <p class="of-closing-arg">"C'est la porte d'entrée. Tu accèdes à toute la méthode à vie, au financement 1M€, au Passeport et au Process Anti-Blacklist — pour le prix d'un week-end. Si tu fais un seul deal, c'est remboursé au centuple."</p>
       </div>
     </div>
   </div>
@@ -992,30 +1027,44 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
       <div class="of-header-left">
         <div class="of-eyebrow gd">Gold™ — Mentorat</div>
         <h3 class="of-title gd">3 000 €</h3>
-        <div class="of-duration">3 mois d'accompagnement personnalisé</div>
+        <div class="of-duration">90 jours (3 mois) — Mentorat personnalisé</div>
       </div>
-      <div class="of-promise">"Sortir ta première montre en 30 jours. Garanti."</div>
+      <div class="of-promise">"Premier deal rapide — sortie d'une montre en 30 jours."</div>
     </div>
     <div class="of-body">
       <div class="of-col">
-        <div class="of-col-label">Ce qui est inclus</div>
+        <div class="of-col-label">Pilier 1 — Méthode &amp; Expertise</div>
         <ul class="of-list">
-          <li>Tout Silver™ inclus</li>
-          <li>Stratégie d'accumulation patrimoniale</li>
+          <li>Protocole +10M€ (10 piliers)</li>
+          <li>Scripts de négociation &amp; revente</li>
+          <li>Plan d'action 180 jours — 3 phases</li>
+          <li>Stratégie d'accumulation — réinvestir ses marges</li>
+        </ul>
+        <div class="of-col-label" style="margin-top:24px">Pilier 2 — Outils &amp; Data</div>
+        <ul class="of-list">
+          <li>Dashboard Horloger™ — cotations en direct</li>
           <li>Dossier Profil Acheteur VIP — identité « Investisseur VIP »</li>
-          <li>Passeport Horloger + Process Anti-Blacklist (Rolex, AP, Patek, RM)</li>
-          <li>Accès Off-Market — revendeurs &amp; collectionneurs vérifiés</li>
-          <li>Suivi WhatsApp coach dédié — 3 mois</li>
+        </ul>
+        <div class="of-col-label" style="margin-top:24px">Pilier 3 — Réseau &amp; Levier</div>
+        <ul class="of-list">
+          <li>Fonds de financement — ligne de crédit 1M€</li>
+          <li>Accès Off-Market — revendeurs &amp; collectionneurs</li>
+          <li>Passeport Horloger — accès boutique</li>
+          <li>Process Anti-Blacklist</li>
+        </ul>
+        <div class="of-col-label" style="margin-top:24px">Accès &amp; Privilèges</div>
+        <ul class="of-list">
+          <li>Lives Q&amp;A hebdomadaires</li>
           <li>Lives thématiques avec Amine ou expert — 1/semaine</li>
-          <li>Fonds de financement jusqu'à 1M€</li>
+          <li>Suivi Stratégique WhatsApp — coach dédié 3 mois</li>
         </ul>
       </div>
       <div class="of-col">
         <div class="of-col-label">Pour qui ?</div>
-        <p class="of-forwho">L'offre centrale. Idéale pour le <strong>Débutant motivé</strong> et le <strong>Passionné</strong> qui veulent un résultat rapide avec un filet de sécurité. Un coach les accompagne pas à pas jusqu'au premier deal — mais <strong>pas de conciergerie 24/7</strong> (réservée Platinum) et pas d'accès au Cercle privé / événement Genève.</p>
+        <p class="of-forwho">L'offre centrale. Idéale pour le <strong>Débutant motivé</strong> et le <strong>Passionné</strong> qui veulent un résultat rapide avec un filet de sécurité. Coach WhatsApp dédié pendant 3 mois — mais <strong>pas de conciergerie 24/7</strong> et pas d'accès au Cercle privé / événement Genève (réservés Platinum).</p>
         <div class="of-col-label" style="margin-top:28px">Garantie</div>
         <div class="of-garantie gd">
-          <strong>Garantie Succès ou Extension</strong>
+          <strong>Succès ou Extension</strong>
           Première montre non sortie en 30 jours → accompagnement prolongé gratuitement jusqu'au résultat.
         </div>
         <div class="of-col-label" style="margin-top:28px">Argument closing</div>
@@ -1030,21 +1079,39 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
       <div class="of-header-left">
         <div class="of-eyebrow pl">Platinum™ — Business Owner</div>
         <h3 class="of-title pl">6 000 €</h3>
-        <div class="of-duration">6 mois mentorat + accès Cercle privé</div>
+        <div class="of-duration">180 jours (6 mois) — Mentorat + Cercle</div>
       </div>
-      <div class="of-promise">"Premier deal rapide + devenir Business Owner dans l'horlogerie."</div>
+      <div class="of-promise">"Premier deal rapide + devenir Business Owner."</div>
     </div>
     <div class="of-body">
       <div class="of-col">
-        <div class="of-col-label">Ce qui est inclus</div>
+        <div class="of-col-label">Pilier 1 — Méthode &amp; Expertise</div>
         <ul class="of-list">
-          <li>Tout Gold™ inclus</li>
-          <li>Suivi WhatsApp coach dédié — <strong>6 mois</strong> (vs 3 mois Gold)</li>
-          <li>Conciergerie 24/7 — vols, hôtels, logistique premium</li>
-          <li>Accès au Cercle privé — réseau membres élite</li>
-          <li>Événement physique à Genève — tous les 3-4 mois</li>
-          <li>Accompagnement Business Owner structuré</li>
-          <li>Skin in the Game d'Amine — il s'associe sur tes deals</li>
+          <li>Protocole +10M€ (10 piliers)</li>
+          <li>Scripts de négociation &amp; revente</li>
+          <li>Plan d'action 180 jours — 3 phases</li>
+          <li>Stratégie d'accumulation patrimoniale</li>
+        </ul>
+        <div class="of-col-label" style="margin-top:24px">Pilier 2 — Outils &amp; Data</div>
+        <ul class="of-list">
+          <li>Dashboard Horloger™ — cotations en direct</li>
+          <li>Dossier Profil Acheteur VIP</li>
+        </ul>
+        <div class="of-col-label" style="margin-top:24px">Pilier 3 — Réseau &amp; Levier</div>
+        <ul class="of-list">
+          <li>Fonds de financement — ligne de crédit 1M€</li>
+          <li>Accès Off-Market — réseau privé</li>
+          <li>Passeport Horloger — accès boutique</li>
+          <li>Process Anti-Blacklist</li>
+        </ul>
+        <div class="of-col-label" style="margin-top:24px">Accès &amp; Privilèges Élite</div>
+        <ul class="of-list">
+          <li><strong>Conciergerie 24/7</strong> — validation immédiate par experts</li>
+          <li>Lives Q&amp;A hebdomadaires</li>
+          <li>Lives thématiques avec Amine ou expert</li>
+          <li>Suivi Stratégique WhatsApp — coach dédié <strong>6 mois</strong></li>
+          <li>Événement physique à Genève — locaux du Cercle</li>
+          <li>Garantie Skin in the Game — Amine s'associe sur tes deals</li>
         </ul>
       </div>
       <div class="of-col">
@@ -1052,8 +1119,8 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
         <p class="of-forwho">L'offre premium. Pour le <strong>Passionné ambitieux</strong> et le <strong>Collectionneur</strong> qui pensent ROI, long terme et Business Owner. Amine s'engage personnellement sur leur résultat — sur le papier <em>et</em> dans les faits.</p>
         <div class="of-col-label" style="margin-top:28px">Garantie</div>
         <div class="of-garantie pl">
-          <strong>Garantie 6 000 € nets — sous 1 an</strong>
-          Objectif non atteint → Amine s'associe sur un deal pour générer le profit. Tu récupères l'équivalent de ton investissement.
+          <strong>6 000 € nets garantis — sous 1 an</strong>
+          Profit de 6 000 € garanti, sinon Amine s'associe avec toi sur un deal. Si la montre n'est pas sortie en 6 mois, il reste 6 mois de plus à Amine pour la sortir et faire la plus-value — tu récupères le prix de ta formation dans l'année.
         </div>
         <div class="of-col-label" style="margin-top:28px">Argument closing</div>
         <p class="of-closing-arg">"Si c'est pas atteint en 1 an, Amine s'associe sur un deal pour le réaliser lui-même. Il met sa réputation et son temps. C'est pas une promesse marketing — c'est contractuel."</p>
@@ -1080,36 +1147,61 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
   </div>
 
   <div class="ctw rv">
-    <table class="ct">
+    <!-- BLOC 1 — INFORMATIONS CLÉS -->
+    <div class="ct-block-label">Informations clés</div>
+    <table class="ct ct-info">
       <thead>
         <tr>
-          <th style="color:var(--text-muted)">Ce qui est inclus</th>
-          <th>Silver™ — 1 497 €</th>
-          <th>Gold™ — 3 000 €</th>
-          <th>Platinum™ — 6 000 €</th>
+          <th style="color:var(--text-muted)"></th>
+          <th class="cth-sv">Silver™</th>
+          <th class="cth-gd">Gold™</th>
+          <th class="cth-pl">Platinum™</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>Formation complète + mises à jour vie</td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Dashboard cotations temps réel</td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Lives Q&amp;A hebdomadaires</td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Stratégie d'accumulation patrimoniale</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Dossier Profil Acheteur VIP</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Passeport Horloger + Process Anti-Blacklist</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Accès Off-Market (revendeurs / collectionneurs)</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Ligne de financement jusqu'à 1M€</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Lives thématiques avec Amine ou expert</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Suivi WhatsApp coach dédié</td><td><span class="cn">—</span></td><td><strong style="color:var(--gold)">3 mois</strong></td><td><strong style="color:var(--gold)">6 mois</strong></td></tr>
-        <tr><td>Conciergerie 24/7 (vols, hôtels, logistique)</td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Accès Cercle privé (réseau membres élite)</td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Événement physique Genève (tous les 3-4 mois)</td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Skin in the Game Amine (deal garanti)</td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Prix</td><td><strong style="color:var(--gold)">1 497 €</strong></td><td><strong style="color:var(--gold)">3 000 €</strong></td><td><strong style="color:var(--gold)">6 000 €</strong></td></tr>
+        <tr><td>Durée d'accompagnement</td><td><span class="cn">—</span></td><td>90 jours (3 mois)</td><td>180 jours (6 mois)</td></tr>
+        <tr><td>Format</td><td>Accès formation à vie</td><td>Mentorat personnalisé</td><td>Mentorat personnalisé + Cercle</td></tr>
+        <tr><td>Promesse</td><td>Maîtrise technique</td><td>Premier deal rapide (30 j)</td><td>Premier deal rapide + Business Owner</td></tr>
+        <tr><td style="color:var(--text);font-weight:600">Garantie</td><td>Accès à vie aux mises à jour</td><td>Succès ou Extension</td><td>6 000 € nets garantis (1 an)</td></tr>
+      </tbody>
+    </table>
+
+    <!-- BLOC 2 — DÉTAIL DES LIVRABLES PAR PILIER -->
+    <div class="ct-block-label" style="margin-top:48px">Détail des livrables par pilier</div>
+    <table class="ct">
+      <thead>
         <tr>
-          <td style="color:var(--text);font-weight:600">Garantie</td>
-          <td>Mises à jour à vie</td>
-          <td>1ère montre en 30j ou extension gratuite</td>
-          <td>6 000 € nets garantis sous 1 an</td>
+          <th style="color:var(--text-muted)">Livrable</th>
+          <th class="cth-sv">Silver™</th>
+          <th class="cth-gd">Gold™</th>
+          <th class="cth-pl">Platinum™</th>
         </tr>
+      </thead>
+      <tbody>
+        <tr class="ct-pilier-row"><td colspan="4">Pilier 1 — Méthode &amp; Expertise</td></tr>
+        <tr><td><strong>Protocole +10M€</strong> (10 piliers) <span class="ct-desc">Méthodologie validée sur des centaines de transactions.</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td><strong>Scripts de négociation &amp; revente</strong> <span class="ct-desc">Frameworks pour acheter et revendre avec confiance.</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td><strong>Plan d'action 180 jours — 3 phases</strong> <span class="ct-desc">Fondations / Exécution / Accumulation.</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td><strong>Stratégie d'accumulation</strong> <span class="ct-desc">Réinvestir ses marges pour bâtir un patrimoine durable.</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+
+        <tr class="ct-pilier-row"><td colspan="4">Pilier 2 — Outils &amp; Data</td></tr>
+        <tr><td><strong>Dashboard Horloger™</strong> (cotations en direct) <span class="ct-desc">Lecture des cotations et analyse des marges en temps réel.</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td><strong>Dossier Profil Acheteur VIP</strong> <span class="ct-desc">Création d'une identité « Investisseur VIP » pour être crédible.</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+
+        <tr class="ct-pilier-row"><td colspan="4">Pilier 3 — Réseau &amp; Levier</td></tr>
+        <tr><td><strong>Fonds de financement 1M€</strong> <span class="ct-desc">Ligne de crédit pour financer vos deals validés.</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td><strong>Accès Off-Market</strong> <span class="ct-desc">Réseau privé de revendeurs, collectionneurs et horlogers certifiés.</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td><strong>Passeport Horloger</strong> <span class="ct-desc">Le sésame pour les pièces exclusives en boutique.</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td><strong>Process Anti-Blacklist</strong> <span class="ct-desc">Éviter les erreurs fatales chez Rolex, AP, Patek et Richard Mille.</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+
+        <tr class="ct-pilier-row"><td colspan="4">Accès Privilèges — Accompagnement &amp; Garantie</td></tr>
+        <tr><td><strong>Conciergerie 24/7</strong> <span class="ct-desc">Validation immédiate de vos opportunités par nos experts.</span></td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td><strong>Lives Q&amp;A</strong> <span class="ct-desc">1 live par semaine, Q&amp;A en groupe.</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td><strong>Lives thématiques avec Amine ou expert</strong> <span class="ct-desc">1 live par semaine par Amine ou un expert.</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td><strong>Suivi Stratégique WhatsApp</strong> <span class="ct-desc">Accompagnement par un coach dédié.</span></td><td><span class="cn">—</span></td><td><strong style="color:var(--gold)">3 mois</strong></td><td><strong style="color:var(--gold)">6 mois</strong></td></tr>
+        <tr><td><strong>Garantie Skin in the Game</strong> <span class="ct-desc">Profit de 6 000 € garanti ou Amine s'associe avec vous sur un deal.</span></td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td><strong>Événement physique à Genève</strong> <span class="ct-desc">Un événement à Genève dans nos locaux.</span></td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -2201,6 +2293,81 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
   <div class="page-footer">
     <div class="pf-logo">Cercle Horloger™</div>
     <div class="pf-text">FAQ Closers V1 — Document interne</div>
+    <div class="pf-text">Onboarding v3 · Mai 2026</div>
+  </div>
+</div>
+
+
+
+<!-- ============================================================
+     PAGE REPLAYS — Préparation à la vente
+     ============================================================ -->
+<div id="page-replays" class="page" role="main">
+<section id="replays" class="ps">
+  <div class="ph rv">
+    <div class="pn">08 — Replays Préparation</div>
+    <h2 class="pt">Replays<br><em>de préparation.</em></h2>
+    <p class="pd">Les sessions internes à écouter avant ton premier appel. Chaque replay couvre un angle précis : l'onboarding global, le pitch des offres et de l'avatar, le PITCH structuré, et l'échange direct avec Amine. À écouter dans l'ordre — ou à la demande selon le sujet sur lequel tu veux revenir.</p>
+  </div>
+
+  <div class="rp-grid rv">
+    <div class="rp-card">
+      <div class="rp-num">01</div>
+      <div class="rp-cat">Onboarding</div>
+      <h3 class="rp-title">Onboarding <em>closers</em></h3>
+      <p class="rp-desc">La session d'onboarding complète. À écouter en priorité — elle pose le cadre du Cercle, la philosophie de vente, et les attendus côté closer.</p>
+      <a href="https://app.fireflies.ai/view/Meet-Onboarding-Closers-Cercle-Horloger::01KPNPC3CQEB6YBX37R49TAVTR" target="_blank" class="rp-cta">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3l14 9-14 9V3z"/></svg>
+        Écouter sur Fireflies
+      </a>
+    </div>
+
+    <div class="rp-card">
+      <div class="rp-num">02</div>
+      <div class="rp-cat">Offres &amp; Avatar</div>
+      <h3 class="rp-title">Offres et <em>avatar client</em></h3>
+      <p class="rp-desc">Le détail des 3 offres (Silver / Gold / Platinum) et le profil des avatars clients à cibler. Indispensable pour orienter chaque prospect vers la bonne offre.</p>
+      <a href="https://app.fireflies.ai/view/Cercle-Horloger-RP-PITCH::01KQ7GGMN5B4BD57KAQ2J6MGBC" target="_blank" class="rp-cta">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3l14 9-14 9V3z"/></svg>
+        Écouter sur Fireflies
+      </a>
+    </div>
+
+    <div class="rp-card">
+      <div class="rp-num">03</div>
+      <div class="rp-cat">Pitch</div>
+      <h3 class="rp-title">PITCH <em>Cercle Horloger</em></h3>
+      <p class="rp-desc">La structure du pitch de vente, étape par étape. Comment ouvrir, qualifier, présenter la valeur, traiter les objections et closer. À revoir avant chaque session de calls.</p>
+      <a href="https://app.fireflies.ai/view/PITCH-cercle-horloger::01KQF533YA98NYXQ9GDCB83N37" target="_blank" class="rp-cta">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3l14 9-14 9V3z"/></svg>
+        Écouter sur Fireflies
+      </a>
+    </div>
+
+    <div class="rp-card">
+      <div class="rp-num">04</div>
+      <div class="rp-cat">Avec Amine</div>
+      <h3 class="rp-title">Call avec <em>Amine</em></h3>
+      <p class="rp-desc">L'échange direct avec le fondateur. À écouter pour capter sa vision, son ton, les phrases qu'il utilise lui-même — et reproduire son énergie en appel.</p>
+      <a href="https://app.fireflies.ai/view/Meet-bet-pjwi-bkz::01KRG90TZMRDZR3PB9XT9NC8CX" target="_blank" class="rp-cta">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3l14 9-14 9V3z"/></svg>
+        Écouter sur Fireflies
+      </a>
+    </div>
+  </div>
+
+  <div class="cnote rv" style="margin-top:48px">
+    <div class="cni">◈</div>
+    <div>
+      <div class="cnt">Comment écouter ces replays</div>
+      <p class="cntxt">Les replays Fireflies te permettent de naviguer par chapitres, de chercher par mot-clé dans la transcription, et de récupérer les passages clés. Note les phrases exactes utilisées par Amine et l'équipe — ce sont ces formulations précises que tu vas reproduire en appel, pas des paraphrases. Objectif : avoir 3 réponses prêtes pour chaque objection avant ton premier call.</p>
+    </div>
+  </div>
+
+</section>
+  <div class="page-footer">
+    <div class="pf-logo">Cercle Horloger™</div>
+    <div class="pf-text">Document confidentiel — Réservé aux Closers</div>
     <div class="pf-text">Onboarding v3 · Mai 2026</div>
   </div>
 </div>
