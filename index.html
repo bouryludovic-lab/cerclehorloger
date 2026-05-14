@@ -369,6 +369,128 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
 
 @media(max-width:900px) { .tl-blocks { grid-template-columns: 1fr; } }
 
+/* ============================================================
+   NEW SECTIONS — Challenge, Préqualif, FAQ
+   ============================================================ */
+
+/* EOD card (Airtable form) */
+.eod-card{display:grid;grid-template-columns:1.4fr 1fr;gap:1px;background:var(--gold-dark);border:1px solid var(--gold-dark);margin:36px 0 48px}
+.eod-left{background:var(--surface-2);padding:40px 36px}
+.eod-right{background:var(--surface);padding:40px 36px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+.eod-label{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.eod-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;line-height:1.15;margin-bottom:14px}
+.eod-title em{font-style:italic;color:var(--gold)}
+.eod-desc{font-size:12px;color:var(--text-muted);line-height:1.85;margin-bottom:26px;max-width:480px}
+.eod-cta{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--black);background:var(--gold);text-decoration:none;padding:14px 22px;transition:all .25s;border:1px solid var(--gold)}
+.eod-cta:hover{background:var(--gold-light);border-color:var(--gold-light)}
+.eod-detail{border-bottom:1px solid var(--border);padding-bottom:14px}
+.eod-detail:last-child{border-bottom:none;padding-bottom:0}
+.eod-detail-l{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.eod-detail-v{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--text);font-weight:400}
+
+/* Rule critique (red accent) */
+.rule-critic{background:var(--surface-2);border-left:3px solid var(--gold);padding:36px 40px;margin:48px 0}
+.rule-eyebrow{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.rule-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;line-height:1.2;margin-bottom:14px}
+.rule-title em{font-style:italic;color:var(--gold)}
+.rule-text{font-size:13px;color:var(--text-muted);line-height:1.85;max-width:660px;margin-bottom:24px}
+.rule-mindset{border-top:1px solid var(--border);padding-top:20px;margin-top:8px}
+.rule-mindset-label{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.rule-list{list-style:none;padding:0}
+.rule-list li{font-size:12px;color:var(--text);line-height:1.9;padding-left:18px;position:relative}
+.rule-list li::before{content:'◈';color:var(--gold);position:absolute;left:0;font-size:9px;top:6px}
+
+/* Rule d'or (gold accent block) */
+.rule-or{background:linear-gradient(135deg,rgba(201,168,76,.08) 0%,rgba(201,168,76,.02) 100%);border:1px solid var(--gold-dark);padding:40px 44px;margin-bottom:48px}
+.rule-or-label{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.rule-or-title{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;line-height:1.2;margin-bottom:16px}
+.rule-or-title em{font-style:italic;color:var(--gold)}
+.rule-or-text{font-size:13px;color:var(--text);line-height:1.9;max-width:760px;margin-bottom:32px}
+.rule-or-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;border-top:1px solid var(--border);padding-top:24px}
+.rule-or-cell-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+
+/* Timeline préqualif */
+.tl-grid{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);margin:36px 0 60px}
+.tl-row{display:grid;grid-template-columns:130px 30px 1fr 220px;gap:24px;align-items:center;background:var(--black);padding:22px 28px;transition:background .25s}
+.tl-row:hover{background:var(--surface-2)}
+.tl-when{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);font-weight:400}
+.tl-arrow{color:var(--gold);font-size:14px;text-align:center}
+.tl-what{font-size:13px;color:var(--text);line-height:1.7}
+.tl-what strong{color:var(--gold);font-weight:500}
+.tl-canal{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);text-align:right}
+.tl-canal small{display:block;margin-top:3px;font-size:9px;letter-spacing:.1em;opacity:.7}
+
+/* Message blocks */
+.msg-block{background:var(--surface);border:1px solid var(--border);margin-bottom:36px;overflow:hidden}
+.msg-head{display:grid;grid-template-columns:80px 1fr;gap:24px;padding:32px 36px;border-bottom:1px solid var(--border)}
+.msg-num{font-family:'Cormorant Garamond',serif;font-size:60px;color:rgba(201,168,76,.18);line-height:1;font-weight:300}
+.msg-when{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.msg-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;line-height:1.2;margin-bottom:10px}
+.msg-title em{font-style:italic;color:var(--gold)}
+.msg-context{font-size:12px;color:var(--text-muted);line-height:1.85;max-width:680px}
+
+.msg-tabs{display:flex;border-bottom:1px solid var(--border);background:var(--surface-2)}
+.msg-tab{flex:1;padding:14px 18px;background:none;border:none;color:var(--text-muted);font-size:10px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;font-family:inherit;border-bottom:2px solid transparent;border-right:1px solid var(--border);transition:all .25s}
+.msg-tab:last-child{border-right:none}
+.msg-tab:hover{color:var(--text);background:rgba(201,168,76,.04)}
+.msg-tab.on{color:var(--gold);border-bottom-color:var(--gold);background:rgba(201,168,76,.06)}
+
+.msg-tab-content{display:none;padding:32px 36px}
+.msg-tab-content.on{display:block}
+.msg-meta{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.msg-meta-item{font-size:11px;color:var(--text-muted);letter-spacing:.05em}
+.msg-meta-item strong{color:var(--gold);font-weight:500}
+
+.msg-script{background:var(--black);border-left:2px solid var(--gold);padding:24px 28px;margin-bottom:24px}
+.msg-script p{font-size:13px;color:var(--text);line-height:1.8;margin-bottom:12px}
+.msg-script p:last-child{margin-bottom:0}
+.msg-script p strong{color:var(--gold);font-weight:500}
+
+.msg-tips{background:var(--surface-2);padding:22px 26px;border:1px solid var(--border)}
+.msg-tips-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+
+/* FAQ list */
+.faq-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);margin:24px 0 60px}
+.faq-q{background:var(--black);transition:background .25s}
+.faq-q[open]{background:var(--surface)}
+.faq-q.faq-priority{border-left:3px solid var(--gold)}
+.faq-summary{padding:22px 28px;cursor:pointer;display:grid;grid-template-columns:60px 140px 1fr 30px;gap:18px;align-items:center;list-style:none;font-family:inherit}
+.faq-summary::-webkit-details-marker{display:none}
+.faq-summary:hover{background:var(--surface-2)}
+.faq-num{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);font-weight:400}
+.faq-cat{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted)}
+.faq-text{font-size:13px;color:var(--text);line-height:1.6}
+.faq-chev{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold-dark);text-align:right;transition:transform .25s}
+.faq-q[open] .faq-chev{transform:rotate(45deg);color:var(--gold)}
+
+.faq-body{padding:8px 28px 32px;border-top:1px solid var(--border)}
+.faq-section{padding:24px 0}
+.faq-section-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.faq-section p{font-size:13px;color:var(--text);line-height:1.85;margin-bottom:12px;max-width:880px}
+.faq-section p strong{color:var(--text);font-weight:500}
+.faq-section ul{margin:12px 0 16px 4px;max-width:880px}
+.faq-section li{font-size:13px;color:var(--text-muted);line-height:1.85}
+.faq-section li strong{color:var(--text);font-weight:500}
+
+.faq-pitch{background:linear-gradient(135deg,rgba(201,168,76,.08) 0%,rgba(201,168,76,.02) 100%);border-left:2px solid var(--gold);padding:22px 26px;margin-top:8px}
+.faq-pitch-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.faq-pitch p{font-size:13px;color:var(--text);line-height:1.8;font-style:italic;max-width:840px;margin:0}
+
+/* Responsive */
+@media (max-width:900px){
+  .eod-card{grid-template-columns:1fr}
+  .tl-row{grid-template-columns:1fr;gap:8px;text-align:left}
+  .tl-arrow{display:none}
+  .tl-canal{text-align:left}
+  .rule-or-grid{grid-template-columns:1fr;gap:24px}
+  .faq-summary{grid-template-columns:50px 1fr 20px;gap:12px}
+  .faq-cat{display:none}
+  .msg-head{grid-template-columns:1fr;gap:8px}
+  .msg-num{font-size:42px}
+  .msg-tabs{flex-wrap:wrap}
+  .msg-tab{flex:1 1 100%;border-right:none;border-bottom:1px solid var(--border)}
+}
+
 </style>
 </head>
 <body>
@@ -398,8 +520,13 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
     <a href="#" class="sb-a" data-page="offres" onclick="navigate('offres');return false;"><span class="n">05</span>Les 3 Offres</a>
     <a href="#" class="sb-a" data-page="comparatif" onclick="navigate('comparatif');return false;"><span class="n">05.1</span>Comparatif</a>
 
+    <span class="sb-cat">Process Challenge</span>
+    <a href="#" class="sb-a" data-page="challenge" onclick="navigate('challenge');return false;"><span class="n">06</span>Organisation Challenge</a>
+    <a href="#" class="sb-a" data-page="prequalif" onclick="navigate('prequalif');return false;"><span class="n">06.1</span>Préqualif &amp; Vocaux</a>
+
     <span class="sb-cat">Référence</span>
-    <a href="#" class="sb-a" data-page="calls" onclick="navigate('calls');return false;"><span class="n">06</span>Banque de Calls</a>
+    <a href="#" class="sb-a" data-page="faq" onclick="navigate('faq');return false;"><span class="n">07</span>FAQ Closers</a>
+    <a href="#" class="sb-a" data-page="calls" onclick="navigate('calls');return false;"><span class="n">08</span>Banque de Calls</a>
 
   </nav>
   <div class="sb-bot">Accès Closer — Privé</div>
@@ -421,7 +548,10 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
     <div class="w-chip" onclick="navigate('avatar')">03 — Avatar</div>
     <div class="w-chip" onclick="navigate('offres')">04 — Les Offres</div>
     <div class="w-chip" onclick="navigate('comparatif')">04.1 — Comparatif</div>
-    <div class="w-chip" onclick="navigate('calls')">05 — Calls</div>
+    <div class="w-chip" onclick="navigate('challenge')">05 — Challenge</div>
+    <div class="w-chip" onclick="navigate('prequalif')">05.1 — Préqualif</div>
+    <div class="w-chip" onclick="navigate('faq')">06 — FAQ Closers</div>
+    <div class="w-chip" onclick="navigate('calls')">07 — Calls</div>
   </div>
 </div>
 
@@ -825,10 +955,10 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
     <div class="of-header sv">
       <div class="of-header-left">
         <div class="of-eyebrow sv">Silver™ — Formation</div>
-        <h3 class="of-title sv">1 497 €</h3>
+        <h3 class="of-title sv">1 497 €</h3>
         <div class="of-duration">Accès à vie — Autonomie totale</div>
       </div>
-      <div class="of-promise">“Maîtrise la méthode. Accède aux outils. Avance à ton rythme.”</div>
+      <div class="of-promise">"Maîtrise technique. Avance à ton rythme. À vie."</div>
     </div>
     <div class="of-body">
       <div class="of-col">
@@ -836,23 +966,22 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
         <ul class="of-list">
           <li>Protocole +10M€ complet (10 piliers)</li>
           <li>Scripts de négociation &amp; revente</li>
-          <li>Plan d’action 180 jours — 3 phases (Fondations / Exécution / Accumulation)</li>
+          <li>Plan d'action 180 jours — 3 phases (Fondations / Exécution / Accumulation)</li>
           <li>Dashboard Horloger™ — cotations temps réel</li>
-          <li>Dossier Profil Acheteur “Investisseur VIP”</li>
-          <li>Lives Q&amp;A hebdomadaires</li>
-          <li>Mises à jour garanties à vie</li>
+          <li>Lives Q&amp;A hebdomadaires — à vie</li>
+          <li>Mises à jour formation garanties à vie</li>
         </ul>
       </div>
       <div class="of-col">
         <div class="of-col-label">Pour qui ?</div>
-        <p class="of-forwho">Idéal pour le <strong>Débutant</strong> qui veut tester la méthode avant de s’engager davantage. Accès à vie, risque zéro, avance à son rythme. Pas d’accompagnement humain — il travaille seul avec les outils.</p>
+        <p class="of-forwho">Idéal pour le <strong>Débutant</strong> qui veut tester la méthode avant de s'engager davantage. Accès à vie, risque zéro, avance à son rythme. <strong>Pas d'accompagnement humain</strong> — il travaille seul avec les outils. Pas de coach WhatsApp, pas d'accès off-market, pas de financement, pas de conciergerie.</p>
         <div class="of-col-label" style="margin-top:28px">Garantie</div>
         <div class="of-garantie sv">
           <strong>Accès à vie aux mises à jour</strong>
           Le programme évolue avec le marché. Tu ne paies jamais deux fois.
         </div>
         <div class="of-col-label" style="margin-top:28px">Argument closing</div>
-        <p class="of-closing-arg">“C’est la porte d’entrée. Tu accèdes à toute la méthode à vie, pour le prix d’un week-end. Si tu fais un seul deal, c’est remboursé au centuple.”</p>
+        <p class="of-closing-arg">"C'est la porte d'entrée. Tu accèdes à toute la méthode à vie, pour le prix d'un week-end. Si tu fais un seul deal, c'est remboursé au centuple."</p>
       </div>
     </div>
   </div>
@@ -862,35 +991,35 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
     <div class="of-header gd">
       <div class="of-header-left">
         <div class="of-eyebrow gd">Gold™ — Mentorat</div>
-        <h3 class="of-title gd">3 000 €</h3>
-        <div class="of-duration">3 mois d’accompagnement personnalisé</div>
+        <h3 class="of-title gd">3 000 €</h3>
+        <div class="of-duration">3 mois d'accompagnement personnalisé</div>
       </div>
-      <div class="of-promise">“Sortir ta première montre en 30 jours. Garanti.”</div>
+      <div class="of-promise">"Sortir ta première montre en 30 jours. Garanti."</div>
     </div>
     <div class="of-body">
       <div class="of-col">
         <div class="of-col-label">Ce qui est inclus</div>
         <ul class="of-list">
           <li>Tout Silver™ inclus</li>
-          <li>Mentorat personnalisé 3 mois</li>
-          <li>Suivi WhatsApp coach dédié</li>
-          <li>Accès off-market — revendeurs &amp; collectionneurs vérifiés</li>
-          <li>Passeport Horloger — boutiques exclusives</li>
-          <li>Process Anti-Blacklist (Rolex, AP, Patek, RM)</li>
-          <li>Conciergerie 24/7 — validation de chaque deal</li>
-          <li>Fonds de financement jusqu’à 1M€</li>
+          <li>Stratégie d'accumulation patrimoniale</li>
+          <li>Dossier Profil Acheteur VIP — identité « Investisseur VIP »</li>
+          <li>Passeport Horloger + Process Anti-Blacklist (Rolex, AP, Patek, RM)</li>
+          <li>Accès Off-Market — revendeurs &amp; collectionneurs vérifiés</li>
+          <li>Suivi WhatsApp coach dédié — 3 mois</li>
+          <li>Lives thématiques avec Amine ou expert — 1/semaine</li>
+          <li>Fonds de financement jusqu'à 1M€</li>
         </ul>
       </div>
       <div class="of-col">
         <div class="of-col-label">Pour qui ?</div>
-        <p class="of-forwho">L’offre centrale. Idéale pour le <strong>Débutant motivé</strong> et le <strong>Passionné</strong> qui veulent un résultat rapide avec un filet de sécurité. Un coach les accompagne pas à pas jusqu’au premier deal.</p>
+        <p class="of-forwho">L'offre centrale. Idéale pour le <strong>Débutant motivé</strong> et le <strong>Passionné</strong> qui veulent un résultat rapide avec un filet de sécurité. Un coach les accompagne pas à pas jusqu'au premier deal — mais <strong>pas de conciergerie 24/7</strong> (réservée Platinum) et pas d'accès au Cercle privé / événement Genève.</p>
         <div class="of-col-label" style="margin-top:28px">Garantie</div>
         <div class="of-garantie gd">
           <strong>Garantie Succès ou Extension</strong>
-          Première montre non sortie en 30 jours → accompagnement prolongé gratuitement jusqu’au résultat.
+          Première montre non sortie en 30 jours → accompagnement prolongé gratuitement jusqu'au résultat.
         </div>
         <div class="of-col-label" style="margin-top:28px">Argument closing</div>
-        <p class="of-closing-arg">“La garantie inverse le risque : si t’as pas ta première montre en 30 jours, t’es accompagné gratuitement jusqu’à ce que ça arrive. Tu peux pas perdre.”</p>
+        <p class="of-closing-arg">"La garantie inverse le risque : si t'as pas ta première montre en 30 jours, t'es accompagné gratuitement jusqu'à ce que ça arrive. Tu peux pas perdre."</p>
       </div>
     </div>
   </div>
@@ -900,34 +1029,34 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
     <div class="of-header pl">
       <div class="of-header-left">
         <div class="of-eyebrow pl">Platinum™ — Business Owner</div>
-        <h3 class="of-title pl">6 000 €</h3>
+        <h3 class="of-title pl">6 000 €</h3>
         <div class="of-duration">6 mois mentorat + accès Cercle privé</div>
       </div>
-      <div class="of-promise">“Premier deal rapide + devenir Business Owner dans l’horlogerie.”</div>
+      <div class="of-promise">"Premier deal rapide + devenir Business Owner dans l'horlogerie."</div>
     </div>
     <div class="of-body">
       <div class="of-col">
         <div class="of-col-label">Ce qui est inclus</div>
         <ul class="of-list">
           <li>Tout Gold™ inclus</li>
+          <li>Suivi WhatsApp coach dédié — <strong>6 mois</strong> (vs 3 mois Gold)</li>
+          <li>Conciergerie 24/7 — vols, hôtels, logistique premium</li>
           <li>Accès au Cercle privé — réseau membres élite</li>
-          <li>Stratégie d’accumulation patrimoniale</li>
-          <li>Accès pièces off-market exclusives</li>
-          <li>Événement physique à Genève</li>
+          <li>Événement physique à Genève — tous les 3-4 mois</li>
           <li>Accompagnement Business Owner structuré</li>
-          <li>Skin in the Game d’Amine sur tes deals</li>
+          <li>Skin in the Game d'Amine — il s'associe sur tes deals</li>
         </ul>
       </div>
       <div class="of-col">
         <div class="of-col-label">Pour qui ?</div>
-        <p class="of-forwho">L’offre premium. Pour le <strong>Passionné ambitieux</strong> et le <strong>Collectionneur</strong> qui pensent ROI, long terme et Business Owner. Amine s’engage personnellement sur leur résultat.</p>
+        <p class="of-forwho">L'offre premium. Pour le <strong>Passionné ambitieux</strong> et le <strong>Collectionneur</strong> qui pensent ROI, long terme et Business Owner. Amine s'engage personnellement sur leur résultat — sur le papier <em>et</em> dans les faits.</p>
         <div class="of-col-label" style="margin-top:28px">Garantie</div>
         <div class="of-garantie pl">
-          <strong>Garantie 6 000 € nets — sous 1 an</strong>
-          Objectif non atteint → Amine s’associe sur un deal pour générer le profit. Tu récupères l’équivalent de ton investissement.
+          <strong>Garantie 6 000 € nets — sous 1 an</strong>
+          Objectif non atteint → Amine s'associe sur un deal pour générer le profit. Tu récupères l'équivalent de ton investissement.
         </div>
         <div class="of-col-label" style="margin-top:28px">Argument closing</div>
-        <p class="of-closing-arg">“Si c’est pas atteint en 1 an, Amine s’associe sur un deal pour le réaliser lui-même. Il met sa réputation et son temps. C’est pas une promesse marketing — c’est contractuel.”</p>
+        <p class="of-closing-arg">"Si c'est pas atteint en 1 an, Amine s'associe sur un deal pour le réaliser lui-même. Il met sa réputation et son temps. C'est pas une promesse marketing — c'est contractuel."</p>
       </div>
     </div>
   </div>
@@ -963,20 +1092,21 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
       <tbody>
         <tr><td>Formation complète + mises à jour vie</td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
         <tr><td>Dashboard cotations temps réel</td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Lives Q&A hebdomadaires</td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Mentorat personnalisé 3 mois</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Suivi WhatsApp coach dédié</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Accès off-market (revendeurs / collectionneurs)</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Lives Q&amp;A hebdomadaires</td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Stratégie d'accumulation patrimoniale</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Dossier Profil Acheteur VIP</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
         <tr><td>Passeport Horloger + Process Anti-Blacklist</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Conciergerie 24/7</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Accès Off-Market (revendeurs / collectionneurs)</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
         <tr><td>Ligne de financement jusqu'à 1M€</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Accès Cercle privé (réseau élite)</td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Stratégie accumulation patrimoniale</td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
-        <tr><td>Événement physique Genève</td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Lives thématiques avec Amine ou expert</td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Suivi WhatsApp coach dédié</td><td><span class="cn">—</span></td><td><strong style="color:var(--gold)">3 mois</strong></td><td><strong style="color:var(--gold)">6 mois</strong></td></tr>
+        <tr><td>Conciergerie 24/7 (vols, hôtels, logistique)</td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Accès Cercle privé (réseau membres élite)</td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
+        <tr><td>Événement physique Genève (tous les 3-4 mois)</td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
         <tr><td>Skin in the Game Amine (deal garanti)</td><td><span class="cn">—</span></td><td><span class="cn">—</span></td><td><span class="cy">✦</span></td></tr>
         <tr>
           <td style="color:var(--text);font-weight:600">Garantie</td>
-          <td>Mises à jour vie</td>
+          <td>Mises à jour à vie</td>
           <td>1ère montre en 30j ou extension gratuite</td>
           <td>6 000 € nets garantis sous 1 an</td>
         </tr>
@@ -1082,6 +1212,997 @@ footer{border-top:1px solid var(--border);padding:36px 72px;display:flex;justify
     <div class="pf-text">Onboarding v2 · Avril 2025</div>
   </div>
 
+</div>
+
+
+
+<!-- ============================================================
+     PAGE CHALLENGE — Organisation pendant le Challenge + EOD
+     ============================================================ -->
+<div id="page-challenge" class="page" role="main">
+<section id="challenge" class="ps dk">
+  <div class="ph rv">
+    <div class="pn">06 — Process Challenge</div>
+    <h2 class="pt">Organisation<br><em>pendant le Challenge.</em></h2>
+    <p class="pd">Le Challenge ARP (17 → 29 mai 2026) impose un rythme tendu. Rituels fixes, support continu, EOD obligatoire. Ce cadre n'est pas optionnel — il est conçu pour maintenir la cadence collective et débloquer chaque closer rapidement.</p>
+  </div>
+
+  <!-- RITUELS FIXES -->
+  <div class="sh rv">
+    <div class="sl">Bloc 1 — Rituels</div>
+    <h3 class="st">Les 3 rituels <em>fixes</em></h3>
+    <p class="sd">Ces 3 moments structurent la semaine. Présence obligatoire — c'est ce qui maintient l'énergie collective et permet à chacun de rester aligné.</p>
+  </div>
+
+  <div class="mg rv">
+    <div class="mc">
+      <div class="mn">01</div>
+      <div class="ml">Dimanche 17h–18h</div>
+      <div class="mt2">The Last One</div>
+      <p class="md">Call de préparation final avant le démarrage de la semaine. Présence obligatoire pour bien démarrer — c'est là qu'on cale les priorités, qu'on revoit les chiffres et qu'on identifie les blocages potentiels.</p>
+    </div>
+    <div class="mc">
+      <div class="mn">02</div>
+      <div class="ml">Tous les jours 8h30</div>
+      <div class="mt2">Warm-up quotidien</div>
+      <p class="md">Chaque matin à 8h30 pour te mettre dans le bon état d'esprit avant d'attaquer. Court, intense, énergisant — c'est le rituel qui lance la journée et qui synchronise toute l'équipe.</p>
+    </div>
+    <div class="mc">
+      <div class="mn">03</div>
+      <div class="ml">Tous les jours 14h–15h</div>
+      <div class="mt2">Office Hours</div>
+      <p class="md">Le moment clé pour débloquer les situations complexes. Tu poses tes cas, tu écoutes ceux des autres, tu repars avec des solutions concrètes. C'est là que les meilleures sessions de l'après-midi se préparent.</p>
+    </div>
+  </div>
+
+  <!-- SUPPORT & MINDSET -->
+  <div class="cg rv" style="margin-top:48px">
+    <div class="ci">
+      <div class="ci-ic">◈</div>
+      <div class="ci-n">Support Slack</div>
+      <p class="ci-d">Accès direct à ton référent en privé et via le groupe, disponible tout au long de la journée. Aucune question n'est mineure — utilise-le.</p>
+    </div>
+    <div class="ci">
+      <div class="ci-ic">★</div>
+      <div class="ci-n">Règle d'or</div>
+      <p class="ci-d"><strong>Ne jamais rester bloqué seul.</strong> Demander de l'aide rapidement est un signe de professionnalisme, pas de faiblesse.</p>
+    </div>
+  </div>
+
+  <!-- CRM TRACKING -->
+  <div class="sh rv">
+    <div class="sl">Bloc 2 — Process CRM</div>
+    <h3 class="st">CRM &amp; <em>Tracking</em></h3>
+    <p class="sd">Airtable est l'outil officiel de suivi du challenge. Toute la gestion de tes contrats et de ton pipeline passe par là.</p>
+  </div>
+
+  <div class="cg rv">
+    <div class="ci">
+      <div class="ci-ic">▣</div>
+      <div class="ci-n">CRM Principal — Airtable</div>
+      <p class="ci-d">Outil officiel : suivi contrats, pipeline, statuts prospects. Tout passe par Airtable, sans exception.</p>
+    </div>
+    <div class="ci">
+      <div class="ci-ic">⊕</div>
+      <div class="ci-n">Bonus stratégique</div>
+      <p class="ci-d"><strong>Fortement recommandé :</strong> maintiens un CRM backup perso (Google Sheet ou autre). En cas de panne ou d'accès limité, tu gardes la main sur ton activité sans perdre de données.</p>
+    </div>
+    <div class="ci">
+      <div class="ci-ic">⚡</div>
+      <div class="ci-n">Annonce tes Wins</div>
+      <p class="ci-d">Canal <strong>#succespaiements</strong> sur Slack. Cela nous permet d'avoir une vraie data sur où tu en es, et où en est la team.</p>
+    </div>
+  </div>
+
+  <!-- EOD FORM AIRTABLE EMBED -->
+  <div class="sh rv">
+    <div class="sl">Bloc 3 — Suivi quotidien</div>
+    <h3 class="st">EOD — <em>End of Day</em></h3>
+    <p class="sd">Chaque soir, remplis le formulaire EOD : 2 minutes maximum. C'est non négociable. Ce rapport quotidien permet d'avoir une vision claire de ta journée et de te donner un feedback ultra-ciblé.</p>
+  </div>
+
+  <div class="eod-card rv">
+    <div class="eod-left">
+      <div class="eod-label">Formulaire EOD — Airtable</div>
+      <div class="eod-title">Remplir mon <em>EOD du jour</em></div>
+      <p class="eod-desc">À remplir chaque soir avant 22h. 2 minutes max. Permet à ton team lead de te donner un feedback personnalisé dès le lendemain matin.</p>
+      <a href="https://airtable.com/appimR40rKzPT9Arl/pag14lpDqqDmTuyGg/form" target="_blank" class="eod-cta">
+        <span>Ouvrir le formulaire EOD</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="eod-right">
+      <div class="eod-detail">
+        <div class="eod-detail-l">Fréquence</div>
+        <div class="eod-detail-v">Quotidien — chaque soir</div>
+      </div>
+      <div class="eod-detail">
+        <div class="eod-detail-l">Durée</div>
+        <div class="eod-detail-v">2 minutes max</div>
+      </div>
+      <div class="eod-detail">
+        <div class="eod-detail-l">Deadline</div>
+        <div class="eod-detail-v">Avant 22h chaque jour</div>
+      </div>
+      <div class="eod-detail">
+        <div class="eod-detail-l">Statut</div>
+        <div class="eod-detail-v" style="color:var(--gold)">Non négociable</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CALLS ANALYSIS + RULE -->
+  <div class="cg rv" style="margin-top:48px">
+    <div class="ci">
+      <div class="ci-ic">⊙</div>
+      <div class="ci-n">Calls à analyser</div>
+      <p class="ci-d">Envoie tes calls pour un retour personnalisé et rapide. Ne garde pas un call qui a mal tourné pour toi seul — c'est exactement ce qu'on doit analyser ensemble.</p>
+    </div>
+    <div class="ci">
+      <div class="ci-ic">↻</div>
+      <div class="ci-n">Feedback rapide</div>
+      <p class="ci-d">Ajustements en temps réel pour corriger et progresser. Le feedback ne sert que s'il est appliqué dès l'appel suivant.</p>
+    </div>
+  </div>
+
+  <!-- RÈGLE CRITIQUE -->
+  <div class="rule-critic rv">
+    <div class="rule-eyebrow">Règle critique — À partir de mercredi</div>
+    <h3 class="rule-title">Conversion &lt; 20 % → <em>Office Hours obligatoire.</em></h3>
+    <p class="rule-text">Si ton taux de conversion est inférieur à 20 %, ta présence aux Office Hours est <strong>obligatoire</strong>. Ce n'est pas une sanction, c'est une opportunité de débloquer ce qui coince avant qu'il soit trop tard.</p>
+    <div class="rule-mindset">
+      <div class="rule-mindset-label">Mindset attendu</div>
+      <ul class="rule-list">
+        <li>Transparence totale avec ton team lead</li>
+        <li>Feedback constant dans les deux sens</li>
+        <li>Utiliser le support = levier de performance</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+  <div class="page-footer">
+    <div class="pf-logo">Cercle Horloger™</div>
+    <div class="pf-text">Document confidentiel — Réservé aux Closers</div>
+    <div class="pf-text">Onboarding v3 · Mai 2026</div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     PAGE PREQUALIF — Séquence vocaux/textes/SMS
+     ============================================================ -->
+<div id="page-prequalif" class="page" role="main">
+<section id="prequalif" class="ps">
+  <div class="ph rv">
+    <div class="pn">06.1 — Préqualif &amp; Vocaux</div>
+    <h2 class="pt">Séquence<br><em>de préqualification.</em></h2>
+    <p class="pd">Une fois le RDV booké, l'objectif est simple : maximiser le taux de présence en humanisant le contact. WhatsApp / SMS — 3 messages selon une timeline précise. Le vocal est prioritaire à chaque étape : il crée la connexion humaine que le texte ne peut pas remplacer.</p>
+  </div>
+
+  <!-- REGLE D'OR -->
+  <div class="rule-or rv">
+    <div class="rule-or-label">Règle d'or</div>
+    <h3 class="rule-or-title">Le vocal est <em>toujours prioritaire.</em></h3>
+    <p class="rule-or-text">À chaque étape, tu choisis soit le vocal, soit le texte — jamais les deux. Sur WhatsApp, on privilégie le vocal : il humanise immédiatement, montre qu'il y a une vraie personne derrière, et fait monter le taux de réponse.</p>
+    <div class="rule-or-grid">
+      <div class="rule-or-cell">
+        <div class="rule-or-cell-label">Quand envoyer un vocal</div>
+        <ul class="of-list">
+          <li>Par défaut sur WhatsApp — format prioritaire</li>
+          <li>Pour créer une vraie connexion dès le premier contact</li>
+          <li>Quand le prospect a un profil chaud à ne pas perdre</li>
+        </ul>
+      </div>
+      <div class="rule-or-cell">
+        <div class="rule-or-cell-label">Quand envoyer du texte</div>
+        <ul class="of-list">
+          <li>Si le prospect a explicitement demandé du texte</li>
+          <li>Si la situation impose des infos précises à laisser par écrit</li>
+          <li>Si le prospect n'est pas sur WhatsApp — bascule SMS</li>
+          <li>Si tu n'es pas à l'aise avec le vocal — mieux vaut un bon texte qu'un mauvais vocal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="sh rv">
+    <div class="sl">Timeline d'envoi</div>
+    <h3 class="st">3 messages, <em>3 moments précis</em></h3>
+  </div>
+
+  <div class="tl-grid rv">
+    <div class="tl-row">
+      <div class="tl-when">H+15 min</div>
+      <div class="tl-arrow">→</div>
+      <div class="tl-what"><strong>Message 1</strong> — Confirmation &amp; qualification</div>
+      <div class="tl-canal">WhatsApp <small>(SMS si pas de WA)</small></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-when">J+1 ou H-3</div>
+      <div class="tl-arrow">→</div>
+      <div class="tl-what"><strong>Message 2</strong> — Relance ferme</div>
+      <div class="tl-canal">WhatsApp uniquement</div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-when">+4h après M2</div>
+      <div class="tl-arrow">→</div>
+      <div class="tl-what"><strong>Message 3</strong> — Clôture du dossier</div>
+      <div class="tl-canal">WhatsApp <small>(SMS si pas de WA)</small></div>
+    </div>
+  </div>
+
+  <!-- MESSAGE 1 -->
+  <div class="msg-block rv" id="msg1">
+    <div class="msg-head">
+      <div class="msg-num">01</div>
+      <div>
+        <div class="msg-when">H+15 min après prise de RDV</div>
+        <h3 class="msg-title">Message 1 — <em>Confirmation &amp; qualification</em></h3>
+        <p class="msg-context">15 minutes après la prise de RDV. Le temps qu'il termine sa navigation, et qu'il soit encore chaud. Objectif : confirmer + récolter 2 infos pour préparer l'appel.</p>
+      </div>
+    </div>
+
+    <div class="msg-tabs">
+      <button class="msg-tab on" onclick="msgTab('m1','vocal')">🎙 Vocal — Prioritaire</button>
+      <button class="msg-tab" onclick="msgTab('m1','texte')">✍ Texte WhatsApp</button>
+      <button class="msg-tab" onclick="msgTab('m1','sms')">📱 SMS — Fallback</button>
+    </div>
+
+    <div class="msg-tab-content on" id="m1-vocal">
+      <div class="msg-meta">
+        <span class="msg-meta-item"><strong>Durée :</strong> 40–50 sec</span>
+        <span class="msg-meta-item"><strong>Ton :</strong> chaleureux, accueillant, premium</span>
+      </div>
+      <div class="msg-script">
+        <p>"Salut [Prénom], c'est [Prénom] du Cercle Horloger.</p>
+        <p>Je voulais te laisser un petit vocal pour te confirmer ton RDV de [jour] à [heure] de mon côté — j'ai hâte d'échanger avec toi sur ton projet.</p>
+        <p>Juste avant qu'on se retrouve, j'aurais besoin de 3 infos rapides pour préparer un échange qui soit vraiment utile pour toi :</p>
+        <p><strong>Un</strong> — ta situation aujourd'hui, ton activité pro, et si t'as déjà acheté ou suivi le marché des montres de prestige.</p>
+        <p><strong>Deux</strong> — ce que tu cherches concrètement avec le cercle horloger ?</p>
+        <p>Tu peux me répondre en vocal ou en message, comme tu préfères. Et pense à être au calme [jour], le RDV dure 45 minutes.</p>
+        <p>À très vite !"</p>
+      </div>
+      <div class="msg-tips">
+        <div class="msg-tips-label">Tips vocal</div>
+        <ul class="of-list">
+          <li><strong>Tutoyer</strong> — le vocal crée la connexion, le tutoiement la renforce.</li>
+          <li><strong>Sourire en parlant</strong> — ça s'entend, surtout sur le « Salut [Prénom] » d'ouverture.</li>
+          <li><strong>Annoncer les 2 questions calmement</strong> — pas de débit rapide, le prospect doit avoir le temps d'enregistrer.</li>
+          <li><strong>Finir sur la praticité</strong> — rappel durée et environnement calme = pro et bienveillant.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="msg-tab-content" id="m1-texte">
+      <div class="msg-meta">
+        <span class="msg-meta-item">À utiliser si le prospect a demandé du texte, ou si tu préfères ce format.</span>
+      </div>
+      <div class="msg-script">
+        <p>Bonjour [Prénom] 👋</p>
+        <p>Ici [Prénom] du Cercle Horloger.</p>
+        <p>On a un échange prévu [jour] à [heure], j'ai hâte d'en savoir plus sur votre projet.</p>
+        <p>Avant de confirmer définitivement votre créneau, j'aurais besoin de quelques infos pour préparer un échange ciblé :</p>
+        <p>1️⃣ Votre situation aujourd'hui (activité pro + avez-vous déjà acheté ou suivi le marché des montres de prestige ?)</p>
+        <p>2️⃣ Ce que vous cherchez à travers le cercle horloger ?</p>
+        <p>Le RDV dure 45 min, prévoyez un environnement calme.</p>
+        <p>Avez-vous bien reçu le lien visio par mail ?</p>
+        <p>À très vite,<br>[Prénom] — Team Cercle Horloger</p>
+      </div>
+    </div>
+
+    <div class="msg-tab-content" id="m1-sms">
+      <div class="msg-meta">
+        <span class="msg-meta-item">Fallback si le prospect n'est pas sur WhatsApp.</span>
+      </div>
+      <div class="msg-script">
+        <p>Bonjour [Prénom], ici [Prénom] du Cercle Horloger. RDV confirmé [jour] [heure]. Avant l'échange, pouvez-vous me préciser : 1) votre activité aujourd'hui, 2) ce que vous cherchez à travers le cercle horloger ? Le RDV dure 45 min, prévoyez un environnement calme. Avez-vous bien reçu le lien visio ? À très vite — [Prénom] — Team Cercle Horloger</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MESSAGE 2 -->
+  <div class="msg-block rv" id="msg2">
+    <div class="msg-head">
+      <div class="msg-num">02</div>
+      <div>
+        <div class="msg-when">J+1 sans réponse OU H-3 du RDV</div>
+        <h3 class="msg-title">Message 2 — <em>Relance ferme</em></h3>
+        <p class="msg-context">À envoyer si pas de réponse au Message 1, ou 3h avant le RDV si toujours silence. Ton : posé, ferme, jamais pressant. La rareté du Cercle se rappelle sans menacer.</p>
+      </div>
+    </div>
+
+    <div class="msg-tabs">
+      <button class="msg-tab on" onclick="msgTab('m2','vocal')">🎙 Vocal — Prioritaire</button>
+      <button class="msg-tab" onclick="msgTab('m2','texte')">✍ Texte WhatsApp</button>
+      <button class="msg-tab" onclick="msgTab('m2','sms')">📱 SMS — Fallback</button>
+    </div>
+
+    <div class="msg-tab-content on" id="m2-vocal">
+      <div class="msg-meta">
+        <span class="msg-meta-item"><strong>Durée :</strong> 25–35 sec</span>
+        <span class="msg-meta-item"><strong>Ton :</strong> posé, ferme mais bienveillant, jamais pressant</span>
+      </div>
+      <div class="msg-script">
+        <p>"Salut [Prénom], c'est [Prénom] du Cercle Horloger.</p>
+        <p>Je te laisse un petit vocal parce que c'est plus rapide qu'un long message.</p>
+        <p>En fait je voulais juste m'assurer que tu maintiens bien ton RDV de [jour] à [heure], parce que là on a pas mal de monde sur la liste d'attente pour le cercle horloger et, je serais contraint de libérer ton créneau si j'ai pas de retour rapide.</p>
+        <p>Donc si tu es toujours partant pour qu'on échange sur ton projet, réponds-moi vite — même un petit vocal de 30 secondes suffit, juste pour que je sache où tu en es.</p>
+        <p>Et si tes dispos ont bougé, pas de souci, dis-le moi, on trouvera autre chose.</p>
+        <p>À très vite !"</p>
+      </div>
+      <div class="msg-tips">
+        <div class="msg-tips-label">Tips vocal</div>
+        <ul class="of-list">
+          <li><strong>Ton posé, jamais agressif</strong> — la rareté doit sonner comme un constat factuel, pas une menace.</li>
+          <li><strong>Pas plus de 35 secondes</strong> — au-delà, ça passe pas en relance.</li>
+          <li><strong>Ne pas relire 10 fois</strong> — un vocal trop « propre » sonne faux. Naturel &gt; parfait.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="msg-tab-content" id="m2-texte">
+      <div class="msg-script">
+        <p>Bonjour [Prénom],</p>
+        <p>Je reviens vers vous concernant notre échange [jour] à [heure].</p>
+        <p>On reçoit un volume important de candidatures sur le cercle horloger en ce moment, et sans retour de votre part avant [heure], je serais contraint de libérer votre créneau pour un autre profil sur la liste d'attente.</p>
+        <p>Si vous êtes toujours intéressé(e) pour qu'on parle de votre projet horloger, un simple message (ou un vocal) suffit — 2 min max.</p>
+        <p>Et si vos dispos ont changé, aucun souci, on reprogramme.</p>
+        <p>Je vous laisse me dire,<br>[Prénom] — Team Cercle Horloger</p>
+      </div>
+    </div>
+
+    <div class="msg-tab-content" id="m2-sms">
+      <div class="msg-script">
+        <p>Bonjour [Prénom], je reviens vers vous pour votre RDV [jour] [heure]. Sans retour avant [heure], je serai contraint de libérer le créneau (forte demande). Un simple message suffit pour le maintenir. Vos dispos ont changé ? On reprogramme. — [Prénom], Cercle Horloger</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MESSAGE 3 -->
+  <div class="msg-block rv" id="msg3">
+    <div class="msg-head">
+      <div class="msg-num">03</div>
+      <div>
+        <div class="msg-when">+4h après Message 2 sans réponse</div>
+        <h3 class="msg-title">Message 3 — <em>Clôture du dossier</em></h3>
+        <p class="msg-context">C'est la fermeture du dossier, à envoyer sans hésiter. La rareté entretenue protège la valeur perçue du Cercle. Aucun reproche, ton neutre — on ferme la porte sans la claquer.</p>
+      </div>
+    </div>
+
+    <div class="msg-tabs">
+      <button class="msg-tab on" onclick="msgTab('m3','vocal')">🎙 Vocal — Prioritaire</button>
+      <button class="msg-tab" onclick="msgTab('m3','texte')">✍ Texte WhatsApp</button>
+      <button class="msg-tab" onclick="msgTab('m3','sms')">📱 SMS — Fallback</button>
+    </div>
+
+    <div class="msg-tab-content on" id="m3-vocal">
+      <div class="msg-meta">
+        <span class="msg-meta-item"><strong>Durée :</strong> 15–25 sec</span>
+        <span class="msg-meta-item"><strong>Ton :</strong> neutre, posé, sans reproche</span>
+      </div>
+      <div class="msg-script">
+        <p>"Salut [Prénom], c'est [Prénom] du Cercle Horloger.</p>
+        <p>Comme je n'ai pas eu de retour de ta part, je vais libérer ton créneau pour quelqu'un d'autre — ça arrive, pas de souci.</p>
+        <p>Si tu veux reprendre contact plus tard quand tu seras plus dispo, écris-moi simplement, je verrai ce que je peux faire en fonction du planning.</p>
+        <p>Bonne continuation à toi !"</p>
+      </div>
+      <div class="msg-tips">
+        <div class="msg-tips-label">Tips vocal</div>
+        <ul class="of-list">
+          <li><strong>Aucun reproche dans la voix</strong> — ton neutre, presque détaché. Tu fermes la porte mais sans claquer.</li>
+          <li><strong>Court et net</strong> — moins de 25 secondes. Pas de « dernière chance », pas de « attention ». La rareté du Cercle parle d'elle-même.</li>
+          <li><strong>Laisser une porte entrouverte</strong> — le « je verrai ce que je peux faire » protège la possibilité d'un retour sans la garantir.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="msg-tab-content" id="m3-texte">
+      <div class="msg-script">
+        <p>Bonjour [Prénom],</p>
+        <p>Sans nouvelle de votre part, je vais clôturer votre dossier et libérer le créneau pour un autre candidat sur le cercle horloger.</p>
+        <p>Si vous souhaitez reprogrammer plus tard, ce sera plus compliqué cette semaine vu le volume de demandes, mais n'hésitez pas à revenir vers moi dès qu'une place se libère.</p>
+        <p>Je vous souhaite une excellente continuation, et peut-être à très bientôt côté Cercle.</p>
+        <p>[Prénom] — Team Cercle Horloger</p>
+      </div>
+    </div>
+
+    <div class="msg-tab-content" id="m3-sms">
+      <div class="msg-script">
+        <p>Bonjour [Prénom], sans nouvelle de votre part, je clôture votre dossier et libère le créneau. Reprogrammation possible plus tard mais difficile cette semaine. N'hésitez pas à revenir vers moi. Excellente continuation. — [Prénom], Cercle Horloger</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+  <div class="page-footer">
+    <div class="pf-logo">Cercle Horloger™</div>
+    <div class="pf-text">Document confidentiel — Réservé aux Closers</div>
+    <div class="pf-text">Onboarding v3 · Mai 2026</div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     PAGE FAQ — FAQ Closers complète
+     ============================================================ -->
+<div id="page-faq" class="page" role="main">
+<section id="faq" class="ps dk">
+  <div class="ph rv">
+    <div class="pn">07 — FAQ Closers</div>
+    <h2 class="pt">FAQ<br><em>prête à dire.</em></h2>
+    <p class="pd">Les questions les plus fréquentes posées par les prospects pendant l'appel. Chaque réponse a été construite à partir des paroles d'Amine, des plaquettes officielles et de la Notion. Pour chaque entrée, tu trouveras la <strong>réponse de fond</strong> (à maîtriser) et le <strong>pitch closer</strong> (formulation prête à dire).</p>
+  </div>
+
+  <!-- REGLE D'OR -->
+  <div class="rule-or rv" style="margin-bottom:48px">
+    <div class="rule-or-label">Règle d'or</div>
+    <h3 class="rule-or-title">Ne jamais <em>inventer.</em></h3>
+    <p class="rule-or-text">Si tu ne sais pas, tu réponds : <em>« excellente question, je vérifie avec Amine et je reviens vers toi dans l'heure »</em>, puis tu fais remonter dans le Slack closers. Mieux vaut un délai d'une heure qu'une info fausse qui plombe la confiance.</p>
+  </div>
+
+  <!-- PARTIE 1 — TOP 5 -->
+  <div class="sh rv">
+    <div class="sl">Partie 1 — Top 5 prioritaire</div>
+    <h3 class="st">Les 5 questions <em>à maîtriser par cœur</em></h3>
+    <p class="sd">Ces 5 questions remontent systématiquement. Elles concernent la légitimité, le marché, le cadre juridique, les délais et les preuves. À connaître par cœur — pas paraphrasé, par cœur.</p>
+  </div>
+
+  <div class="faq-list rv">
+
+    <details class="faq-q faq-priority">
+      <summary class="faq-summary">
+        <span class="faq-num">Q1</span>
+        <span class="faq-cat">Légitimité du modèle</span>
+        <span class="faq-text">Quel intérêt a Amine de prendre des élèves ? Pourquoi partager son business au lieu de le garder pour lui ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p>Les maisons horlogères (Rolex, Patek, AP, Richard Mille) limitent les attributions à environ <strong>2 à 3 montres par personne et par an</strong>. Quoi qu'il fasse, Amine est plafonné par ce quota individuel. Pour scaler son business, il n'a qu'un seul levier : multiplier les profils qualifiés.</p>
+          <p>En accompagnant des élèves, Amine fait deux choses :</p>
+          <ul class="of-list">
+            <li>Il augmente mécaniquement le volume de montres qu'il peut sortir via son réseau — chaque élève qualifié = un nouveau quota d'allocation ouvert chez les maisons.</li>
+            <li>Il identifie au fil des 6 mois les profils sérieux, présentables, à vision long terme — ceux avec qui il va vouloir s'associer durablement en dehors du programme.</li>
+          </ul>
+          <p>C'est dit textuellement par Amine en réunion : <em>« Le but que je cherche, c'est vraiment de trouver au final des partenaires. »</em> L'élève n'est pas un client à exploiter : c'est un futur associé potentiel.</p>
+          <p>Sur les deals que l'élève sort en boutique, Amine prend 50 % du bénéfice. C'est gagnant-gagnant : l'élève accède au financement, au réseau et à la méthode ; Amine débloque un volume qu'il ne pourrait jamais atteindre seul. Objectif cette année : vendre pour 5 M€ de montres de luxe. Seul, c'est impossible.</p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>Amine est plafonné à 2-3 montres par an chez chaque maison, comme tout le monde. Pour scaler, il a besoin de profils qualifiés. Toi tu apportes un quota et ton temps, lui il apporte 4 ans de réseau, la méthode et le financement. Sur les deals communs, c'est 50/50. Il ne cherche pas des clients, il cherche des associés sur le long terme.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-q faq-priority">
+      <summary class="faq-summary">
+        <span class="faq-num">Q2</span>
+        <span class="faq-cat">Marché horloger</span>
+        <span class="faq-text">Pourquoi y a-t-il une liste d'attente chez Rolex, Patek, AP ? Pourquoi je ne peux pas juste rentrer en boutique et acheter ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p>Les grandes maisons horlogères produisent en quantité ultra-limitée par rapport à la demande mondiale. Une Patek Nautilus, une Rolex Daytona, une AP Royal Oak ne se vendent pas comme un produit de consommation : <strong>elles s'attribuent</strong>.</p>
+          <p>Concrètement, les délais d'attente en boutique officielle vont de <strong>4 à 6 ans</strong> pour une première montre (Amine l'a vécu lui-même à 17 ans à Genève). Les maisons ne vendent pas à n'importe qui : elles sélectionnent selon trois critères :</p>
+          <ul class="of-list">
+            <li><strong>Le profil de l'acheteur</strong> — âge, présentation, vision, sérieux apparent.</li>
+            <li><strong>L'historique d'achat</strong> — as-tu déjà acheté chez eux ou chez un concurrent ? À quel rythme ?</li>
+            <li><strong>Le dossier client</strong> — ce que la maison sait de toi (réseau, posture, comportement en boutique).</li>
+          </ul>
+          <p>Cette rareté organisée est exactement ce qui crée la marge à la revente. Une Daytona à 15 000 € en boutique vaut 30 000 € sur le marché secondaire — précisément parce que la maison refuse de la vendre à tout le monde.</p>
+          <p>Le Cercle ne supprime pas la liste d'attente : il la contourne intelligemment. On bâtit un <strong>Dossier Profil Acheteur VIP</strong> qui permet de passer devant 90 % des candidats, et en parallèle on ouvre le réseau secondaire pour faire les premiers deals en attendant les attributions.</p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>La liste d'attente, c'est exactement ce qui crée ta marge. Une Daytona à 15K en boutique vaut 30K sur le marché précisément parce que Rolex refuse de la vendre à tout le monde. Avec nous, tu joues sur deux tableaux : on te bâtit un dossier VIP pour passer devant la file chez les maisons, et en parallèle on t'ouvre notre réseau secondaire pour faire tes premiers deals sans attendre.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-q faq-priority">
+      <summary class="faq-summary">
+        <span class="faq-num">Q3</span>
+        <span class="faq-cat">Cadre juridique</span>
+        <span class="faq-text">Est-ce que je dois créer une société pour faire ce business ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p><strong>Non, aucune création de société n'est obligatoire pour démarrer.</strong></p>
+          <p>L'achat-revente de montres se fait en tant que particulier, en nom propre. C'est validé juridiquement, et c'est même un point essentiel : c'est sur ce point que Rolex a perdu en jurisprudence. La personne acquiert un bien sous son nom propre, ce n'est pas une société qui achète.</p>
+          <p>Point très important : <strong>en maison horlogère, on n'achète jamais une montre au nom d'une société</strong>. Le profil chez Rolex, c'est ton nom à toi, pas celui de ton entreprise.</p>
+          <p>Cela dit, si l'élève veut structurer un vrai business derrière :</p>
+          <ul class="of-list">
+            <li><strong>En France :</strong> auto-entrepreneur pour commencer, puis SASU ou EURL si l'activité scale.</li>
+            <li><strong>En Suisse :</strong> statut Indépendant suffit au départ, puis Sàrl ou SA pour la TVA et la fiscalité.</li>
+          </ul>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>Aucune société n'est nécessaire pour commencer — et c'est même mieux comme ça, parce qu'en boutique tu achètes toujours en ton nom propre, jamais en nom de société. Pour la fiscalité, Amine te conseille sur ce qui est le mieux dès lors que tu fais plusieurs opérations. Tu pourras te structurer plus tard quand le business scale.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-q faq-priority">
+      <summary class="faq-summary">
+        <span class="faq-num">Q4</span>
+        <span class="faq-cat">Délais opérationnels</span>
+        <span class="faq-text">Quand est-ce que je fais ma première transaction ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p>Il faut bien distinguer deux scénarios — c'est crucial pour ne pas faire de fausse promesse.</p>
+          <p><strong>Scénario 1 — Premier deal via le marché secondaire (le plus rapide)</strong><br>Délai réaliste : <strong>30 à 45 jours</strong> entre l'achat et la revente. On passe par le réseau d'Amine (revendeurs, collectionneurs, horlogers certifiés) pour trouver une pièce déjà sourcée à un prix marchand. Amine valide le deal, finance si pertinent, et la revente se fait sous 2 semaines une fois la montre achetée.</p>
+          <p><strong>Scénario 2 — Première transaction en maison horlogère (Rolex, Patek, AP)</strong><br>Délai réaliste : <strong>pas 30 à 45 jours</strong>. La personne la plus rapide à ce jour, c'est <strong>55 jours</strong>. Plus long parce qu'il faut construire le profil chez la maison, déclencher une allocation, signer, recevoir la pièce, puis la revendre. Compter entre 2 à 3 mois.</p>
+          <p>Promesses contractuelles par offre :</p>
+          <ul class="of-list">
+            <li><strong>Gold (3 000 €)</strong> — promesse de sortir une première montre en 30 jours, avec la Garantie Succès ou Extension si ce n'est pas tenu.</li>
+            <li><strong>Platinum (6 000 €)</strong> — 6 000 € nets garantis sous 1 an, sinon Amine s'associe directement sur un deal.</li>
+          </ul>
+          <p>Le délai exact dépend du profil de l'élève (réactivité, présentation, budget disponible). <strong>On ne ment pas, on cadre.</strong></p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>Sur le marché secondaire — qui est la voie par défaut pour le premier deal — on table sur 30 à 45 jours entre achat et revente. La commission est reversée environ 2 semaines après l'achat. En maison horlogère c'est plus long, le record actuel c'est 55 jours pour une première sortie. Mais en général entre 2 à 3 mois.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-q faq-priority">
+      <summary class="faq-summary">
+        <span class="faq-num">Q5</span>
+        <span class="faq-cat">Social proof</span>
+        <span class="faq-text">Quelles preuves concrètes d'achat / revente avez-vous ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p>Le prospect veut voir des résultats avant de signer un chèque. Tu dois pouvoir dégainer des chiffres précis (cf. annexe Chiffres clés en bas de page).</p>
+          <p>Référence-toi systématiquement à la <strong>section Social Proof</strong> de la Notion / des plaquettes pour les exemples nominatifs et chiffrés. Aucun chiffre ne doit sortir sans source.</p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>Renvoie vers les chiffres clés en annexe : +10M€ depuis 2021, 500+ montres revendues, marge moyenne ~30 %, 0 membre blacklisté, premier deal entre 30 et 45 jours sur le marché secondaire.</p>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <!-- PARTIE 2 — OFFRES & FINANCEMENT -->
+  <div class="sh rv">
+    <div class="sl">Partie 2 — Offres &amp; Financement</div>
+    <h3 class="st">Offres, garanties &amp; <em>financement</em></h3>
+  </div>
+
+  <div class="faq-list rv">
+
+    <details class="faq-q">
+      <summary class="faq-summary">
+        <span class="faq-num">A2</span>
+        <span class="faq-cat">Financement</span>
+        <span class="faq-text">Comment fonctionne la ligne de crédit d'1 million d'euros ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p>Le chiffre « 1 million d'euros bloqué » est avant tout un <strong>repère marketing</strong> pour communiquer une notion de rareté. Dans les faits, <strong>il n'y a pas de montant plafond figé</strong> : si l'élève sort une pièce bankable, Amine la finance, quel que soit le montant.</p>
+          <p>Exemple cité par Romain (CEO) : si un élève en offre Silver arrive à sortir une Richard Mille à 500 000 €, Amine la finance pour faire 200 000 € de bénéfice. Il n'a aucun intérêt à refuser un deal validé.</p>
+          <p>Conditions pour déclencher le financement :</p>
+          <ul class="of-list">
+            <li>Plus-value minimum de 25 à 30 % sur le deal</li>
+            <li>Modèle exclusif validé par l'équipe Amine</li>
+            <li>Deal soumis et approuvé <strong>en amont</strong> — pas après coup</li>
+            <li>Bénéfice partagé 50/50 à la revente effective</li>
+          </ul>
+          <p>Le financement peut couvrir jusqu'à 100 % du montant, principalement en espèces ou par carte selon le cas. <strong>Un garde du corps est disponible pour les transactions cash.</strong></p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>La ligne de crédit, c'est une enveloppe collective bloquée pour les membres. Dans la pratique, dès que tu sors une pièce bankable, Amine la finance — il n'y a pas de plafond rigide. Les conditions sont simples : plus-value de 25 % minimum, modèle validé en amont, et bénéfice partagé 50/50. Si tu sors une Richard Mille à 500K, t'inquiète pas qu'il la finance.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-q">
+      <summary class="faq-summary">
+        <span class="faq-num">A3</span>
+        <span class="faq-cat">50/50</span>
+        <span class="faq-text">Concrètement, comment se passe le partage 50/50 ? Pourquoi je donne la moitié à Amine ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p>Le 50/50 ne s'applique <strong>que si Amine finance le deal</strong>. Si l'élève finance lui-même la montre, il garde 100 % du bénéfice.</p>
+          <p>Quand Amine finance, ce qu'il apporte est concret :</p>
+          <ul class="of-list">
+            <li>Le capital (jusqu'à 100 % du prix de la montre)</li>
+            <li>Le réseau de revendeurs / collectionneurs qui a permis de sourcer la pièce</li>
+            <li>La validation que le deal est rentable et liquide (pas de risque de stock)</li>
+            <li>L'acheteur final dans son carnet d'adresses, prêt à racheter sous 2 semaines</li>
+          </ul>
+          <p>L'élève apporte son nom (le profil acheteur), son temps, et le quota d'allocation chez la maison. C'est un vrai <strong>partenariat de deal</strong> — pas un partage subi.</p>
+          <p>Mécanique : commission reversée environ 2 semaines après l'achat (contrat sécurisé jusqu'à 2 mois). Reversement clair : 50 % élève / 50 % structure.</p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>Le 50/50 ne s'applique que si c'est Amine qui finance. Si tu mets ton propre cash, tu gardes 100 % du bénéfice. Quand Amine met le capital, il met aussi le réseau, l'acheteur final et la garantie que c'est rentable — tu prends zéro risque financier et tu apprends sur un deal réel. C'est un partenariat de deal, pas un partage subi.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-q">
+      <summary class="faq-summary">
+        <span class="faq-num">A4</span>
+        <span class="faq-cat">Capital de départ</span>
+        <span class="faq-text">Quel budget minimum dois-je avoir pour me lancer si je veux financer mes propres montres ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p>Pas de seuil officiel chiffré. Ce qui est sûr :</p>
+          <ul class="of-list">
+            <li>Tu peux commencer <strong>sans aucun capital</strong> si tu acceptes le financement d'Amine (50/50).</li>
+            <li>Si tu veux financer toi-même, regarde les exemples concrets : Rolex Datejust Jubilee à 11 150 € (revente 17 750 €), Rolex Sky-Dweller à 16 800 € — donc <strong>ticket d'entrée autour de 10 à 15 K€</strong> pour une première pièce solo.</li>
+            <li>Le module 4 de la formation détaille les canaux selon ton niveau de budget.</li>
+          </ul>
+          <p>Le bon réflexe : peu importe le budget de départ, le levier financement Amine est là précisément pour permettre à des gens sans capital de démarrer. Le ticket Silver à 1 497 € <strong>ne donne pas accès</strong> à l'accompagnement et au financement comme Gold ou Platinum — point à creuser pendant la qualif.</p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>Si tu veux financer toi-même tes deals, on commence en général autour de 10 à 15K pour une première Rolex bien choisie. Si tu n'as pas ce capital, justement, c'est tout l'intérêt du levier Amine : il met l'argent, tu mets ton profil et ton temps, et vous partagez la marge. La majorité de nos membres n'avaient jamais acheté de montre avant de nous rejoindre.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-q">
+      <summary class="faq-summary">
+        <span class="faq-num">A5</span>
+        <span class="faq-cat">Garantie</span>
+        <span class="faq-text">Et si je n'arrive pas à sortir de montre du tout ? Je perds mon argent ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p><strong>Sur Gold (3 000 €) :</strong></p>
+          <ul class="of-list">
+            <li>Si pas de montre sortie au bout de 3 mois → accompagnement prolongé gratuitement de 3 mois supplémentaires avec ton coach WhatsApp.</li>
+            <li>Pas de remboursement direct, mais on continue jusqu'à ce que tu sortes ta montre.</li>
+          </ul>
+          <p><strong>Sur Platinum (6 000 €) :</strong></p>
+          <ul class="of-list">
+            <li>Même garantie Succès ou Extension sur les premiers 6 mois.</li>
+            <li><strong>PLUS</strong> une garantie de 6 000 € nets sous 1 an : si après les extensions tu n'as pas rentabilisé ton investissement, garantie de remboursement.</li>
+            <li>Si jamais ça bloque vraiment, Amine s'associe directement avec toi sur un deal pour atteindre la performance.</li>
+          </ul>
+          <p>À retenir : la garantie ne se déclenche pas si l'élève ne joue pas le jeu. C'est une <strong>garantie de moyen + résultat</strong>, pas un blanc-seing. Si l'élève ne fait pas les démarches, les RDV en boutique, le suivi coach — on ne peut pas garantir.</p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>Sur Gold, si tu n'as pas sorti de montre en 3 mois, on prolonge gratuitement jusqu'à ce que ce soit fait. Sur Platinum, on va plus loin : 6 000 € nets garantis sous un an. Si jamais ça bloque, Amine vient en personne s'associer avec toi sur un deal. Mais évidemment, la garantie suppose que tu joues le jeu de ton côté — les RDV en boutique, les coachs, le suivi.</p>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <!-- PARTIE 3 — PROFIL & FAISABILITÉ -->
+  <div class="sh rv">
+    <div class="sl">Partie 3 — Profil &amp; Faisabilité</div>
+    <h3 class="st">Profil client &amp; <em>faisabilité</em></h3>
+  </div>
+
+  <div class="faq-list rv">
+
+    <details class="faq-q">
+      <summary class="faq-summary">
+        <span class="faq-num">B1</span>
+        <span class="faq-cat">Géographie</span>
+        <span class="faq-text">Est-ce que je peux faire ce business depuis l'étranger / hors de France ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p><strong>Oui, aucune restriction géographique.</strong> Amine cite en exemple un élève qui habite à Andorre et qui a déjà sorti des montres depuis là-bas.</p>
+          <p>Le critère n'est pas le pays mais le profil — capacité à se déplacer en boutique (Genève, Paris, autres places fortes) et présentation. Pour les profils non-européens, à creuser au cas par cas : besoin d'aller vérifier la faisabilité boutique sur la zone visée.</p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>Pas de restriction géographique. On a un élève à Andorre qui sort des montres, d'autres en Suisse, en France, en Belgique. Ce qui compte ce n'est pas où tu es, c'est ta capacité à te déplacer en boutique quand on te dit d'y aller, Genève, Paris, ou ailleurs.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-q">
+      <summary class="faq-summary">
+        <span class="faq-num">B2</span>
+        <span class="faq-cat">Profil idéal</span>
+        <span class="faq-text">Quel est le profil idéal pour réussir dans le Cercle ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p>Critères d'Amine pour un « bon » profil :</p>
+          <ul class="of-list">
+            <li><strong>Vision long terme</strong> — ne cherche pas un coup facile, veut bâtir.</li>
+            <li><strong>Présentable et propre sur lui</strong> — capable de représenter le Cercle en boutique.</li>
+            <li><strong>Sérieux</strong> — tient ses engagements, fait les RDV, applique la méthode.</li>
+          </ul>
+          <p>Red flags à éviter :</p>
+          <ul class="of-list">
+            <li>Refus brutal des modèles proposés par l'équipe</li>
+            <li>Profil « argent rapide » qui veut tout encaisser immédiatement</li>
+            <li>Manque de présentation et de crédibilité</li>
+          </ul>
+          <p>Ce n'est pas à toi de filtrer agressivement pendant l'appel, mais ces signaux doivent te faire qualifier différemment et remonter le doute à Tom / Amine.</p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>Le profil idéal, c'est quelqu'un avec une vraie vision long terme, présentable, sérieux. Si tu cherches juste un coup facile, ce n'est pas pour toi. Si tu veux te construire un vrai business sur 5 à 10 ans avec un système éprouvé, c'est exactement ça.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-q">
+      <summary class="faq-summary">
+        <span class="faq-num">B3</span>
+        <span class="faq-cat">Légalité</span>
+        <span class="faq-text">Est-ce que c'est légal ? Je ne veux pas avoir de soucis avec le fisc ou les maisons.</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p><strong>Sur la légalité de l'achat-revente :</strong> 100 % légal. Rolex a tenté juridiquement de bloquer la revente et a perdu en jurisprudence : un particulier achète un bien en son nom propre, il en fait ce qu'il veut, y compris le revendre.</p>
+          <p><strong>Sur le fisc :</strong> à partir du moment où tu déclares tes marges correctement (factures d'achat et de vente, justificatifs), zéro stress en cas de contrôle. Tu déclares uniquement la marge (prix de vente – prix d'achat), pas le chiffre d'affaires brut.</p>
+          <p><strong>Sur le risque de blacklist en maison :</strong> c'est précisément ce que couvre le Pilier 5 — Process Anti-Blacklist. À ce jour, <strong>zéro membre du Cercle blacklisté</strong>. Les erreurs qui mènent au blacklist sont identifiées et évitées dès le départ : on ne te laisse jamais seul dans tes premiers RDV.</p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>100 % légal. Rolex a même essayé de bloquer juridiquement la revente et a perdu en jurisprudence. Côté maisons horlogères, zéro membre blacklisté à ce jour, on a un protocole précis qu'on suit ensemble.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-q">
+      <summary class="faq-summary">
+        <span class="faq-num">B4</span>
+        <span class="faq-cat">Temps</span>
+        <span class="faq-text">Combien de temps par semaine je dois y consacrer ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p>Réponse marketing officielle : <strong>moins de 2 heures par semaine</strong>.</p>
+          <p>Cadrage honnête à donner : ce chiffre correspond à la phase de croisière, une fois que la méthode est en place. Sur les premières semaines, prévoir plus — création du dossier acheteur, premiers RDV boutique, intégration du réseau Cercle. Réaliste : 4 à 6 heures les premières semaines, puis ça se lisse autour de 2 heures.</p>
+          <p>Le facteur clé n'est pas le volume horaire mais la <strong>régularité et la réactivité</strong> quand un deal se présente.</p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>Officiellement c'est moins de 2 heures par semaine en croisière. Sur les premières semaines tu mettras un peu plus pour construire ton dossier et faire tes premiers RDV — mets 4 à 6 heures les 2 premières semaines. Après ça se lisse. Le truc important, c'est d'être réactif quand un deal arrive — pas d'y passer 40 heures.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-q">
+      <summary class="faq-summary">
+        <span class="faq-num">B5</span>
+        <span class="faq-cat">Débutant</span>
+        <span class="faq-text">Je n'y connais rien en montres. C'est un problème ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p><strong>Non, c'est même le profil majoritaire.</strong> 80 % des membres du Cercle n'avaient jamais acheté de montre de luxe avant de rejoindre.</p>
+          <p>Le module 0 et le module 1 sont conçus pour partir de zéro : vocabulaire, fonctionnement des maisons, repérage des modèles rentables. Tu n'achètes pas de la culture horlogère, tu achètes un système qui te dit : « cette montre, à ce prix, chez ce vendeur, est rentable. »</p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>Tu n'as pas besoin de connaître l'horlogerie. 80 % de nos membres n'avaient jamais acheté de montre avant. Tu n'achètes pas une formation théorique sur les complications mécaniques, tu achètes un système qui te dit exactement quelle pièce sortir, à quel prix, et chez qui la revendre. La culture horlogère, elle vient en faisant.</p>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <!-- PARTIE 4 — OPÉRATIONNEL -->
+  <div class="sh rv">
+    <div class="sl">Partie 4 — Opérationnel &amp; Delivery</div>
+    <h3 class="st">Process &amp; <em>fonctionnement</em></h3>
+  </div>
+
+  <div class="faq-list rv">
+
+    <details class="faq-q">
+      <summary class="faq-summary">
+        <span class="faq-num">C1</span>
+        <span class="faq-cat">Process deal</span>
+        <span class="faq-text">Comment se passe concrètement un deal en maison horlogère ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond — les 6 étapes</div>
+          <ol class="of-list" style="list-style:decimal;padding-left:20px">
+            <li><strong>Profil client</strong> — création du dossier acheteur VIP avec l'équipe.</li>
+            <li><strong>Préparation</strong> — scripts précis, storytelling, anticipation des objections vendeur.</li>
+            <li><strong>Validation</strong> — confirmation du financement (Amine ou propre cash).</li>
+            <li><strong>Attribution</strong> — la maison te propose une pièce, validation rapide.</li>
+            <li><strong>Achat</strong> — déplacement en boutique. Amine peut être présent. Garde du corps disponible pour les transactions cash.</li>
+            <li><strong>Revente</strong> — généralement sous 2 semaines, via le réseau Cercle.</li>
+          </ol>
+          <p>Pour les premiers deals, certains élèves peuvent venir avec Amine lors de la transaction — pas obligatoire mais possible.</p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>Six étapes : on construit ton dossier acheteur, on prépare le RDV avec scripts et storytelling, on valide le financement, la maison te propose une pièce, tu te déplaces en boutique pour l'achat — et la revente se fait sous 2 semaines via le réseau.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-q">
+      <summary class="faq-summary">
+        <span class="faq-num">C2</span>
+        <span class="faq-cat">Validation deal</span>
+        <span class="faq-text">Quels critères doit remplir un deal pour qu'Amine le finance ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p>Réponse d'Amine : <em>« Si la montre est liquide et bankable, le deal est validé. »</em></p>
+          <ul class="of-list">
+            <li><strong>Modèle bankable</strong> — pièce reconnue, demande existante (Rolex, AP, Patek, Richard Mille principalement).</li>
+            <li><strong>Demande déjà identifiée derrière</strong> — acheteur prêt à racheter.</li>
+            <li><strong>Plus-value minimum</strong> — 25 à 30 % sur le deal.</li>
+            <li><strong>Pas de critère vintage strictement bloquant</strong>, mais plus sélectif sur ces pièces.</li>
+          </ul>
+          <p>Sur les marques majeures et les modèles courants, taux de validation proche de 100 %.</p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>Si la montre est liquide et bankable — c'est-à-dire qu'on a déjà un acheteur potentiel derrière —, le deal est validé. Le seul filtre vraiment strict, c'est sur les pièces vintage très anciennes. Sur du Rolex, AP, Patek standard, le taux de validation est proche de 100 %.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-q">
+      <summary class="faq-summary">
+        <span class="faq-num">C3</span>
+        <span class="faq-cat">Conciergerie</span>
+        <span class="faq-text">Qu'est-ce que la conciergerie 24/7 ? Ça sert à quoi concrètement ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p><strong>Réservée à l'offre Platinum.</strong> Ce n'est pas un service transactionnel direct (pas pour valider tes deals en urgence). C'est un service bonus de l'écosystème Cercle :</p>
+          <ul class="of-list">
+            <li>Prix préférentiels sur billets d'avion (pour aller en boutique, à Genève, à Dubaï…)</li>
+            <li>Réservations d'hôtels à tarifs Cercle</li>
+            <li>Logistique des déplacements pour les RDV en maison</li>
+            <li>Mise en relation rapide quand tu as besoin d'un service du réseau</li>
+          </ul>
+          <p>L'objectif : faire sentir au membre Platinum qu'il est dans un écosystème premium, pas juste dans une formation transactionnelle.</p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>La conciergerie c'est l'écosystème Platinum. Concrètement, prix préférentiels sur les vols quand tu vas en boutique à Genève ou ailleurs, hôtels, logistique. C'est ce qui fait que tu n'es pas dans une formation, tu es dans un club privé.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-q">
+      <summary class="faq-summary">
+        <span class="faq-num">C4</span>
+        <span class="faq-cat">Événement Genève</span>
+        <span class="faq-text">L'événement physique à Genève, c'est quand et qu'est-ce qui s'y passe ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p><strong>Réservé aux membres Platinum.</strong></p>
+          <p>Format : événements organisés à Genève tous les 3 à 4 mois. Y participent : revendeurs partenaires du réseau d'Amine, collectionneurs, horlogers, intervenants externes du marché horloger haut de gamme. Moments de networking concret et d'accès direct à des opportunités qui ne circulent jamais en public.</p>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>Un événement Cercle à Genève tous les 3 à 4 mois, réservé aux Platinum. Tu y rencontres physiquement les revendeurs et collectionneurs du réseau d'Amine, les horlogers, et tu accèdes à des opportunités qui ne circulent jamais en ligne. C'est là que se font les meilleurs deals.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-q">
+      <summary class="faq-summary">
+        <span class="faq-num">C5</span>
+        <span class="faq-cat">Durée accompagnement</span>
+        <span class="faq-text">Combien dure exactement l'accompagnement ? Et après les 6 mois, qu'est-ce qu'il se passe ?</span>
+        <span class="faq-chev">+</span>
+      </summary>
+      <div class="faq-body">
+        <div class="faq-section">
+          <div class="faq-section-label">Réponse de fond</div>
+          <p>Distinction importante :</p>
+          <ul class="of-list">
+            <li><strong>Accès à la plateforme Skool (formation)</strong> — à vie. Pas de fin d'abonnement.</li>
+            <li><strong>Mentorat dédié + coach WhatsApp</strong> — 3 mois sur Gold, 6 mois sur Platinum.</li>
+            <li><strong>Lives Q&amp;A hebdomadaires</strong> — à vie pour Silver. Pendant la durée d'accompagnement pour Gold / Platinum.</li>
+          </ul>
+          <p>Après les 6 mois, deux cas :</p>
+          <ul class="of-list">
+            <li>Soit le membre est devenu autonome et continue à sortir des montres avec le réseau Cercle (les contacts ne disparaissent pas).</li>
+            <li>Soit Amine identifie le membre comme un partenaire potentiel et lui propose une collaboration plus poussée — c'est son objectif explicite : trouver des associés long terme.</li>
+          </ul>
+        </div>
+        <div class="faq-pitch">
+          <div class="faq-pitch-label">Pitch closer</div>
+          <p>L'accès aux contenus, c'est à vie — la plateforme ne ferme pas. Le coach dédié, c'est 3 mois sur Gold, 6 sur Platinum. Mais après ces 6 mois, deux choses peuvent arriver : soit tu es autonome et tu continues avec le réseau, soit Amine te propose un partenariat plus poussé. Son objectif final, c'est de trouver des associés long terme — pas juste des clients.</p>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <!-- ANNEXE CHIFFRES CLES -->
+  <div class="sh rv">
+    <div class="sl">Annexe</div>
+    <h3 class="st">Chiffres clés <em>à connaître par cœur</em></h3>
+    <p class="sd">Toutes les data à dégainer en appel. À mémoriser — pas à chercher dans un document pendant le call.</p>
+  </div>
+
+  <div class="ctw rv">
+    <table class="ct">
+      <thead>
+        <tr>
+          <th style="color:var(--text-muted)">Indicateur</th>
+          <th style="text-align:right">Valeur</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Bénéfices générés depuis 2021</td><td style="text-align:right;color:var(--gold)">+10 millions d'euros</td></tr>
+        <tr><td>Montres revendues</td><td style="text-align:right;color:var(--gold)">500+</td></tr>
+        <tr><td>Marge moyenne</td><td style="text-align:right;color:var(--gold)">~30 %</td></tr>
+        <tr><td>Prix Silver™</td><td style="text-align:right">1 497 €</td></tr>
+        <tr><td>Prix Gold™</td><td style="text-align:right">3 000 €</td></tr>
+        <tr><td>Prix Platinum™</td><td style="text-align:right">6 000 €</td></tr>
+        <tr><td>Garantie Platinum</td><td style="text-align:right;color:var(--gold)">6 000 € nets sous 1 an</td></tr>
+        <tr><td>Délai premier deal — marché secondaire</td><td style="text-align:right">30 à 45 jours</td></tr>
+        <tr><td>Délai premier deal — record maison horlogère</td><td style="text-align:right">55 jours</td></tr>
+        <tr><td>Reversement commission après achat</td><td style="text-align:right">~2 semaines (jusqu'à 2 mois au contrat)</td></tr>
+        <tr><td>Plus-value minimum pour validation deal</td><td style="text-align:right;color:var(--gold)">25 à 30 %</td></tr>
+        <tr><td>Partage si Amine finance</td><td style="text-align:right;color:var(--gold)">50 / 50</td></tr>
+        <tr><td>Quota maisons par personne / an</td><td style="text-align:right">2 à 3 montres</td></tr>
+        <tr><td>Délai liste d'attente officielle</td><td style="text-align:right">4 à 6 ans</td></tr>
+        <tr><td>Membres blacklistés à ce jour</td><td style="text-align:right;color:var(--gold)">0</td></tr>
+        <tr><td>Temps hebdo en croisière</td><td style="text-align:right">&lt; 2 heures</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>
+  <div class="page-footer">
+    <div class="pf-logo">Cercle Horloger™</div>
+    <div class="pf-text">FAQ Closers V1 — Document interne</div>
+    <div class="pf-text">Onboarding v3 · Mai 2026</div>
+  </div>
 </div>
 
 
@@ -1301,6 +2422,22 @@ document.querySelectorAll('.page, .welcome-page').forEach(p => {
 });
 // Init welcome page
 initReveal(document.getElementById('page-welcome'));
+
+
+
+// Tabs pour les messages préqualif (vocal / texte / SMS)
+function msgTab(group, kind) {
+  const allTabs = document.querySelectorAll('#msg' + group.charAt(1) + ' .msg-tab');
+  const allContents = document.querySelectorAll('[id^="' + group + '-"]');
+  allTabs.forEach(t => t.classList.remove('on'));
+  allContents.forEach(c => c.classList.remove('on'));
+  // Activate tab by index based on kind
+  const order = ['vocal','texte','sms'];
+  const idx = order.indexOf(kind);
+  if (allTabs[idx]) allTabs[idx].classList.add('on');
+  const target = document.getElementById(group + '-' + kind);
+  if (target) target.classList.add('on');
+}
 
 </script>
 </body>
