@@ -124,50 +124,86 @@ body {
 }
 
 /* ============================================================
-   PAGE 2 — LA MÉTHODE (4 piliers + parcours)
+   PAGE 2 — LA MÉTHODE (style V3.3 : 01/02/03/04 + promise side)
    ============================================================ */
+.method-head {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 48px;
+  margin-bottom: 32px;
+}
+.method-head .left { max-width: 760px; }
+.method-promise {
+  max-width: 280px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.method-promise .lbl {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  display: block;
+}
+.method-promise .txt {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300; font-size: 28px;
+  line-height: 1.15;
+  color: var(--text);
+}
+.method-promise .txt em {
+  font-style: italic; color: var(--gold); font-weight: 400;
+}
+
 .pilier-head {
-  display: flex; align-items: baseline; gap: 14px;
-  margin-bottom: 14px;
+  display: none;
 }
 .pilier-n {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-weight: 400;
-  font-size: 26px; line-height: 1;
-  color: var(--gold-dark);
+  display: none;
 }
 .pilier-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400; font-size: 22px; line-height: 1;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500; font-size: 14px;
   color: var(--text);
-  letter-spacing: -0.005em;
+  letter-spacing: 0.01em;
+  margin-bottom: 14px;
+  margin-right: 40px;
 }
 .pilier-list {
   list-style: none;
-  display: flex; flex-direction: column; gap: 10px;
+  display: flex; flex-direction: column;
 }
-.pilier-list { gap: 8px; }
 .pilier-list li {
   font-family: 'Montserrat', sans-serif;
   font-size: 10.5px; font-weight: 300;
-  color: var(--text);
-  line-height: 1.5;
-  padding-left: 16px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  padding: 8px 0 8px 16px;
   position: relative;
+  border-bottom: 1px solid var(--border);
 }
+.pilier-list li:last-child { border-bottom: none; }
 .pilier-list li::before {
-  content: '→';
-  position: absolute; left: 0; top: 0;
+  content: '—';
+  position: absolute; left: 0; top: 8px;
   color: var(--gold-dark);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 11px;
 }
 .pilier-list li strong {
-  color: var(--text); font-weight: 500;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 13px;
   display: block;
-  margin-bottom: 2px;
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  margin-bottom: 3px;
+  letter-spacing: 0.005em;
+}
+.pilier .num-tag {
+  position: absolute; right: 22px; top: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
 }
 
 .parcours {
@@ -217,90 +253,60 @@ body {
 }
 
 /* ============================================================
-   PAGE 3 — À QUI ÇA S'ADRESSE
+   PAGE 3 — POUR QUI ?
    ============================================================ */
-.audience {
+.body.audience-page { padding: 90px 100px 80px; }
+.audience-head {
+  margin-bottom: 56px;
+  max-width: 920px;
+}
+.audience-head .pt em { color: var(--gold); }
+.audience-lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300; font-style: italic;
+  font-size: 21px; line-height: 1.5;
+  color: var(--text-muted);
+  margin-top: 18px;
+  max-width: 720px;
+}
+.audience-lead strong { color: var(--gold-light); font-weight: 400; font-style: normal; }
+
+.audience-cols {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 80px;
   align-items: flex-start;
 }
-.audience-left { }
-.audience-tag {
-  display: inline-block;
+.col-block { }
+.col-block + .col-block { padding-left: 4px; }
+.col-label {
   font-family: 'Montserrat', sans-serif;
   font-size: 10px; font-weight: 500;
-  letter-spacing: 0.28em; text-transform: uppercase;
+  letter-spacing: 0.32em; text-transform: uppercase;
   color: var(--gold);
-  border: 1px solid var(--border-h);
-  padding: 8px 16px;
-  background: rgba(201,168,76,0.04);
-  margin-bottom: 22px;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
 }
-.audience-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: 64px; line-height: 1;
-  color: var(--text);
-  margin-bottom: 22px;
+.col-list {
+  list-style: none;
+  display: flex; flex-direction: column;
+  gap: 18px;
 }
-.audience-title em {
-  font-style: italic; color: var(--gold); font-weight: 400;
-}
-.audience-desc {
+.col-list li {
   font-family: 'Montserrat', sans-serif;
   font-size: 13px; font-weight: 300;
   color: var(--text);
-  line-height: 1.7;
-  margin-bottom: 26px;
-}
-.audience-desc strong { color: var(--gold-light); font-weight: 500; }
-
-.offer-card {
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  padding: 24px 26px;
-}
-.offer-card .label {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 9.5px; font-weight: 500;
-  letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 12px;
-}
-.offer-card .promise {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-weight: 400;
-  font-size: 22px; line-height: 1.3;
-  color: var(--text);
-}
-
-.profile-blocks { display: flex; flex-direction: column; gap: 18px; }
-.profile-block { }
-.profile-block .pb-label {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 9.5px; font-weight: 600;
-  letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 10px;
-}
-.profile-block .pb-list {
-  list-style: none;
-  display: flex; flex-direction: column; gap: 7px;
-}
-.profile-block .pb-list li {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 11.5px; font-weight: 300;
-  color: var(--text);
   line-height: 1.55;
-  padding-left: 16px;
+  padding-left: 22px;
   position: relative;
 }
-.profile-block .pb-list li::before {
-  content: '→';
+.col-list li::before {
+  content: '—';
   position: absolute; left: 0; top: 0;
   color: var(--gold-dark);
+  font-weight: 300;
 }
-.profile-block.desire .pb-list li::before { content: '✦'; color: var(--gold); }
+.col-list li strong { color: var(--gold-light); font-weight: 500; }
 
 /* ============================================================
    PAGE 4 — LE LEVIER 50/50
@@ -710,52 +716,50 @@ body {
   </div>
 
   <div class="body method">
-    <div class="body-head">
-      <div class="pn">01 — La méthode</div>
-      <h2 class="pt">Tout pour démarrer.<br><em>À votre rythme, à vie.</em></h2>
-      <p class="pd">Le programme Silver donne accès à la méthode complète du Cercle, aux outils de cotation et au réseau de financement — sans accompagnement humain personnalisé. Quatre piliers, un parcours en 180 jours.</p>
+    <div class="method-head">
+      <div class="left">
+        <div class="pn">01 — La méthode</div>
+        <h2 class="pt">Le contenu.<br><em>À votre rythme, à vie.</em></h2>
+      </div>
+      <div class="method-promise">
+        <span class="lbl">La promesse Silver</span>
+        <div class="txt">Maîtrise<br>technique <em>complète.</em></div>
+      </div>
     </div>
 
     <div class="piliers-grid">
       <div class="pilier">
-        <div class="pilier-head">
-          <span class="pilier-n">I</span>
-          <span class="pilier-name">Méthode &amp; expertise</span>
-        </div>
+        <span class="num-tag">01</span>
+        <div class="pilier-name">Méthode &amp; expertise</div>
         <ul class="pilier-list">
           <li><strong>Protocole +10 M€</strong>La méthodologie en dix piliers, validée sur des centaines de transactions réelles.</li>
-          <li><strong>Scripts de négociation &amp; revente</strong>Frameworks de discussion pour acheter et revendre avec confiance.</li>
-          <li><strong>Plan d'action 180 jours</strong>Trois phases : Fondations, Exécution, Accumulation.</li>
+          <li><strong>Scripts de négociation</strong>Frameworks de discussion pour acheter et revendre avec confiance.</li>
+          <li><strong>Plan d'action 180 jours</strong>Fondations, Exécution, Accumulation.</li>
         </ul>
       </div>
 
       <div class="pilier">
-        <div class="pilier-head">
-          <span class="pilier-n">II</span>
-          <span class="pilier-name">Outils &amp; data</span>
-        </div>
+        <span class="num-tag">02</span>
+        <div class="pilier-name">Outils &amp; data</div>
         <ul class="pilier-list">
           <li><strong>Dashboard Horloger™</strong>Cotations en direct et analyse des marges sur les modèles ciblés.</li>
-        </ul>
-      </div>
-
-      <div class="pilier">
-        <div class="pilier-head">
-          <span class="pilier-n">III</span>
-          <span class="pilier-name">Réseau &amp; levier</span>
-        </div>
-        <ul class="pilier-list">
-          <li><strong>Fonds de financement 1 M€</strong>Accès à une ligne de crédit pour vos deals validés.</li>
           <li><strong>Passeport Horloger</strong>Le sésame pour accéder aux pièces exclusives en boutique.</li>
           <li><strong>Process Anti-Blacklist</strong>Éviter les erreurs fatales chez Rolex, AP, Patek, Richard Mille.</li>
         </ul>
       </div>
 
       <div class="pilier">
-        <div class="pilier-head">
-          <span class="pilier-n">IV</span>
-          <span class="pilier-name">Accès &amp; privilèges</span>
-        </div>
+        <span class="num-tag">03</span>
+        <div class="pilier-name">Réseau &amp; levier</div>
+        <ul class="pilier-list">
+          <li><strong>Fonds de financement 1 M€</strong>Accès à une ligne de crédit pour vos deals validés.</li>
+          <li><strong>Partenariat 50/50</strong>Amine finance, vous exécutez — le bénéfice est partagé.</li>
+        </ul>
+      </div>
+
+      <div class="pilier">
+        <span class="num-tag">04</span>
+        <div class="pilier-name">Accès &amp; privilèges</div>
         <ul class="pilier-list">
           <li><strong>Lives Q&amp;A hebdomadaires</strong>Une session de questions-réponses en groupe, chaque semaine.</li>
           <li><strong>Accès formation à vie</strong>Le programme évolue avec le marché. Vous ne payez jamais deux fois.</li>
@@ -802,48 +806,37 @@ body {
     <span>Collection Silver</span>
   </div>
 
-  <div class="body">
-    <div class="body-head">
-      <div class="pn">02 — L'offre Silver</div>
-      <h2 class="pt">La porte d'entrée.<br><em>Sans accompagnement humain.</em></h2>
+  <div class="body audience-page">
+    <div class="audience-head">
+      <div class="pn">02 — Pour qui ?</div>
+      <h2 class="pt">La porte d'entrée<br>du <em>Cercle</em>.</h2>
+      <p class="audience-lead">
+        Silver s'adresse à celui qui veut <strong>tester la méthode</strong> avant de s'engager
+        davantage. Accès à vie, à son rythme — sans pression. La promesse&nbsp;: maîtrise technique
+        complète et accès au financement, dès le premier euro investi.
+      </p>
     </div>
 
-    <div class="audience">
-      <div class="audience-left">
-        <div class="audience-tag">Avatar naturel · Le Débutant</div>
-        <h3 class="audience-title">Le <em>Débutant</em>.</h3>
-        <p class="audience-desc">
-          Idéal pour celui qui veut <strong>tester la méthode</strong> avant de s'engager davantage.
-          Vous avez vu les résultats — Safouene encaisse <strong>8 000 €</strong> sur un premier deal
-          avec 0 € de capital — et vous voulez reproduire. Accès à vie, risque zéro, vous avancez
-          à votre rythme.
-        </p>
-        <div class="offer-card">
-          <div class="label">La promesse Silver</div>
-          <div class="promise">« Maîtrise technique. La porte d'entrée du Cercle. »</div>
-        </div>
+    <div class="audience-cols">
+      <div class="col-block">
+        <div class="col-label">Profil &amp; situation</div>
+        <ul class="col-list">
+          <li>25 — 42 ans, salarié ou entrepreneur en démarrage</li>
+          <li>Cherche un <strong>revenu complémentaire</strong> concret</li>
+          <li>Peu ou pas de connaissance des montres de prestige</li>
+          <li>Prêt à investir si la méthode est <strong>prouvée</strong> et le risque <strong>cadré</strong></li>
+        </ul>
       </div>
 
-      <div class="audience-right profile-blocks">
-        <div class="profile-block">
-          <div class="pb-label">Profil &amp; situation</div>
-          <ul class="pb-list">
-            <li>25 — 42 ans, salarié ou entrepreneur en démarrage</li>
-            <li>Cherche un revenu complémentaire concret et rapide</li>
-            <li>Peu ou pas de connaissance des montres de prestige</li>
-            <li>Prêt à investir si la méthode est prouvée, le risque cadré</li>
-          </ul>
-        </div>
-        <div class="profile-block desire">
-          <div class="pb-label">Ce que Silver vous apporte</div>
-          <ul class="pb-list">
-            <li>L'ensemble du <strong>Protocole +10 M€</strong> et de ses dix piliers, à vie</li>
-            <li>Le <strong>Passeport Horloger</strong> et le <strong>Process Anti-Blacklist</strong></li>
-            <li>L'accès à la ligne de <strong>financement 1 M€</strong> sur vos deals validés</li>
-            <li>Les <strong>lives Q&amp;A hebdomadaires</strong> en groupe</li>
-            <li>Toutes les mises à jour du programme — sans frais supplémentaires</li>
-          </ul>
-        </div>
+      <div class="col-block">
+        <div class="col-label">Ce que Silver vous apporte</div>
+        <ul class="col-list">
+          <li>L'ensemble du <strong>Protocole +10 M€</strong> et de ses dix piliers, à vie</li>
+          <li>Le <strong>Passeport Horloger</strong> et le <strong>Process Anti-Blacklist</strong></li>
+          <li>L'accès à la ligne de <strong>financement 1 M€</strong> sur vos deals validés</li>
+          <li>Les <strong>lives Q&amp;A hebdomadaires</strong> avec l'équipe du Cercle</li>
+          <li>Toutes les <strong>mises à jour</strong> du programme — sans frais supplémentaires</li>
+        </ul>
       </div>
     </div>
   </div>
