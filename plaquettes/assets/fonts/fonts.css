@@ -1,5 +1,4 @@
 /* Auto-generated · Cercle Horloger plaquettes */
-
 /* === cormorant.css === */
 @font-face {
   font-family: 'Cormorant Garamond';
@@ -211,4 +210,41 @@
   font-weight: 800;
   font-display: swap;
   src: url(ttf/font-29.ttf) format('truetype');
+}
+
+/* === montserrat.css === */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(ttf/font-30.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(ttf/font-31.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(ttf/font-32.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(ttf/font-33.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(ttf/font-34.ttf) format('truetype');
 }

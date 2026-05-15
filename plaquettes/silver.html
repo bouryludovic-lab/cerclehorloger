@@ -6,766 +6,655 @@
 <link rel="stylesheet" href="shared.css">
 <style>
 /* ============================================================
-   SILVER V3 · 6 pages
-   01 Couverture
-   02 I.  La promesse        (Amine + chiffres)
-   03 II. Le contenu         (4 piliers + parcours)
-   04 III.Témoignages        (3 cards Xavier-style)
-   05 IV. L'équipe           (Amine + coachs + organisation)
-   06 V.  Résultats + Levier
+   SILVER V4 · 6 pages
+   1 Couverture
+   2 La méthode             (Le contenu — 4 piliers + parcours)
+   3 À qui ça s'adresse     (descriptif offre + audience cible)
+   4 Le levier 50/50        (page dédiée)
+   5 La team                (Amine + coachs + organisation)
+   6 Témoignages            (3 cards)
    ============================================================ */
+
 body {
-  background: #050403;
+  background: #050505;
   display: flex; flex-direction: column; align-items: center;
   padding: 40px 0; gap: 50px;
 }
 .page-shell {
   box-shadow:
-    0 0 0 1px rgba(196,163,90,0.18),
+    0 0 0 1px var(--border),
     0 60px 120px rgba(0,0,0,0.7);
 }
 
 /* ============================================================
-   COMPOSANTS PARTAGÉS PAGES
+   COMMON
    ============================================================ */
-.chapter-tag {
-  display: inline-flex; align-items: center;
-  font-family: 'Inter', sans-serif;
-  font-size: 10.5px; font-weight: 500;
-  letter-spacing: 0.42em; text-transform: uppercase;
-  color: var(--gold);
+.surface     { background: var(--surface); }
+.surface-2   { background: var(--surface-2); }
+
+.body { padding: 76px 80px 70px; height: 100%; position: relative; }
+.body-head { margin-bottom: 32px; }
+
+/* Layout spécifique à la page méthode (plus dense) */
+.body.method { padding: 70px 80px 70px; }
+.body.method .body-head { margin-bottom: 24px; }
+.body.method .pt { font-size: 42px; }
+.body.method .pd { margin-top: 10px; font-size: 12px; max-width: 720px; }
+
+.piliers-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+  margin-bottom: 20px;
 }
-.title-xl {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 56px; line-height: 1.02;
-  letter-spacing: -0.03em;
-  color: var(--paper);
-}
-.title-xl em {
-  font-style: normal;
-  font-weight: 500;
-  color: var(--gold-pale);
+.pilier {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 18px 22px 16px;
+  position: relative;
 }
 
 /* ============================================================
    PAGE 1 — COUVERTURE
    ============================================================ */
 .cover-stack {
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  position: absolute; inset: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 8px;
+  gap: 0; padding: 80px;
 }
-.cover-logo {
-  margin-bottom: 28px;
+
+.cover-line {
+  width: 1px; height: 70px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  margin-bottom: 36px;
 }
 .cover-eyebrow {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 10px; font-weight: 500;
-  letter-spacing: 0.5em; text-transform: uppercase;
-  color: var(--paper-soft);
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.cover-logo { width: 110px; height: 110px; margin-bottom: 26px; }
+.cover-logo img { width: 100%; height: 100%; object-fit: contain; }
+
+.cover-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 92px; line-height: 1;
+  letter-spacing: -0.005em;
+  text-align: center;
   margin-bottom: 18px;
+  color: var(--text);
 }
-.cover-name {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 96px; line-height: 0.95;
-  letter-spacing: -0.04em;
-  color: var(--paper);
-  margin-bottom: 4px;
-  text-align: center;
-}
-.cover-tagline {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 22px; line-height: 1.2;
-  color: var(--gold-pale);
-  letter-spacing: -0.005em;
-  margin-bottom: 32px;
-  text-align: center;
-}
-.cover-badge { margin: 8px 0 56px; }
-.cover-sub {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px; font-weight: 300;
-  color: var(--paper-soft);
-  letter-spacing: 0.04em; line-height: 1.6;
-  max-width: 540px; text-align: center;
-  margin-bottom: 0;
-}
-.cover-sub strong { color: var(--gold-pale); font-weight: 500; }
-
-.cover-toc {
-  position: absolute; bottom: 110px; left: 0; right: 0;
-  display: flex; justify-content: center; gap: 0;
-  z-index: 4;
-}
-.cover-toc .item {
-  text-align: center;
-  padding: 0 38px;
-  position: relative;
-}
-.cover-toc .item + .item::before {
-  content: '';
-  position: absolute; left: 0; top: 4px; bottom: 4px;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--rule-strong), transparent);
-}
-.cover-toc .roman {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 500; font-size: 24px;
-  color: var(--gold);
-  letter-spacing: 0.02em;
-  margin-bottom: 6px;
-}
-.cover-toc .label {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px; font-weight: 500;
-  letter-spacing: 0.36em; text-transform: uppercase;
-  color: var(--muted);
-}
-
-.cover-sign {
-  position: absolute; bottom: 58px; left: 0; right: 0;
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  font-size: 9px; font-weight: 500;
-  letter-spacing: 0.42em; text-transform: uppercase;
-  color: var(--muted-2);
-}
-
-.cover-mark {
-  position: absolute;
-  font-family: 'Inter', sans-serif;
-  font-size: 9px; font-weight: 500;
-  letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--muted-2);
-  z-index: 6;
-}
-.cover-mark.tl { top: 36px; left: 100px; }
-.cover-mark.tr { top: 36px; right: 100px; }
-.cover-mark.bl { bottom: 36px; left: 100px; }
-.cover-mark.br { bottom: 36px; right: 100px; }
-
-/* ============================================================
-   PAGE 2 — I. LA PROMESSE
-   ============================================================ */
-.p2 {
-  display: grid;
-  grid-template-columns: 0.78fr 1fr;
-  height: 100%;
-  align-items: center;
-  gap: 60px;
-  padding: 110px 90px 90px;
-}
-
-.p2-portrait {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4/5;
-  background: var(--ink-card);
-  overflow: hidden;
-  border-radius: 4px;
-}
-.p2-portrait img {
-  width: 100%; height: 100%; object-fit: cover; object-position: center 30%;
-}
-
-.p2-right {
-  display: flex; flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  text-align: left;
-  gap: 0;
-}
-.p2-tag { margin-bottom: 18px; }
-.p2-title { margin-bottom: 32px; }
-
-.stats-row {
-  display: grid; grid-template-columns: 1fr 1fr 1fr;
-  margin-bottom: 36px;
-  width: 100%;
-  gap: 24px;
-}
-.stat-cell {
-  padding: 0;
-  text-align: center;
-}
-.stat-value {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 40px;
-  line-height: 1;
-  letter-spacing: -0.025em;
-  color: var(--gold-pale);
-  margin-bottom: 10px;
-}
-.stat-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px; font-weight: 500;
-  letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.promise-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 13.5px; font-weight: 300;
-  color: var(--paper-soft); line-height: 1.7;
-  max-width: 520px;
-  margin-bottom: 30px;
-}
-
-.quote-block {
-  padding-left: 0;
-  margin-top: 0;
-}
-.quote-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px; font-weight: 600;
-  letter-spacing: 0.42em; text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 12px;
-}
-.quote-text {
-  font-family: 'DM Sans', 'Inter', sans-serif;
+.cover-title em {
   font-style: italic; font-weight: 400;
-  font-size: 17px; line-height: 1.5;
-  color: var(--paper);
-  margin-bottom: 12px;
-  max-width: 480px;
-  letter-spacing: -0.005em;
+  color: var(--gold);
 }
-.quote-sig {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px; font-weight: 500;
-  letter-spacing: 0.42em; text-transform: uppercase;
-  color: var(--gold-pale);
+.cover-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300; font-style: italic;
+  font-size: 22px; line-height: 1;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 44px;
+  text-align: center;
+}
+
+.cover-chips { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.cover-chip {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  background: rgba(201,168,76,0.03);
+}
+.cover-chip strong { color: var(--gold); font-weight: 500; }
+
+.cover-bottom {
+  position: absolute; bottom: 96px; left: 0; right: 0;
+  text-align: center;
+}
+.cover-bottom .sig {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 15px; color: var(--gold-light);
+  letter-spacing: 0.06em;
 }
 
 /* ============================================================
-   PAGE 3 — II. LE CONTENU
+   PAGE 2 — LA MÉTHODE (4 piliers + parcours)
    ============================================================ */
-.p3 {
-  padding: 120px 80px 90px;
-  position: relative;
-  height: 100%;
-}
-.p3 .p3-head {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  margin-bottom: 48px;
-}
-.p3-head .left { max-width: 720px; }
-.p3-tag { margin-bottom: 18px; }
-.p3-title { margin-top: 0; }
-
-.p3-right-promise {
-  padding-left: 0;
-  max-width: 280px;
-  margin-bottom: 4px;
-  text-align: right;
-}
-.p3-right-promise .label {
-  display: block; margin-bottom: 10px;
-  color: var(--gold-champ);
-}
-.p3-right-promise .txt {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 22px; line-height: 1.15;
-  color: var(--paper);
-  letter-spacing: -0.015em;
-}
-.p3-right-promise .txt em {
-  font-style: normal;
-  color: var(--gold-pale);
-  font-weight: 500;
-}
-
-.pillars-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 22px 24px;
-  margin-bottom: 28px;
-}
-.pillar-card {
-  background: linear-gradient(180deg, rgba(20,17,13,0.85), rgba(10,8,7,0.65));
-  border: 1px solid var(--rule);
-  padding: 22px 26px 20px;
-  position: relative;
-}
-.pillar-card .num-tag {
-  position: absolute; right: 24px; top: 22px;
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 500; font-size: 13px;
-  color: var(--gold);
-  letter-spacing: 0.1em;
-}
-.pillar-card .pillar-name {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 500; font-size: 17px;
-  color: var(--paper);
-  letter-spacing: -0.005em;
+.pilier-head {
+  display: flex; align-items: baseline; gap: 14px;
   margin-bottom: 14px;
-  margin-right: 32px;
 }
-.pillar-card ul { list-style: none; }
-.pillar-card li {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px; font-weight: 300;
-  color: var(--paper-soft);
-  line-height: 1.6;
-  padding: 6px 0 6px 14px;
+.pilier-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 26px; line-height: 1;
+  color: var(--gold-dark);
+}
+.pilier-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; font-size: 22px; line-height: 1;
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+.pilier-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.pilier-list { gap: 8px; }
+.pilier-list li {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10.5px; font-weight: 300;
+  color: var(--text);
+  line-height: 1.5;
+  padding-left: 16px;
   position: relative;
-  border-bottom: 1px solid var(--rule-soft);
 }
-.pillar-card li:last-child { border-bottom: none; }
-.pillar-card li::before {
-  content: ''; position: absolute; left: 0; top: 13px;
-  width: 6px; height: 1px; background: var(--gold);
+.pilier-list li::before {
+  content: '→';
+  position: absolute; left: 0; top: 0;
+  color: var(--gold-dark);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
 }
-.pillar-card li strong {
-  color: var(--paper); font-weight: 500;
-  display: block; margin-bottom: 2px; font-size: 12px;
+.pilier-list li strong {
+  color: var(--text); font-weight: 500;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 2px;
 }
 
-/* Bandeau parcours en bas */
-.parcours-bar {
-  background: linear-gradient(180deg, rgba(232,217,168,0.05), rgba(196,163,90,0.10));
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  padding: 18px 28px;
-  display: grid; grid-template-columns: auto 1fr 1fr 1fr; gap: 24px; align-items: center;
+.parcours {
+  display: grid; grid-template-columns: auto 1fr 1fr 1fr;
+  gap: 24px;
+  align-items: center;
+  padding: 22px 28px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
 }
-.parcours-bar .label-block {
-  font-family: 'Inter', sans-serif;
+.parcours-label {
+  font-family: 'Montserrat', sans-serif;
   font-size: 9px; font-weight: 600;
-  letter-spacing: 0.42em; text-transform: uppercase;
+  letter-spacing: 0.32em; text-transform: uppercase;
   color: var(--gold);
   padding-right: 24px;
-  border-right: 1px solid var(--rule);
+  border-right: 1px solid var(--border);
 }
-.parcours-bar .label-block .big {
+.parcours-label .big {
   display: block;
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-size: 16px; font-weight: 500;
-  color: var(--paper);
-  letter-spacing: -0.005em;
-  text-transform: none;
-  margin-top: 4px;
-}
-.phase-pill {
-  display: flex; align-items: center; gap: 12px;
-  font-family: 'Inter', sans-serif;
-}
-.phase-pill .num {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 500; font-size: 22px;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--gold);
-  letter-spacing: -0.02em;
-}
-.phase-pill .body { line-height: 1.3; }
-.phase-pill .name {
-  font-size: 12px; font-weight: 500;
-  color: var(--paper);
-  letter-spacing: 0.01em;
-}
-.phase-pill .day {
-  font-size: 9px; font-weight: 500;
-  letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 2px;
-}
-
-/* ============================================================
-   PAGE 4 — III. TÉMOIGNAGES
-   ============================================================ */
-.p4 {
-  padding: 110px 80px 80px;
-  position: relative;
-  height: 100%;
-}
-.p4 .p4-head { margin-bottom: 28px; }
-.p4-head .chapter-tag { margin-bottom: 14px; }
-
-.testimonials-grid {
-  display: grid; grid-template-columns: 1fr 1fr 1fr;
-  gap: 22px;
-}
-.t-card {
-  background: linear-gradient(180deg, rgba(20,17,13,0.9), rgba(10,8,7,0.7));
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  padding: 20px 22px 22px;
-  display: flex; flex-direction: column;
-  position: relative;
-}
-.t-head {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  margin-bottom: 8px;
-}
-.t-name {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 500; font-size: 26px;
-  color: var(--paper);
-  letter-spacing: -0.015em;
-  line-height: 1;
-}
-.t-model {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 12.5px;
-  color: var(--gold-pale);
-  margin-top: 4px;
-  letter-spacing: -0.005em;
-}
-.t-tag {
-  display: inline-flex; align-items: center;
-  padding: 6px 12px;
-  background: linear-gradient(135deg, #e8d9a8, #c4a35a 60%, #8a6f3a);
-  color: #1a1208;
-  font-family: 'Inter', sans-serif;
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 0.18em;
-  border-radius: 3px;
-  white-space: nowrap;
-}
-
-.t-prices {
-  display: flex; align-items: center; justify-content: center;
-  gap: 14px;
-  margin: 18px 0 14px;
-}
-.t-price-box {
-  flex: 1; text-align: center;
-  border: 1px solid var(--rule-strong);
-  padding: 10px 4px;
-  position: relative;
-}
-.t-price-box .lbl {
-  font-family: 'Inter', sans-serif;
-  font-size: 8.5px; font-weight: 600;
-  letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 4px;
-}
-.t-price-box .val {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 500; font-size: 18px;
-  color: var(--paper);
-  letter-spacing: -0.01em;
-}
-.t-arrow {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-size: 22px;
-  color: var(--gold);
-}
-
-.t-photo {
-  background:
-    repeating-linear-gradient(135deg, rgba(196,163,90,0.04) 0 1px, transparent 1px 14px),
-    radial-gradient(circle at 30% 30%, rgba(196,163,90,0.06), transparent 65%),
-    var(--ink-card);
-  border: 1px solid var(--rule);
-  margin: 8px 0;
-  display: flex; align-items: center; justify-content: center; flex-direction: column;
-  height: 130px;
-}
-.t-photo::before {
-  content: 'PHOTO MONTRE';
-  font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 600;
-  letter-spacing: 0.42em; color: var(--gold-antique);
-}
-.t-photo::after {
-  content: attr(data-asset);
-  font-family: 'Inter', sans-serif; font-size: 9px;
-  letter-spacing: 0.18em; color: var(--muted);
-  margin-top: 6px;
-}
-
-.t-quote {
-  font-family: 'DM Sans', 'Inter', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-style: italic; font-weight: 400;
-  font-size: 12px; line-height: 1.55;
-  color: var(--paper-soft);
-  margin-top: 10px;
+  font-size: 22px; color: var(--text);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 4px;
 }
-.t-attrib {
-  display: flex; align-items: center; gap: 10px;
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid var(--rule);
+.phase {
+  display: flex; align-items: center; gap: 14px;
 }
-.t-attrib .avatar {
-  width: 32px; height: 32px; border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(196,163,90,0.18), transparent 60%),
-    var(--ink-card);
-  border: 1px solid var(--rule-strong);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'DM Sans', 'Inter', sans-serif; font-size: 11px; font-weight: 500;
-  color: var(--gold-pale);
+.phase .n {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 32px; color: var(--gold);
 }
-.t-attrib .meta {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px; font-weight: 500;
+.phase .body .name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; font-size: 16px;
+  color: var(--text);
+}
+.phase .body .day {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px; font-weight: 400;
   letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--muted);
-}
-.t-attrib .meta .who {
-  display: block; color: var(--paper); margin-bottom: 2px;
-  letter-spacing: 0.16em; font-weight: 500;
-}
-
-.p4-foot {
-  margin-top: 22px;
-  display: flex; justify-content: space-between; align-items: center;
-  padding-top: 18px;
-  border-top: 1px solid var(--rule);
-}
-.p4-foot .left {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 400; font-size: 13px;
-  color: var(--paper-soft);
-  max-width: 600px;
-  letter-spacing: -0.005em;
-}
-.p4-foot .left em {
-  font-style: normal;
-  color: var(--gold-pale);
-  font-weight: 500;
-}
-.p4-foot .right {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px; font-weight: 600;
-  letter-spacing: 0.42em; text-transform: uppercase;
-  color: var(--gold);
+  color: var(--text-muted);
+  margin-top: 3px;
 }
 
 /* ============================================================
-   PAGE 5 — IV. L'ÉQUIPE
+   PAGE 3 — À QUI ÇA S'ADRESSE
    ============================================================ */
-.p5 {
-  padding: 120px 80px 90px;
-  position: relative;
-}
-.p5 .p5-head { margin-bottom: 36px; }
-.p5-head .chapter-tag { margin-bottom: 18px; }
-
-.p5-body {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
+.audience {
+  display: grid; grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: flex-start;
 }
+.audience-left { }
+.audience-tag {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--border-h);
+  padding: 8px 16px;
+  background: rgba(201,168,76,0.04);
+  margin-bottom: 22px;
+}
+.audience-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 64px; line-height: 1;
+  color: var(--text);
+  margin-bottom: 22px;
+}
+.audience-title em {
+  font-style: italic; color: var(--gold); font-weight: 400;
+}
+.audience-desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px; font-weight: 300;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 26px;
+}
+.audience-desc strong { color: var(--gold-light); font-weight: 500; }
 
-/* Amine highlight */
-.founder-block {
-  display: grid; grid-template-columns: 1fr 1.6fr; gap: 26px;
-  margin-bottom: 24px;
+.offer-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 24px 26px;
+}
+.offer-card .label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9.5px; font-weight: 500;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.offer-card .promise {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 22px; line-height: 1.3;
+  color: var(--text);
+}
+
+.profile-blocks { display: flex; flex-direction: column; gap: 18px; }
+.profile-block { }
+.profile-block .pb-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9.5px; font-weight: 600;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.profile-block .pb-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 7px;
+}
+.profile-block .pb-list li {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11.5px; font-weight: 300;
+  color: var(--text);
+  line-height: 1.55;
+  padding-left: 16px;
+  position: relative;
+}
+.profile-block .pb-list li::before {
+  content: '→';
+  position: absolute; left: 0; top: 0;
+  color: var(--gold-dark);
+}
+.profile-block.desire .pb-list li::before { content: '✦'; color: var(--gold); }
+
+/* ============================================================
+   PAGE 4 — LE LEVIER 50/50
+   ============================================================ */
+.levier {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-top: 24px;
+}
+.levier-left { text-align: center; }
+.fifty {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 220px;
+  line-height: 1;
+  color: var(--gold);
+  letter-spacing: -0.04em;
+  margin-bottom: 20px;
+}
+.fifty .sl {
+  color: var(--gold-dark);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 180px;
+  padding: 0 6px;
+}
+.levier-caption {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 28px;
+  color: var(--text);
+}
+
+.levier-right { }
+.levier-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px; font-weight: 300;
+  color: var(--text);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+.levier-text strong { color: var(--gold-light); font-weight: 500; }
+
+.conditions-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.conditions { display: flex; flex-direction: column; gap: 0; }
+.cond {
+  display: grid; grid-template-columns: 40px 1fr;
+  gap: 14px; padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+.cond:last-child { border-bottom: none; }
+.cond-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 22px; color: var(--gold);
+}
+.cond-t {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12.5px; font-weight: 400;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   PAGE 5 — LA TEAM
+   ============================================================ */
+.team-wrap {
+  display: grid; grid-template-columns: 1.05fr 1fr;
+  gap: 56px; align-items: flex-start;
+}
+.founder {
+  display: grid; grid-template-columns: 1fr 1.5fr;
+  gap: 26px;
+  margin-bottom: 22px;
 }
 .founder-photo {
   aspect-ratio: 3/4;
-  border: 1px solid var(--rule-strong);
-  position: relative;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
   overflow: hidden;
-  background: var(--ink-card);
 }
 .founder-photo img {
-  width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block;
+  width: 100%; height: 100%; object-fit: cover; object-position: center 22%;
+  display: block;
 }
-.founder-info { padding-top: 6px; }
+.founder-info { padding-top: 4px; }
 .founder-role {
-  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600;
-  letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold);
-  margin-bottom: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
 }
 .founder-name {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 500; font-size: 44px; line-height: 1;
-  letter-spacing: -0.025em; color: var(--paper);
-  margin-bottom: 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300; font-size: 56px;
+  line-height: 1;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.founder-name .alt {
+  display: block;
+  font-style: italic;
+  font-size: 28px;
+  color: var(--gold);
+  font-weight: 400;
+  margin-top: 4px;
 }
 .founder-bio {
-  font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 300;
-  color: var(--paper-soft); line-height: 1.65;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11.5px; font-weight: 300;
+  color: var(--text);
+  line-height: 1.65;
+}
+.founder-bio strong { color: var(--gold-light); font-weight: 500; }
+
+.team-stats {
+  display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 16px;
+  padding-top: 22px;
+}
+.team-stat {
+  border-left: 1px solid var(--border);
+  padding-left: 14px;
+}
+.team-stat:first-child { border-left-color: var(--gold-dark); }
+.team-stat .v {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; font-size: 24px;
+  color: var(--gold);
+  line-height: 1;
+}
+.team-stat .l {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px; font-weight: 400;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 6px; line-height: 1.4;
 }
 
-.team-side {
-  padding-left: 40px;
+.coaches {
+  border-left: 1px solid var(--border);
+  padding-left: 36px;
 }
-.team-side .section-label {
-  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600;
-  letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold);
-  margin-bottom: 22px;
-}
-
-.coaches-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 18px 18px;
+.coaches-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold);
   margin-bottom: 20px;
 }
+.coaches-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 22px;
+}
 .coach {
-  display: grid; grid-template-columns: 68px 1fr;
-  gap: 14px; align-items: flex-start;
+  display: grid; grid-template-columns: 64px 1fr;
+  gap: 12px; align-items: flex-start;
 }
 .coach-photo {
-  width: 68px; height: 68px; border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(196,163,90,0.08), transparent 65%),
-    var(--ink-card);
-  border: 1px solid var(--rule-strong);
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
   position: relative;
 }
 .coach-photo::after {
   content: 'PHOTO';
-  font-family: 'Inter', sans-serif; font-size: 7.5px; font-weight: 600;
-  letter-spacing: 0.42em; color: var(--gold-antique);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7px; font-weight: 600;
+  letter-spacing: 0.32em;
+  color: var(--gold-dark);
 }
-.coach-body { width: 100%; }
 .coach-name {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 500; font-size: 14px;
-  color: var(--paper); letter-spacing: -0.005em;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; font-size: 17px;
+  color: var(--text);
 }
 .coach-role {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-size: 10px; font-weight: 500;
-  letter-spacing: 0.01em;
-  color: var(--gold-pale);
-  margin-top: 2px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--gold);
+  margin-top: 1px;
 }
 .coach-bio {
-  font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 300;
-  color: var(--muted); line-height: 1.45; margin-top: 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9.5px; font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin-top: 4px;
 }
 
-.org-summary {
-  padding: 18px 22px;
-  background: linear-gradient(180deg, rgba(20,17,13,0.7), rgba(10,8,7,0.5));
-  font-family: 'Inter', sans-serif;
+.org-box {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 16px 20px;
+  font-family: 'Montserrat', sans-serif;
   font-size: 11px; font-weight: 300;
-  color: var(--paper-soft); line-height: 1.65;
+  color: var(--text);
+  line-height: 1.65;
 }
-.org-summary strong { color: var(--gold-pale); font-weight: 600; }
+.org-box strong { color: var(--gold-light); font-weight: 500; }
 
 /* ============================================================
-   PAGE 6 — V. RÉSULTATS + LEVIER
+   PAGE 6 — TÉMOIGNAGES
    ============================================================ */
-.p6 {
-  padding: 116px 80px 80px;
-  position: relative;
+.testi-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 22px;
 }
-.p6 .p6-head { margin-bottom: 30px; }
-.p6-head .chapter-tag { margin-bottom: 18px; }
-
-.p6-body {
-  display: grid; grid-template-columns: 1.7fr 1fr;
-  gap: 40px;
-  align-items: flex-start;
+.testi {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 24px 24px 22px;
+  display: flex; flex-direction: column;
 }
-
-.results-table {
-  width: 100%; border-collapse: collapse;
-}
-.results-table thead th {
-  font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 600;
-  letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold);
-  padding: 12px 12px 14px;
-  border-bottom: 1px solid var(--gold-deep);
-  text-align: right;
-}
-.results-table thead th:first-child { text-align: left; }
-
-.results-table tbody td {
-  padding: 11px 12px;
-  border-bottom: 1px solid var(--rule-soft);
-  font-family: 'Inter', sans-serif;
-  font-size: 11.5px; font-weight: 300;
-  color: var(--paper-soft);
-  text-align: right;
-}
-.results-table tbody td:first-child {
-  text-align: left;
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-size: 12px; font-weight: 400;
-  color: var(--paper);
-  letter-spacing: -0.005em;
-}
-.results-table tbody td.margin span {
-  color: var(--gold-pale);
-  font-weight: 600;
-}
-.results-table tbody tr:nth-child(odd) td {
-  background: rgba(196,163,90,0.02);
-}
-
-.results-disclaimer {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-style: italic;
-  font-size: 10.5px; line-height: 1.55;
-  color: var(--muted);
-  margin-top: 16px;
-}
-
-/* Box 50/50 */
-.fifty-box {
-  border: 1px solid var(--rule-strong);
-  background: linear-gradient(180deg, rgba(20,17,13,0.85), rgba(10,8,7,0.65));
-  padding: 26px 28px;
-  position: relative;
-}
-.fifty-tag {
-  font-family: 'Inter', sans-serif;
-  font-size: 9.5px; font-weight: 600;
-  letter-spacing: 0.42em; text-transform: uppercase;
-  color: var(--gold);
+.testi-head {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 12px;
   margin-bottom: 14px;
 }
-.fifty-number {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 96px; line-height: 0.9;
-  letter-spacing: -0.045em;
-  margin-bottom: 6px;
+.testi-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; font-size: 28px;
+  color: var(--text); line-height: 1;
 }
-.fifty-number .a {
-  color: var(--gold-pale);
+.testi-model {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px; color: var(--gold);
+  margin-top: 4px;
 }
-.fifty-number .sl {
-  color: var(--gold-deep); font-weight: 300;
-  font-size: 72px; padding: 0 4px;
-}
-.fifty-number .b {
-  color: var(--gold-champ);
-}
-.fifty-caption {
-  font-family: 'DM Sans', 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 17px; color: var(--paper);
-  margin-bottom: 12px;
-  letter-spacing: -0.015em;
-}
-.fifty-body {
-  font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 300;
-  color: var(--paper-soft); line-height: 1.65;
-  margin-bottom: 16px;
-}
-.fifty-cond {
-  display: flex; flex-direction: column;
-  border-top: 1px solid var(--rule);
-  padding-top: 12px;
-}
-.fifty-cond .row {
-  display: grid; grid-template-columns: 28px 1fr;
-  gap: 10px; padding: 5px 0;
-  font-family: 'Inter', sans-serif; font-size: 10.5px;
-  color: var(--paper-soft);
-}
-.fifty-cond .row .n {
+.testi-tag {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9.5px; font-weight: 600;
+  letter-spacing: 0.16em;
   color: var(--gold);
-  font-family: 'DM Sans', 'Inter', sans-serif; font-weight: 500;
+  border: 1px solid var(--border-h);
+  padding: 6px 12px;
+  background: rgba(201,168,76,0.06);
+  white-space: nowrap;
+}
+
+.testi-prices {
+  display: flex; align-items: center; gap: 12px;
+  margin: 16px 0;
+}
+.testi-pb {
+  flex: 1; text-align: center;
+  border: 1px solid var(--border);
+  padding: 10px 6px;
+}
+.testi-pb .lbl {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8.5px; font-weight: 600;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.testi-pb .val {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; font-size: 17px;
+  color: var(--text);
+}
+.testi-arrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; color: var(--gold);
+}
+
+.testi-photo {
+  height: 140px;
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  margin: 4px 0;
+}
+.testi-photo::before {
+  content: 'PHOTO MONTRE';
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8.5px; font-weight: 600;
+  letter-spacing: 0.32em;
+  color: var(--gold-dark);
+}
+.testi-photo::after {
+  content: attr(data-asset);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.testi-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 14px; line-height: 1.5;
+  color: var(--text);
+  margin-top: 14px;
+}
+.testi-attrib {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.testi-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--surface-3);
+  border: 1px solid var(--border-h);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 14px; color: var(--gold);
+}
+.testi-meta {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px; font-weight: 400;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.testi-meta .who {
+  display: block;
+  color: var(--text); font-weight: 500;
+  letter-spacing: 0.12em;
+  margin-bottom: 2px;
+}
+
+.testi-foot {
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.testi-foot .left {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 16px; color: var(--text);
+}
+.testi-foot .left em { color: var(--gold); font-weight: 400; }
+.testi-foot .right {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9.5px; font-weight: 500;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold);
 }
 
 </style>
@@ -777,484 +666,437 @@ body {
      ================================================================= -->
 <div class="page-shell">
 <div class="page">
-  <div class="filet-top"></div>
+  <div class="head">
+    <span>Cercle Horloger</span>
+    <span class="center">Collection Silver</span>
+    <span>Document Confidentiel</span>
+  </div>
 
   <div class="cover-stack">
-    <div class="cover-logo logo-ch xl">
-      <img src="assets/Logo1_Cerclehorloger.webp" alt="Cercle Horloger" style="width:100%;height:100%;object-fit:contain;display:block">
-    </div>
+    <div class="cover-line"></div>
     <div class="cover-eyebrow">Le Club Privé</div>
-    <div class="cover-name">Cercle Horloger</div>
-    <div class="cover-tagline">L'horlogerie comme classe d'actifs.</div>
-    <div class="cover-badge">
-      <span class="collection-badge">— Collection Silver —</span>
-    </div>
-    <div class="cover-sub">
-      Le cercle privé d'achat-revente de montres à <strong>7 chiffres</strong>.<br>
-      Plus de <strong>10&nbsp;M€</strong> de transactions, <strong>500 montres</strong> revendues, <strong>100&nbsp;%</strong> de deals rentables depuis 2021.
+    <div class="cover-logo"><img src="assets/Logo1_Cerclehorloger.webp" alt="Cercle Horloger"></div>
+    <h1 class="cover-title">Cercle <em>Horloger</em></h1>
+    <p class="cover-sub">L'horlogerie comme classe d'actifs.</p>
+    <div class="cover-chips">
+      <span class="cover-chip">Collection <strong>Silver™</strong></span>
+      <span class="cover-chip">Plus de <strong>10&nbsp;M€</strong> de transactions</span>
+      <span class="cover-chip"><strong>500</strong> montres revendues</span>
+      <span class="cover-chip"><strong>100&nbsp;%</strong> deals rentables</span>
     </div>
   </div>
 
-  <div class="cover-toc">
-    <div class="item"><div class="roman">I</div><div class="label">La promesse</div></div>
-    <div class="item"><div class="roman">II</div><div class="label">Le contenu</div></div>
-    <div class="item"><div class="roman">III</div><div class="label">Témoignages</div></div>
-    <div class="item"><div class="roman">IV</div><div class="label">L'équipe</div></div>
-    <div class="item"><div class="roman">V</div><div class="label">Résultats</div></div>
+  <div class="cover-bottom">
+    <div class="sig">— Amine · Fondateur — Depuis 2021</div>
   </div>
-
-  <div class="cover-sign">Amine · Fondateur — Depuis 2021</div>
 
   <div class="foot">
-    <span>Cercle Horloger</span>
-    <span class="center">Document Confidentiel</span>
-    <span>01 — V · Silver</span>
+    <span>Cercle Horloger™</span>
+    <span class="center">cerclehorloger.com</span>
+    <span>01 — VI · Silver</span>
   </div>
 </div>
 </div>
 
 <!-- =================================================================
-     PAGE 2 — I. LA PROMESSE
+     PAGE 2 — LA MÉTHODE
      ================================================================= -->
 <div class="page-shell">
 <div class="page">
-  <div class="filet-top"></div>
   <div class="head">
     <span>Cercle Horloger</span>
-    <span class="center">Chapitre I — La promesse</span>
+    <span class="center">La Méthode</span>
     <span>Collection Silver</span>
   </div>
 
-  <div class="p2">
-    <div class="p2-portrait">
-      <img src="assets/10.jpg" alt="Amine, Fondateur">
+  <div class="body method">
+    <div class="body-head">
+      <div class="pn">01 — La méthode</div>
+      <h2 class="pt">Tout pour démarrer.<br><em>À votre rythme, à vie.</em></h2>
+      <p class="pd">Le programme Silver donne accès à la méthode complète du Cercle, aux outils de cotation et au réseau de financement — sans accompagnement humain personnalisé. Quatre piliers, un parcours en 180 jours.</p>
     </div>
 
-    <div class="p2-right">
-      <div class="chapter-tag p2-tag">Chapitre I · La promesse</div>
-      <h1 class="title-xl p2-title">Notre <em>méthode</em>.</h1>
-
-      <div class="stats-row">
-        <div class="stat-cell">
-          <div class="stat-value">+10 M€</div>
-          <div class="stat-label">Transactions<br>depuis 2021</div>
+    <div class="piliers-grid">
+      <div class="pilier">
+        <div class="pilier-head">
+          <span class="pilier-n">I</span>
+          <span class="pilier-name">Méthode &amp; expertise</span>
         </div>
-        <div class="stat-cell">
-          <div class="stat-value">500</div>
-          <div class="stat-label">Montres<br>revendues</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-value">100 %</div>
-          <div class="stat-label">Deals<br>rentables</div>
-        </div>
-      </div>
-
-      <p class="promise-text">
-        Le Cercle Horloger est un club privé d'investisseurs en horlogerie.
-        Un protocole en dix piliers, un dashboard exclusif, un accompagnement
-        humain — réservé à celles et ceux qui considèrent l'horlogerie comme
-        une classe d'actifs, pas comme un accessoire.
-      </p>
-
-      <div class="quote-block">
-        <div class="quote-label">Parole du fondateur</div>
-        <p class="quote-text">
-          Une montre de luxe n'est pas un objet de mode. C'est un actif tangible,
-          un héritage, une preuve de discernement.
-        </p>
-        <div class="quote-sig">— Amine, Fondateur</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="foot">
-    <span>Cercle Horloger</span>
-    <span class="center">Document Confidentiel</span>
-    <span>02 — V · Silver</span>
-  </div>
-</div>
-</div>
-
-<!-- =================================================================
-     PAGE 3 — II. LE CONTENU
-     ================================================================= -->
-<div class="page-shell">
-<div class="page">
-  <div class="filet-top"></div>
-  <div class="head">
-    <span>Cercle Horloger</span>
-    <span class="center">Chapitre II — Le contenu</span>
-    <span>Collection Silver</span>
-  </div>
-
-  <div class="p3">
-    <div class="p3-head">
-      <div class="left">
-        <div class="chapter-tag p3-tag">Chapitre II · Le contenu</div>
-        <h1 class="title-xl p3-title">Le contenu.<br><em>À votre rythme, à vie.</em></h1>
-      </div>
-      <div class="p3-right-promise">
-        <span class="label">La promesse Silver</span>
-        <div class="txt">Maîtrise<br>technique<br><em>complète.</em></div>
-      </div>
-    </div>
-
-    <div class="pillars-grid">
-      <div class="pillar-card">
-        <span class="num-tag">01</span>
-        <div class="pillar-name">Méthode &amp; expertise</div>
-        <ul>
-          <li><strong>Protocole +10 M€</strong>La méthodologie en dix piliers, utilisée sur des centaines de transactions réelles.</li>
-          <li><strong>Scripts de négociation</strong>Frameworks de discussion pour acheter et revendre avec confiance.</li>
-          <li><strong>Plan d'action 180 jours</strong>Fondations, Exécution, Accumulation.</li>
+        <ul class="pilier-list">
+          <li><strong>Protocole +10 M€</strong>La méthodologie en dix piliers, validée sur des centaines de transactions réelles.</li>
+          <li><strong>Scripts de négociation &amp; revente</strong>Frameworks de discussion pour acheter et revendre avec confiance.</li>
+          <li><strong>Plan d'action 180 jours</strong>Trois phases : Fondations, Exécution, Accumulation.</li>
         </ul>
       </div>
 
-      <div class="pillar-card">
-        <span class="num-tag">02</span>
-        <div class="pillar-name">Outils &amp; data</div>
-        <ul>
-          <li><strong>Dashboard Horloger™</strong>Cotations en temps réel et analyse des marges sur les modèles ciblés.</li>
+      <div class="pilier">
+        <div class="pilier-head">
+          <span class="pilier-n">II</span>
+          <span class="pilier-name">Outils &amp; data</span>
+        </div>
+        <ul class="pilier-list">
+          <li><strong>Dashboard Horloger™</strong>Cotations en direct et analyse des marges sur les modèles ciblés.</li>
+        </ul>
+      </div>
+
+      <div class="pilier">
+        <div class="pilier-head">
+          <span class="pilier-n">III</span>
+          <span class="pilier-name">Réseau &amp; levier</span>
+        </div>
+        <ul class="pilier-list">
+          <li><strong>Fonds de financement 1 M€</strong>Accès à une ligne de crédit pour vos deals validés.</li>
           <li><strong>Passeport Horloger</strong>Le sésame pour accéder aux pièces exclusives en boutique.</li>
           <li><strong>Process Anti-Blacklist</strong>Éviter les erreurs fatales chez Rolex, AP, Patek, Richard Mille.</li>
         </ul>
       </div>
 
-      <div class="pillar-card">
-        <span class="num-tag">03</span>
-        <div class="pillar-name">Réseau &amp; levier</div>
-        <ul>
-          <li><strong>Fonds 1 M€</strong>Accès à une ligne de financement pour vos deals validés.</li>
-          <li><strong>Partenariat 50/50</strong>Amine finance, vous exécutez, le bénéfice est partagé.</li>
-        </ul>
-      </div>
-
-      <div class="pillar-card">
-        <span class="num-tag">04</span>
-        <div class="pillar-name">Accès &amp; privilèges</div>
-        <ul>
+      <div class="pilier">
+        <div class="pilier-head">
+          <span class="pilier-n">IV</span>
+          <span class="pilier-name">Accès &amp; privilèges</span>
+        </div>
+        <ul class="pilier-list">
           <li><strong>Lives Q&amp;A hebdomadaires</strong>Une session de questions-réponses en groupe, chaque semaine.</li>
           <li><strong>Accès formation à vie</strong>Le programme évolue avec le marché. Vous ne payez jamais deux fois.</li>
         </ul>
       </div>
     </div>
 
-    <div class="parcours-bar">
-      <div class="label-block">
+    <div class="parcours">
+      <div class="parcours-label">
         Plan 180 jours
         <span class="big">3 phases</span>
       </div>
-      <div class="phase-pill">
-        <div class="num">01</div>
+      <div class="phase">
+        <div class="n">I</div>
         <div class="body"><div class="name">Fondations</div><div class="day">Jour 1 → 60</div></div>
       </div>
-      <div class="phase-pill">
-        <div class="num">02</div>
+      <div class="phase">
+        <div class="n">II</div>
         <div class="body"><div class="name">Exécution</div><div class="day">Jour 61 → 120</div></div>
       </div>
-      <div class="phase-pill">
-        <div class="num">03</div>
+      <div class="phase">
+        <div class="n">III</div>
         <div class="body"><div class="name">Accumulation</div><div class="day">Jour 121 → 180</div></div>
       </div>
     </div>
   </div>
 
   <div class="foot">
-    <span>Cercle Horloger</span>
-    <span class="center">Document Confidentiel</span>
-    <span>03 — V · Silver</span>
+    <span>Cercle Horloger™</span>
+    <span class="center">Document confidentiel</span>
+    <span>02 — VI · Silver</span>
   </div>
 </div>
 </div>
 
 <!-- =================================================================
-     PAGE 4 — III. TÉMOIGNAGES
+     PAGE 3 — À QUI ÇA S'ADRESSE
      ================================================================= -->
 <div class="page-shell">
 <div class="page">
-  <div class="filet-top"></div>
   <div class="head">
     <span>Cercle Horloger</span>
-    <span class="center">Chapitre III — Témoignages</span>
+    <span class="center">L'offre Silver</span>
     <span>Collection Silver</span>
   </div>
 
-  <div class="p4">
-    <div class="p4-head">
-      <div class="chapter-tag">Chapitre III · Membres du Cercle</div>
-      <h1 class="title-xl">Le protocole appliqué.<br><em>Trois marges.</em></h1>
+  <div class="body">
+    <div class="body-head">
+      <div class="pn">02 — L'offre Silver</div>
+      <h2 class="pt">La porte d'entrée.<br><em>Sans accompagnement humain.</em></h2>
     </div>
 
-    <div class="testimonials-grid">
-
-      <div class="t-card">
-        <div class="t-head">
-          <div>
-            <div class="t-name">Xavier</div>
-            <div class="t-model">Rolex Cosmograph Daytona Panda</div>
-          </div>
-          <div class="t-tag">+3 500 € EN 48H</div>
-        </div>
-        <div class="t-prices">
-          <div class="t-price-box"><div class="lbl">Achat</div><div class="val">28 000 €</div></div>
-          <div class="t-arrow">›</div>
-          <div class="t-price-box"><div class="lbl">Revente</div><div class="val">31 500 €</div></div>
-        </div>
-        <div class="t-photo" data-asset="assets/montres/daytona-panda.jpg"></div>
-        <p class="t-quote">
-          « En 48 heures j'avais identifié, négocié et revendu la pièce. Le protocole
-          m'a évité toutes les erreurs d'un débutant. »
+    <div class="audience">
+      <div class="audience-left">
+        <div class="audience-tag">Avatar naturel · Le Débutant</div>
+        <h3 class="audience-title">Le <em>Débutant</em>.</h3>
+        <p class="audience-desc">
+          Idéal pour celui qui veut <strong>tester la méthode</strong> avant de s'engager davantage.
+          Vous avez vu les résultats — Safouene encaisse <strong>8 000 €</strong> sur un premier deal
+          avec 0 € de capital — et vous voulez reproduire. Accès à vie, risque zéro, vous avancez
+          à votre rythme.
         </p>
-        <div class="t-attrib">
-          <div class="avatar">X</div>
-          <div class="meta"><span class="who">Xavier · 34 ans</span>Membre depuis 2023 · Paris</div>
+        <div class="offer-card">
+          <div class="label">La promesse Silver</div>
+          <div class="promise">« Maîtrise technique. La porte d'entrée du Cercle. »</div>
         </div>
       </div>
 
-      <div class="t-card">
-        <div class="t-head">
-          <div>
-            <div class="t-name">Julien</div>
-            <div class="t-model">Patek Philippe Aquanaut 5968G</div>
-          </div>
-          <div class="t-tag">+35 000 €</div>
+      <div class="audience-right profile-blocks">
+        <div class="profile-block">
+          <div class="pb-label">Profil &amp; situation</div>
+          <ul class="pb-list">
+            <li>25 — 42 ans, salarié ou entrepreneur en démarrage</li>
+            <li>Cherche un revenu complémentaire concret et rapide</li>
+            <li>Peu ou pas de connaissance des montres de prestige</li>
+            <li>Prêt à investir si la méthode est prouvée, le risque cadré</li>
+          </ul>
         </div>
-        <div class="t-prices">
-          <div class="t-price-box"><div class="lbl">Achat</div><div class="val">80 000 €</div></div>
-          <div class="t-arrow">›</div>
-          <div class="t-price-box"><div class="lbl">Revente</div><div class="val">115 000 €</div></div>
-        </div>
-        <div class="t-photo" data-asset="assets/montres/aquanaut-5968g.jpg"></div>
-        <p class="t-quote">
-          « Premier deal sur une Patek. Sans le dashboard et le réseau du Cercle,
-          jamais je n'aurais sourcé cette pièce au juste prix. »
-        </p>
-        <div class="t-attrib">
-          <div class="avatar">J</div>
-          <div class="meta"><span class="who">Julien · 41 ans</span>Membre depuis 2022 · Lyon</div>
+        <div class="profile-block desire">
+          <div class="pb-label">Ce que Silver vous apporte</div>
+          <ul class="pb-list">
+            <li>L'ensemble du <strong>Protocole +10 M€</strong> et de ses dix piliers, à vie</li>
+            <li>Le <strong>Passeport Horloger</strong> et le <strong>Process Anti-Blacklist</strong></li>
+            <li>L'accès à la ligne de <strong>financement 1 M€</strong> sur vos deals validés</li>
+            <li>Les <strong>lives Q&amp;A hebdomadaires</strong> en groupe</li>
+            <li>Toutes les mises à jour du programme — sans frais supplémentaires</li>
+          </ul>
         </div>
       </div>
-
-      <div class="t-card">
-        <div class="t-head">
-          <div>
-            <div class="t-name">Sébastien</div>
-            <div class="t-model">Patek Cubitus Green 5821/1A</div>
-          </div>
-          <div class="t-tag">+47 100 €</div>
-        </div>
-        <div class="t-prices">
-          <div class="t-price-box"><div class="lbl">Achat</div><div class="val">40 900 €</div></div>
-          <div class="t-arrow">›</div>
-          <div class="t-price-box"><div class="lbl">Revente</div><div class="val">88 000 €</div></div>
-        </div>
-        <div class="t-photo" data-asset="assets/montres/cubitus-green.jpg"></div>
-        <p class="t-quote">
-          « Doublé mon capital sur une seule pièce. La méthode est claire, les coachs
-          sont disponibles. Je n'ai jamais hésité. »
-        </p>
-        <div class="t-attrib">
-          <div class="avatar">S</div>
-          <div class="meta"><span class="who">Sébastien · 38 ans</span>Membre depuis 2024 · Genève</div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="p4-foot">
-      <div class="left">
-        Trois deals. Trois trajectoires. <em>Le même protocole.</em>
-      </div>
-      <div class="right">+ 100 membres actifs</div>
     </div>
   </div>
 
   <div class="foot">
-    <span>Cercle Horloger</span>
-    <span class="center">Témoignages réels · Performances passées non garanties</span>
-    <span>04 — V · Silver</span>
+    <span>Cercle Horloger™</span>
+    <span class="center">Document confidentiel</span>
+    <span>03 — VI · Silver</span>
   </div>
 </div>
 </div>
 
 <!-- =================================================================
-     PAGE 5 — IV. L'ÉQUIPE & L'ORGANISATION
+     PAGE 4 — LE LEVIER 50/50
      ================================================================= -->
 <div class="page-shell">
 <div class="page">
-  <div class="filet-top"></div>
   <div class="head">
     <span>Cercle Horloger</span>
-    <span class="center">Chapitre IV — L'équipe</span>
+    <span class="center">Le Levier Financier</span>
     <span>Collection Silver</span>
   </div>
 
-  <div class="p5">
-    <div class="p5-head">
-      <div class="chapter-tag">Chapitre IV · L'équipe &amp; l'organisation</div>
-      <h1 class="title-xl">Une équipe,<br>pas <em>un seul homme</em>.</h1>
+  <div class="body">
+    <div class="body-head">
+      <div class="pn">03 — Le levier financier</div>
+      <h2 class="pt">Le partenariat<br><em>deal d'Amine.</em></h2>
+      <p class="pd">Si votre deal est validé, Amine peut financer votre première montre. Vous exécutez, le bénéfice est partagé. Une porte d'entrée concrète pour démarrer sans capital de départ.</p>
     </div>
 
-    <div class="p5-body">
-      <div>
-        <div class="founder-block">
-          <div class="founder-photo"><img src="assets/10.jpg" alt="Amine, Fondateur"></div>
+    <div class="levier">
+      <div class="levier-left">
+        <div class="fifty">50<span class="sl">/</span>50</div>
+        <div class="levier-caption">Bénéfice partagé à parts égales.</div>
+      </div>
+
+      <div class="levier-right">
+        <p class="levier-text">
+          Si le deal présente une <strong>plus-value supérieure à 25 %</strong> et porte sur un
+          modèle exclusif validé par l'équipe, Amine peut financer votre première montre.
+          À la revente, le bénéfice est partagé : <strong>50 % pour vous · 50 % pour le Cercle</strong>.
+        </p>
+
+        <div class="conditions-label">Les conditions</div>
+        <div class="conditions">
+          <div class="cond"><span class="cond-n">I</span><span class="cond-t">Plus-value de 25 à 30&nbsp;% minimum sur le deal.</span></div>
+          <div class="cond"><span class="cond-n">II</span><span class="cond-t">Modèle exclusif validé par l'équipe du Cercle.</span></div>
+          <div class="cond"><span class="cond-n">III</span><span class="cond-t">Deal soumis et approuvé en amont du financement.</span></div>
+          <div class="cond"><span class="cond-n">IV</span><span class="cond-t">Bénéfice partagé uniquement à la revente effective.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Cercle Horloger™</span>
+    <span class="center">Document confidentiel</span>
+    <span>04 — VI · Silver</span>
+  </div>
+</div>
+</div>
+
+<!-- =================================================================
+     PAGE 5 — LA TEAM
+     ================================================================= -->
+<div class="page-shell">
+<div class="page">
+  <div class="head">
+    <span>Cercle Horloger</span>
+    <span class="center">La Team</span>
+    <span>Collection Silver</span>
+  </div>
+
+  <div class="body">
+    <div class="body-head">
+      <div class="pn">04 — La team</div>
+      <h2 class="pt">Une équipe,<br><em>pas un seul homme.</em></h2>
+    </div>
+
+    <div class="team-wrap">
+      <div class="founder-wrap">
+        <div class="founder">
+          <div class="founder-photo"><img src="assets/10.jpg" alt="Amine"></div>
           <div class="founder-info">
-            <div class="founder-role">Fondateur · Marchand horloger</div>
-            <div class="founder-name">Amine</div>
+            <div class="founder-role">Fondateur — Cercle Horloger™</div>
+            <h3 class="founder-name">Amine<span class="alt">L'Expert</span></h3>
             <p class="founder-bio">
-              Depuis 2021, Amine a personnellement orchestré plus de
-              <strong style="color:var(--gold-pale);font-weight:600">10 millions d'euros</strong>
-              de transactions sur le marché secondaire de l'horlogerie de luxe.
-              Spécialiste des pièces exclusives Rolex, AP, Patek et Richard Mille,
-              il transmet la totalité de sa méthode aux membres du Cercle.
+              Amine a construit le Cercle pour démocratiser un accès que seule une élite possédait.
+              Son expertise couvre l'<strong>accès boutique officiel</strong>, la constitution de profil
+              acheteur VIP, la négociation, la revente et l'<strong>accumulation patrimoniale</strong>
+              via les montres de luxe. Son protocole est issu de centaines de transactions réelles —
+              pas une théorie.
             </p>
           </div>
         </div>
-
-        <div class="org-summary">
-          Derrière Amine, une <strong>équipe de cinq personnes</strong> structurée
-          autour de quatre pôles : <strong>sourcing</strong> (chasseurs de pièces
-          en boutique et off-market), <strong>conformité</strong> (authentification,
-          assurance, transport sécurisé), <strong>opérations</strong> (gestion des
-          revendeurs, mise en marché) et <strong>accompagnement membres</strong>
-          (coachs, Discord privé, lives hebdomadaires).
+        <div class="team-stats">
+          <div class="team-stat"><div class="v">+10 M€</div><div class="l">Transactions<br>réalisées</div></div>
+          <div class="team-stat"><div class="v">500</div><div class="l">Montres<br>revendues</div></div>
+          <div class="team-stat"><div class="v">100&nbsp;%</div><div class="l">Deals<br>rentables</div></div>
+          <div class="team-stat"><div class="v">Genève</div><div class="l">Quartier<br>général</div></div>
         </div>
       </div>
 
-      <div class="team-side">
-        <div class="section-label">Les coachs</div>
-
+      <div class="coaches">
+        <div class="coaches-label">L'équipe autour d'Amine</div>
         <div class="coaches-grid">
           <div class="coach">
             <div class="coach-photo"></div>
             <div class="coach-body">
               <div class="coach-name">Coach 1</div>
               <div class="coach-role">Sourcing &amp; boutique</div>
-              <div class="coach-bio">Réseau Rolex / AP · Disponible sur le Discord du Cercle.</div>
+              <div class="coach-bio">Réseau Rolex / AP · Discord du Cercle.</div>
             </div>
           </div>
-
           <div class="coach">
             <div class="coach-photo"></div>
             <div class="coach-body">
               <div class="coach-name">Coach 2</div>
               <div class="coach-role">Cotations &amp; marges</div>
-              <div class="coach-bio">Analyse dashboard · Validation des deals.</div>
+              <div class="coach-bio">Validation des deals via le dashboard.</div>
             </div>
           </div>
-
           <div class="coach">
             <div class="coach-photo"></div>
             <div class="coach-body">
               <div class="coach-name">Coach 3</div>
               <div class="coach-role">Authentification</div>
-              <div class="coach-bio">Expertise Patek / Richard Mille · Contrôle qualité.</div>
+              <div class="coach-bio">Patek / Richard Mille · Contrôle qualité.</div>
             </div>
           </div>
-
           <div class="coach">
             <div class="coach-photo"></div>
             <div class="coach-body">
               <div class="coach-name">Coach 4</div>
               <div class="coach-role">Revente &amp; clients</div>
-              <div class="coach-bio">Carnet collectionneurs · Mise en marché.</div>
+              <div class="coach-bio">Réseau collectionneurs · Mise en marché.</div>
             </div>
           </div>
         </div>
 
-        <div class="org-summary" style="margin-top:0">
-          Les coachs interviennent en <strong>direct sur Discord</strong> et lors des
-          <strong>lives Q&amp;A hebdomadaires</strong>. Sur les collections Gold et Platinum,
-          l'accompagnement WhatsApp dédié est activé (3 mois Gold · 6 mois Platinum).
+        <div class="org-box">
+          <strong>Une équipe de cinq personnes</strong> structurée autour de quatre pôles :
+          <strong>sourcing</strong> (chasseurs de pièces boutique et off-market),
+          <strong>conformité</strong> (authentification, assurance, transport),
+          <strong>opérations</strong> (gestion des revendeurs, mise en marché),
+          <strong>accompagnement</strong> (coachs, Discord privé, lives hebdomadaires).
         </div>
       </div>
     </div>
   </div>
 
   <div class="foot">
-    <span>Cercle Horloger</span>
-    <span class="center">Document Confidentiel</span>
-    <span>05 — V · Silver</span>
+    <span>Cercle Horloger™</span>
+    <span class="center">Document confidentiel</span>
+    <span>05 — VI · Silver</span>
   </div>
 </div>
 </div>
 
 <!-- =================================================================
-     PAGE 6 — V. RÉSULTATS + LEVIER 50/50
+     PAGE 6 — TÉMOIGNAGES
      ================================================================= -->
 <div class="page-shell">
 <div class="page">
-  <div class="filet-top"></div>
   <div class="head">
     <span>Cercle Horloger</span>
-    <span class="center">Chapitre V — Résultats &amp; Levier</span>
+    <span class="center">Témoignages</span>
     <span>Collection Silver</span>
   </div>
 
-  <div class="p6">
-    <div class="p6-head">
-      <div class="chapter-tag">Chapitre V · Résultats &amp; Levier financier</div>
-      <h1 class="title-xl">Marges réalisées.<br><em>+ le levier 50/50.</em></h1>
+  <div class="body">
+    <div class="body-head">
+      <div class="pn">05 — Témoignages</div>
+      <h2 class="pt">Le protocole appliqué.<br><em>Trois marges.</em></h2>
     </div>
 
-    <div class="p6-body">
-      <div>
-        <table class="results-table">
-          <thead>
-            <tr>
-              <th>Modèle</th>
-              <th>Acquisition</th>
-              <th>Revente</th>
-              <th>Marge</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Patek Philippe Nautilus 5980/60G</td><td>80 700 €</td><td>155 000 €</td><td class="margin"><span>+74 300 €</span></td></tr>
-            <tr><td>Patek Philippe Aquanaut 5968G</td><td>80 000 €</td><td>115 000 €</td><td class="margin"><span>+35 000 €</span></td></tr>
-            <tr><td>Patek Cubitus 5822P Platinum Blue</td><td>87 700 €</td><td>135 000 €</td><td class="margin"><span>+47 300 €</span></td></tr>
-            <tr><td>Patek Cubitus Green 5821/1A</td><td>40 900 €</td><td>88 000 €</td><td class="margin"><span>+47 100 €</span></td></tr>
-            <tr><td>Patek Ladies Nautilus 7118</td><td>68 900 €</td><td>108 000 €</td><td class="margin"><span>+39 100 €</span></td></tr>
-            <tr><td>AP Royal Oak Double Balance Ceramic</td><td>230 550 €</td><td>245 000 €</td><td class="margin"><span>+14 450 €</span></td></tr>
-            <tr><td>Rolex Day-Date 40 Ombre</td><td>45 750 €</td><td>54 500 €</td><td class="margin"><span>+8 750 €</span></td></tr>
-            <tr><td>Rolex Day-Date Olive Green</td><td>47 700 €</td><td>53 500 €</td><td class="margin"><span>+5 800 €</span></td></tr>
-            <tr><td>Rolex Skydweller Jubilee Green</td><td>16 800 €</td><td>19 000 €</td><td class="margin"><span>+2 200 €</span></td></tr>
-          </tbody>
-        </table>
+    <div class="testi-grid">
 
-        <p class="results-disclaimer">
-          Performances réalisées sur le marché secondaire par le Cercle Horloger et ses membres.
-          Les performances passées ne préjugent pas des performances futures.
-        </p>
-      </div>
-
-      <div>
-        <div class="fifty-box">
-          <div class="fifty-tag">Le levier financier</div>
-          <div class="fifty-number">
-            <span class="a">50</span><span class="sl">/</span><span class="b">50</span>
+      <div class="testi">
+        <div class="testi-head">
+          <div>
+            <div class="testi-name">Xavier</div>
+            <div class="testi-model">Rolex Cosmograph Daytona Panda</div>
           </div>
-          <div class="fifty-caption">Le partenariat deal d'Amine.</div>
-          <p class="fifty-body">
-            Si le deal présente une plus-value supérieure à 25 % et porte sur un
-            modèle exclusif, Amine peut financer votre première montre. Bénéfice
-            partagé : <strong style="color:var(--gold-pale)">50 % vous · 50 % le Cercle</strong>.
-          </p>
-          <div class="fifty-cond">
-            <div class="row"><span class="n">I.</span><span>Plus-value de 25 à 30 % minimum.</span></div>
-            <div class="row"><span class="n">II.</span><span>Modèle exclusif validé par l'équipe.</span></div>
-            <div class="row"><span class="n">III.</span><span>Deal soumis et approuvé en amont.</span></div>
-            <div class="row"><span class="n">IV.</span><span>Bénéfice partagé à la revente effective.</span></div>
-          </div>
+          <div class="testi-tag">+3 500 € EN 48H</div>
+        </div>
+        <div class="testi-prices">
+          <div class="testi-pb"><div class="lbl">Achat</div><div class="val">28 000 €</div></div>
+          <div class="testi-arrow">›</div>
+          <div class="testi-pb"><div class="lbl">Revente</div><div class="val">31 500 €</div></div>
+        </div>
+        <div class="testi-photo" data-asset="assets/montres/daytona-panda.jpg"></div>
+        <p class="testi-quote">« En 48 heures j'avais identifié, négocié et revendu la pièce. Le protocole m'a évité toutes les erreurs d'un débutant. »</p>
+        <div class="testi-attrib">
+          <div class="testi-avatar">X</div>
+          <div class="testi-meta"><span class="who">Xavier · 34 ans</span>Membre depuis 2023 · Paris</div>
         </div>
       </div>
+
+      <div class="testi">
+        <div class="testi-head">
+          <div>
+            <div class="testi-name">Julien</div>
+            <div class="testi-model">Patek Philippe Aquanaut 5968G</div>
+          </div>
+          <div class="testi-tag">+35 000 €</div>
+        </div>
+        <div class="testi-prices">
+          <div class="testi-pb"><div class="lbl">Achat</div><div class="val">80 000 €</div></div>
+          <div class="testi-arrow">›</div>
+          <div class="testi-pb"><div class="lbl">Revente</div><div class="val">115 000 €</div></div>
+        </div>
+        <div class="testi-photo" data-asset="assets/montres/aquanaut-5968g.jpg"></div>
+        <p class="testi-quote">« Premier deal sur une Patek. Sans le dashboard et le réseau du Cercle, jamais je n'aurais sourcé cette pièce au juste prix. »</p>
+        <div class="testi-attrib">
+          <div class="testi-avatar">J</div>
+          <div class="testi-meta"><span class="who">Julien · 41 ans</span>Membre depuis 2022 · Lyon</div>
+        </div>
+      </div>
+
+      <div class="testi">
+        <div class="testi-head">
+          <div>
+            <div class="testi-name">Sébastien</div>
+            <div class="testi-model">Patek Cubitus Green 5821/1A</div>
+          </div>
+          <div class="testi-tag">+47 100 €</div>
+        </div>
+        <div class="testi-prices">
+          <div class="testi-pb"><div class="lbl">Achat</div><div class="val">40 900 €</div></div>
+          <div class="testi-arrow">›</div>
+          <div class="testi-pb"><div class="lbl">Revente</div><div class="val">88 000 €</div></div>
+        </div>
+        <div class="testi-photo" data-asset="assets/montres/cubitus-green.jpg"></div>
+        <p class="testi-quote">« Doublé mon capital sur une seule pièce. La méthode est claire, les coachs sont disponibles. Je n'ai jamais hésité. »</p>
+        <div class="testi-attrib">
+          <div class="testi-avatar">S</div>
+          <div class="testi-meta"><span class="who">Sébastien · 38 ans</span>Membre depuis 2024 · Genève</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="testi-foot">
+      <div class="left">Trois deals. Trois trajectoires. <em>Le même protocole.</em></div>
+      <div class="right">+ 100 membres actifs</div>
     </div>
   </div>
 
   <div class="foot">
-    <span>Cercle Horloger</span>
-    <span class="center">Performances réelles · Futures non garanties</span>
-    <span>06 — V · Silver</span>
+    <span>Cercle Horloger™</span>
+    <span class="center">Témoignages réels · Performances passées non garanties</span>
+    <span>06 — VI · Silver</span>
   </div>
 </div>
 </div>
